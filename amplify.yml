@@ -1,0 +1,24 @@
+# AWS Amplify Hosting build settings (Next.js SSR, platform: WEB_COMPUTE).
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - nvm install 20 && nvm use 20
+        - npm ci
+    build:
+      commands:
+        # Amplify does not expose console environment variables to the running
+        # Next.js server, so copy the ones the site needs into .env.production
+        # at build time. This file only exists inside the build; it is never
+        # committed.
+        - env | grep -E '^(SUPABASE_URL|SUPABASE_SERVICE_ROLE_KEY|ADMIN_USER|ADMIN_PASSWORD|PREVIEW_USER|PREVIEW_PASSWORD|RESEND_API_KEY|LEAD_NOTIFICATION_FROM|LEAD_NOTIFICATION_TO|RATE_LIMIT_SALT|NEXT_PUBLIC_[A-Z_]+)=' >> .env.production || true
+        - npm run build
+  artifacts:
+    baseDirectory: .next
+    files:
+      - "**/*"
+  cache:
+    paths:
+      - node_modules/**/*
+      - .next/cache/**/*

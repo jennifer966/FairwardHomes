@@ -68,6 +68,17 @@ Events: `page_viewed`, `calculator_used`, `primary_cta_clicked`, `seller_form_st
 
 UTM parameters and the referring host are kept in `sessionStorage` (no cookies) and attached to leads. With `NEXT_PUBLIC_ANALYTICS=first-party`, events go to `/api/events` and are stored without IP or user-agent. No third-party tracking is loaded. A consent-gated integration can opt in by setting `window.__fwAnalyticsConsent = true` and providing `window.dataLayer`.
 
+## Deploying on AWS Amplify
+
+`amplify.yml` holds the build settings. Amplify doesn't pass console environment variables to the running Next.js server, so the build copies the ones the site needs into `.env.production`.
+
+1. In AWS Amplify, choose **Create new app**, connect GitHub, and select this repository and branch. Amplify detects Next.js and `amplify.yml`.
+2. Under **Environment variables**, add the values from `.env.example`. At minimum set `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` (a dedicated secret key for production), `ADMIN_PASSWORD`, `NEXT_PUBLIC_SITE_URL`, `RATE_LIMIT_SALT`, and `PREVIEW_PASSWORD` while in private review.
+3. Deploy. After that, every push to the connected branch rebuilds and redeploys automatically.
+4. Under **Hosting → Custom domains**, add `fairwardhomes.com` (and `www`), then follow the DNS steps. If the domain is in Route 53 this is automatic; otherwise add the records Amplify shows at your registrar. Amplify issues the SSL certificate.
+
+After changing an environment variable, redeploy so the change takes effect.
+
 ## Content guardrails
 
 No fabricated reviews, statistics, team members, credentials or addresses. No guaranteed-savings or "AI replaces agents" claims. Fee comparisons are illustrative and use a user-adjustable hypothetical rate. Policy that isn't settled yet is shown as **"Final service terms coming soon."**
