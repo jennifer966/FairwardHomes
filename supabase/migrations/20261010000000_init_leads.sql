@@ -3,8 +3,6 @@
 -- policies for anon/authenticated roles, and table privileges are revoked.
 -- Only the server (service role key) reads or writes these tables.
 
-create extension if not exists pgcrypto;
-
 create table if not exists public.leads (
   id uuid primary key default gen_random_uuid(),
   created_at timestamptz not null default now(),
@@ -61,8 +59,7 @@ begin
 end;
 $$;
 
-drop trigger if exists leads_set_updated_at on public.leads;
-create trigger leads_set_updated_at before update on public.leads
+create or replace trigger leads_set_updated_at before update on public.leads
   for each row execute function public.set_updated_at();
 
 alter table public.leads enable row level security;
