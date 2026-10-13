@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fairward — Offers</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#223A4E}a:hover{color:#9A6A4C}
+.tabs{position:absolute;left:0;right:0;bottom:0;height:84px;box-sizing:border-box;padding:8px 6px 22px;background:#FFFFFF;border-top:1px solid rgba(34,58,78,0.10);display:flex}
+.tab{flex:1;min-height:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font:500 11px 'DM Sans',sans-serif;color:#596E81;text-decoration:none}
+.tab.on{color:#223A4E;font-weight:600}
+.tab.on svg{color:#9A6A4C}
+.label{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#596E81}
+.offer{width:100%;text-align:left;cursor:pointer;background:#FFFFFF;border:1px solid rgba(34,58,78,0.12);border-radius:16px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:'DM Sans',sans-serif;color:#223A4E}
+.offer.on{border:2px solid #B18162;padding:13px 15px;background:#FBF7F3}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid rgba(34,58,78,0.08);font-size:14px}
+.kv span{color:#596E81}
+.kv b{font-weight:600;text-align:right}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F5F3ED; color: #223A4E; font-family: 'DM Sans', system-ui, sans-serif">
+  <div style="position: absolute; left: 0; right: 0; top: 0; bottom: 84px; overflow-y: auto; box-sizing: border-box; padding: 44px 20px 28px; display: flex; flex-direction: column; gap: 14px">
+    <div>
+      <div style="font-size: 13px; color: #596E81">Offers</div>
+      <div style="font-family: 'Newsreader', Georgia, serif; font-size: 28px; line-height: 1.15; letter-spacing: -0.02em">Compare your offers</div>
+      <p style="margin: 6px 0 0; font-size: 14px; color: #596E81">Tap an offer to see its terms. Sample data.</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <sc-for list="{{offers}}" as="o" hint-placeholder-count="3">
+        <button type="button" class="offer {{o.cls}}" onClick="{{o.pick}}" aria-pressed="{{o.on}}">
+          <span>
+            <b style="display: block; font-size: 15px; font-weight: 600">{{o.name}}</b>
+            <span style="font-size: 13px; color: #596E81">{{o.summary}}</span>
+          </span>
+          <span style="font-family: 'Newsreader', Georgia, serif; font-size: 22px">{{o.priceLabel}}</span>
+        </button>
+      </sc-for>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid rgba(34,58,78,0.12); border-radius: 18px; padding: 16px">
+      <div style="display: flex; justify-content: space-between; align-items: center">
+        <span class="label">{{sel.name}} · terms</span>
+        <span style="font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: #ECE8DE">{{sel.financing}}</span>
+      </div>
+      <div style="margin-top: 6px">
+        <div class="kv"><span>Offer price</span><b>{{sel.priceLabel}}</b></div>
+        <div class="kv"><span>Down payment</span><b>{{sel.down}}</b></div>
+        <div class="kv"><span>Closing</span><b>{{sel.close}}</b></div>
+        <div class="kv"><span>Inspection contingency</span><b>{{sel.inspection}}</b></div>
+        <div class="kv"><span>Appraisal / loan contingency</span><b>{{sel.loan}}</b></div>
+        <div class="kv"><span>Seller credit requested</span><b>{{sel.creditLabel}}</b></div>
+      </div>
+    </div>
+
+    <div style="background: #223A4E; color: #F5F3ED; border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+      <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,243,237,0.7)">Illustrative amount after listing fee &amp; credits</span>
+      <span style="font-family: 'Newsreader', Georgia, serif; font-size: 36px; line-height: 1; color: #D4A88A">{{sel.netLabel}}</span>
+      <span style="font-size: 12.5px; line-height: 1.5; color: rgba(245,243,237,0.75)">Offer price minus the proposed $2,995 listing fee and any requested credit. Before escrow, title, transfer taxes, any buyer-broker compensation and loan payoff.</span>
+    </div>
+
+    <a href="Messages.dc.html" style="display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 54px; border-radius: 999px; background: #9A6A4C; color: #FFFFFF; font-weight: 500; font-size: 16px; text-decoration: none">Review offers with my broker
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <p style="margin: 0; text-align: center; font-size: 12px; line-height: 1.5; color: #596E81">Accepting, countering or declining is done with your licensed broker.</p>
+  </div>
+
+  <nav class="tabs" aria-label="App sections">
+    <a href="Home.dc.html" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Overview</a>
+    <a href="Prep.dc.html" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 6h10M10 12h10M10 18h10"/><path d="m3.5 6 1.5 1.5L7.5 5M3.5 12l1.5 1.5 2.5-2.5M3.5 18l1.5 1.5 2.5-2.5"/></svg>Listing</a>
+    <a href="Showings.dc.html" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Showings</a>
+    <a href="Offers.dc.html" class="tab on" aria-current="page"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg>Offers</a>
+    <a href="Assistant.dc.html" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6.5 6.5l2 2M15.5 15.5l2 2M6.5 17.5l2-2M15.5 8.5l2-2"/></svg>Assistant</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { picked: 'a' };
+  }
+  renderVals() {
+    const fee = 2995;
+    const usd = (n) => '$' + n.toLocaleString('en-US');
+    const list = [
+      { id: 'a', name: 'Offer A', price: 612000, financing: 'Conventional', down: '20%', close: '30 days', inspection: '17 days', loan: 'Yes · 17 / 21 days', credit: 0 },
+      { id: 'b', name: 'Offer B', price: 605000, financing: 'Cash', down: '100% · proof of funds', close: '14 days', inspection: '10 days', loan: 'None', credit: 0 },
+      { id: 'c', name: 'Offer C', price: 618000, financing: 'FHA', down: '3.5%', close: '45 days', inspection: '17 days', loan: 'Yes · 17 / 21 days', credit: 8000 },
+    ].map((o) => ({
+      ...o,
+      priceLabel: usd(o.price),
+      creditLabel: o.credit ? usd(o.credit) : 'None',
+      netLabel: usd(o.price - fee - o.credit),
+      summary: o.financing + ' · close in ' + o.close,
+    }));
+    const picked = this.state.picked;
+    const sel = list.find((o) => o.id === picked) || list[0];
+    return {
+      sel,
+      offers: list.map((o) => ({
+        ...o,
+        on: o.id === picked,
+        cls: o.id === picked ? 'on' : '',
+        pick: () => this.setState({ picked: o.id }),
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>

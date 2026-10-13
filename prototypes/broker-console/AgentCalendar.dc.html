@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fairward Agent — Calendar</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F3ED}
+a{color:#223A4E}a:hover{color:#9A6A4C}
+.side{flex:1 1 232px;box-sizing:border-box;padding:24px 14px;background:#2C4860;color:#F5F3ED;display:flex;flex-direction:column;gap:22px}
+.brand{font-family:'Newsreader',Georgia,serif;font-size:26px;font-weight:500;letter-spacing:-0.03em;padding:0 10px}
+.brand span{color:#B18162}
+.brand small{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#D4A88A;margin-left:6px}
+.ws{margin:0 4px;padding:10px 12px;border-radius:10px;background:rgba(245,243,237,.08);font-size:12px;color:rgba(245,243,237,.78)}
+.ws b{display:block;color:#F5F3ED;font-weight:600;font-size:13px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;justify-content:space-between;align-items:center;min-height:42px;padding:0 12px;border-radius:10px;color:rgba(245,243,237,.85);text-decoration:none;font-weight:500;font-size:14px}
+.nav a:hover{background:rgba(245,243,237,.08);color:#FFFFFF}
+.nav a.on{background:rgba(245,243,237,.16);color:#FFFFFF}
+.badge{min-width:22px;height:22px;padding:0 6px;box-sizing:border-box;border-radius:999px;background:#9A6A4C;color:#FFFFFF;font-size:11.5px;font-weight:600;display:inline-grid;place-items:center}
+.me{margin-top:auto;display:flex;gap:10px;align-items:center;padding:14px 10px 0;border-top:1px solid rgba(245,243,237,.16);font-size:12px;color:rgba(245,243,237,.78)}
+.me b{display:block;color:#F5F3ED;font-size:13px;font-weight:600}
+.av{width:34px;height:34px;flex:none;border-radius:999px;background:#1A2E3F;color:#D4A88A;display:grid;place-items:center;font-family:'Newsreader',Georgia,serif;font-size:14px}
+.card{background:#FFFFFF;border:1px solid rgba(34,58,78,.12);border-radius:16px;padding:18px 20px}
+.label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#596E81}
+.tag{display:inline-flex;align-items:center;font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.t-copper{background:rgba(177,129,98,.14);color:#85593E}
+.t-sage{background:#E3EBE4;color:#3F5E48}
+.t-gray{background:#ECE8DE;color:#223A4E}
+.t-red{background:#FBEFED;color:#8A2F27}
+.t-navy{background:#223A4E;color:#F5F3ED}
+.chip{min-height:36px;padding:0 14px;border-radius:999px;border:1px solid rgba(34,58,78,.18);background:#FFFFFF;color:#223A4E;font:500 13px 'DM Sans',sans-serif;cursor:pointer}
+.chip.on{background:#223A4E;border-color:#223A4E;color:#F5F3ED}
+.day{display:flex;flex-direction:column;gap:6px;padding:10px;border-radius:14px;background:#FFFFFF;border:1px solid rgba(34,58,78,.10);min-height:420px}
+.day.today{border:2px solid #B18162;padding:9px}
+.ev{width:100%;text-align:left;display:flex;flex-direction:column;gap:2px;padding:8px 10px;border-radius:10px;border:1px solid transparent;cursor:pointer;font:400 12.5px 'DM Sans',sans-serif;color:#223A4E}
+.ev.on{outline:2px solid #223A4E;outline-offset:1px}
+.k-deadline{background:rgba(177,129,98,.14)}
+.k-call{background:#ECE8DE}
+.k-tour{background:#E6ECF1}
+.k-openhouse{background:#F5EADF}
+.k-consult{background:#FFFFFF;border-color:rgba(34,58,78,.3)}
+.warn{color:#8A2F27;font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:0 18px;border-radius:999px;border:1px solid transparent;font:500 13.5px 'DM Sans',sans-serif;cursor:pointer;text-decoration:none}
+.b-primary{background:#9A6A4C;color:#FFFFFF}
+.b-ghost{background:transparent;border-color:rgba(34,58,78,.22);color:#223A4E}
+.check{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(34,58,78,.08);font-size:13px}
+.dot{width:18px;height:18px;flex:none;border-radius:999px;display:grid;place-items:center;font-size:10px;font-weight:700}
+.d-ok{background:#E3EBE4;color:#3F5E48}
+.d-attn{background:rgba(177,129,98,.18);color:#85593E}
+.d-no{background:#FBEFED;color:#8A2F27}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 100vh; background: #F5F3ED; color: #223A4E; font-family: 'DM Sans', system-ui, sans-serif; font-size: 14px">
+  <aside class="side" aria-label="Agent workspace">
+    <div class="brand">fairward<span>.</span><small>Agent</small></div>
+    <div class="ws">Brokerage<b>Fairward · Sacramento office</b></div>
+    <nav class="nav" aria-label="Sections">
+      <a href="AgentToday.dc.html">Today</a>
+      <a href="AgentInbox.dc.html">Inbox <span class="badge">4</span></a>
+      <a href="AgentCalendar.dc.html" class="on" aria-current="page">Calendar</a>
+      <a href="AgentFiles.dc.html">Seller files <span class="badge">4</span></a>
+      <a href="AgentBuyers.dc.html">Buyer clients <span class="badge">3</span></a>
+      <a href="AgentSubmissions.dc.html">Submissions <span class="badge">1</span></a>
+    </nav>
+    <div style="margin: 0 4px; padding: 12px; border-radius: 10px; border: 1px solid rgba(245,243,237,.16); font-size: 12px; line-height: 1.5; color: rgba(245,243,237,.78)">You prepare, communicate and schedule. Approvals, MLS publication and deadline confirmation go to your supervising broker.</div>
+    <div class="me"><span class="av">JL</span><span><b>Jordan Lee (sample)</b>Salesperson · supervised by [Broker name]</span></div>
+  </aside>
+
+  <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; padding: 32px clamp(16px, 3vw, 40px) 48px; display: flex; flex-direction: column; gap: 16px">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 14px">
+      <div>
+        <div class="label">Week of October 12 · your files and clients · sample data</div>
+        <h1 style="margin: 4px 0 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 34px; letter-spacing: -0.02em; line-height: 1.1">Calendar</h1>
+      </div>
+      <div role="group" aria-label="Show" style="display: flex; flex-wrap: wrap; gap: 8px">
+        <sc-for list="{{filters}}" as="f" hint-placeholder-count="3">
+          <button type="button" class="chip {{f.cls}}" aria-pressed="{{f.on}}" onClick="{{f.pick}}">{{f.label}}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: #596E81">
+      <span style="display: inline-flex; gap: 6px; align-items: center"><span style="width: 12px; height: 12px; border-radius: 4px; background: rgba(177,129,98,.3)"></span>Contract deadline</span>
+      <span style="display: inline-flex; gap: 6px; align-items: center"><span style="width: 12px; height: 12px; border-radius: 4px; background: #ECE8DE"></span>Seller call</span>
+      <span style="display: inline-flex; gap: 6px; align-items: center"><span style="width: 12px; height: 12px; border-radius: 4px; background: #E6ECF1"></span>Buyer tour</span>
+      <span style="display: inline-flex; gap: 6px; align-items: center"><span style="width: 12px; height: 12px; border-radius: 4px; border: 1.5px solid rgba(34,58,78,.4)"></span>Buyer consultation</span>
+      <span style="display: inline-flex; gap: 6px; align-items: center"><span style="width: 12px; height: 12px; border-radius: 4px; background: #F5EADF"></span>Brokerage open house</span>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start">
+      <div style="flex: 5 1 620px; min-width: 0; overflow-x: auto; padding-bottom: 4px">
+        <div style="display: grid; grid-template-columns: repeat(7, minmax(138px, 1fr)); gap: 8px; min-width: 1000px">
+          <sc-for list="{{days}}" as="d" hint-placeholder-count="7">
+            <section class="day {{d.cls}}" aria-label="{{d.full}}">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0 2px 4px">
+                <b style="font-size: 13px; font-weight: 600">{{d.name}}</b>
+                <span style="font-family: 'Newsreader', Georgia, serif; font-size: 20px">{{d.num}}</span>
+              </div>
+              <sc-for list="{{d.events}}" as="e" hint-placeholder-count="2">
+                <button type="button" class="ev {{e.kindCls}} {{e.cls}}" aria-pressed="{{e.on}}" onClick="{{e.pick}}">
+                  <span style="font-size: 11px; font-weight: 600; color: #596E81">{{e.time}}</span>
+                  <b style="font-weight: 600">{{e.title}}</b>
+                  <span style="color: #596E81">{{e.where}}</span>
+                  <sc-if value="{{e.hasFlag}}" hint-placeholder-val="{{ false }}"><span class="warn">{{e.flag}}</span></sc-if>
+                </button>
+              </sc-for>
+            </section>
+          </sc-for>
+        </div>
+      </div>
+
+      <section class="card" style="flex: 2 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 12px" aria-label="Event detail">
+        <span class="tag {{sel.tag}}" style="align-self: flex-start">{{sel.kindLabel}}</span>
+        <h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 24px; line-height: 1.2">{{sel.title}}</h2>
+        <div style="color: #596E81">{{sel.dayFull}} · {{sel.time}}</div>
+        <a href="{{sel.link}}" style="font-weight: 600">{{sel.where}}</a>
+        <span class="tag {{sel.statusCls}}" style="align-self: flex-start">{{sel.status}}</span>
+
+        <sc-if value="{{sel.hasChecks}}" hint-placeholder-val="{{ false }}">
+          <div>
+            <div class="label">Before this can happen</div>
+            <sc-for list="{{sel.checks}}" as="c" hint-placeholder-count="3">
+              <div class="check"><span class="dot {{c.cls}}">{{c.mark}}</span><span>{{c.label}}<span style="display: block; color: #596E81">{{c.detail}}</span></span></div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{sel.hasStops}}" hint-placeholder-val="{{ false }}">
+          <div>
+            <div class="label">Tour stops</div>
+            <sc-for list="{{sel.stops}}" as="s" hint-placeholder-count="3">
+              <div class="check"><span style="width: 56px; flex: none; color: #596E81">{{s.at}}</span><span style="flex: 1">{{s.addr}}<span style="display: block; color: #596E81">{{s.note}}</span></span></div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{sel.canOffer}}" hint-placeholder-val="{{ false }}">
+          <button type="button" class="btn b-primary" onClick="{{offerHost}}">Offer to host</button>
+          <span style="font-size: 12px; color: #596E81">This listing belongs to [Broker name]. They’ll confirm whether you host.</span>
+        </sc-if>
+        <sc-if value="{{sel.isCall}}" hint-placeholder-val="{{ false }}"><a href="AgentInbox.dc.html" class="btn b-ghost">Open the conversation</a></sc-if>
+        <sc-if value="{{sel.isDeadline}}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 13px; color: #596E81">Deadlines come from the signed contract. Only a broker can confirm recalculated dates.</p></sc-if>
+      </section>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1200}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { show: 'all', picked: 'tour-morgan', offered: false };
+  }
+  renderVals() {
+    const s = this.state;
+    const ok = (label, detail) => ({ label, detail, cls: 'd-ok', mark: '✓' });
+    const attn = (label, detail) => ({ label, detail, cls: 'd-attn', mark: '!' });
+    const no = (label, detail) => ({ label, detail, cls: 'd-no', mark: '×' });
+    const ev = [
+      { id: 'dl-disc', day: 1, time: 'All day', kind: 'deadline', title: 'Seller disclosures due', where: '88 Oak Park Way', link: 'AgentFiles.dc.html', status: 'Confirmed', side: 'seller' },
+      { id: 'call-elm', day: 1, time: '11:00 am', kind: 'call', title: 'Agreement follow-up', where: '47 Elm Glen', link: 'AgentFiles.dc.html', status: 'Confirmed', side: 'seller' },
+      { id: 'call-oak', day: 1, time: '4:00 pm', kind: 'call', title: 'Appraisal options call', where: '88 Oak Park Way', link: 'AgentFiles.dc.html', status: 'Confirmed', side: 'seller' },
+      { id: 'call-sutter', day: 2, time: '3:00 pm', kind: 'call', title: 'Offer comparison call', where: '760 Sutter Way', link: 'AgentFiles.dc.html', status: 'Confirmed', side: 'seller' },
+      { id: 'tour-morgan', day: 3, time: '11:00 am', kind: 'tour', title: 'Buyer tour · 3 homes', where: 'Morgan & Sam T.', link: 'AgentBuyers.dc.html', status: 'Confirmed', side: 'buyer', flag: '1 stop needs broker decision',
+        checks: [ok('Buyer representation agreement signed', 'Signed Oct 2 · required before touring'), ok('Pre-approval on file', 'Up to $650,000'), attn('305 Laurel St requested', 'Fairward listing: dual agency needs written disclosure, both parties’ consent and broker approval')],
+        stops: [['11:00', '2718 Q St', 'Represented by another brokerage'], ['11:45', '1612 39th St', 'Represented by another brokerage'], ['12:30', '305 Laurel St', 'Fairward listing · pending broker decision']] },
+      { id: 'dl-oak', day: 4, time: 'All day', kind: 'deadline', title: 'Appraisal & loan contingencies', where: '88 Oak Park Way', link: 'AgentFiles.dc.html', status: 'Pending broker confirmation', side: 'seller' },
+      { id: 'dl-sutter', day: 4, time: '5:00 pm', kind: 'deadline', title: 'Seller response to offers', where: '760 Sutter Way', link: 'AgentFiles.dc.html', status: 'Confirmed', side: 'seller' },
+      { id: 'consult-alex', day: 5, time: '10:00 am', kind: 'consult', title: 'Buyer consultation', where: 'Alex R.', link: 'AgentBuyers.dc.html', status: 'Scheduled', side: 'buyer', flag: 'No tours yet',
+        checks: [no('Buyer representation agreement not signed', 'Explain terms and compensation; no home tours until it’s signed'), attn('Agreement draft in broker review', 'Submitted from Buyer clients')] },
+      { id: 'oh-laurel', day: 5, time: '1:00–4:00 pm', kind: 'openhouse', title: 'Open house · needs host', where: '305 Laurel St · [Broker name]’s listing', link: 'AgentCalendar.dc.html', status: 'Host needed', side: 'seller', open: true },
+      { id: 'tour-chris', day: 6, time: '2:00 pm', kind: 'tour', title: 'Second showing', where: 'Chris D. · 1450 Elmwood Ave', link: 'AgentBuyers.dc.html', status: 'Confirmed', side: 'buyer',
+        checks: [ok('Buyer representation agreement signed', 'Signed Sep 20'), ok('Showing confirmed by listing agent', 'Other brokerage')],
+        stops: [['2:00', '1450 Elmwood Ave', 'Offer draft in progress']] },
+    ];
+    const vis = ev.filter((e) => s.show === 'all' || e.side === s.show);
+    const sel = ev.find((e) => e.id === s.picked) || ev[0];
+    const days = [['Mon', 12], ['Tue', 13], ['Wed', 14], ['Thu', 15], ['Fri', 16], ['Sat', 17], ['Sun', 18]];
+    const kindLabel = { deadline: 'Contract deadline', call: 'Seller call', tour: 'Buyer tour', consult: 'Buyer consultation', openhouse: 'Brokerage open house' };
+    const tag = { deadline: 't-copper', call: 't-gray', tour: 't-sage', consult: 't-gray', openhouse: 't-copper' };
+    const status = sel.open && s.offered ? 'Offered to host · awaiting [Broker name]' : sel.status;
+    return {
+      filters: [['all', 'Everything'], ['seller', 'Seller files'], ['buyer', 'Buyer clients']].map(([k, label]) => ({ label, on: s.show === k, cls: s.show === k ? 'on' : '', pick: () => this.setState({ show: k }) })),
+      days: days.map(([name, num], i) => ({
+        name, num, full: name + ' Oct ' + num, cls: i === 0 ? 'today' : '',
+        events: vis.filter((e) => e.day === i).map((e) => ({
+          ...e, kindCls: 'k-' + e.kind, on: e.id === sel.id, cls: e.id === sel.id ? 'on' : '',
+          hasFlag: !!e.flag || (e.open && !s.offered), flag: e.flag || 'Host needed',
+          pick: () => this.setState({ picked: e.id }),
+        })),
+      })),
+      sel: {
+        ...sel, status,
+        dayFull: days[sel.day][0] + ', Oct ' + days[sel.day][1],
+        kindLabel: kindLabel[sel.kind], tag: tag[sel.kind],
+        statusCls: status === 'Confirmed' || status === 'Scheduled' ? 't-sage' : 't-copper',
+        hasChecks: !!sel.checks, checks: sel.checks || [],
+        hasStops: !!sel.stops, stops: (sel.stops || []).map(([at, addr, note]) => ({ at, addr, note })),
+        canOffer: !!sel.open && !s.offered,
+        isCall: sel.kind === 'call', isDeadline: sel.kind === 'deadline',
+      },
+      offerHost: () => this.setState({ offered: true }),
+    };
+  }
+}
+</script>
+</body>
+</html>

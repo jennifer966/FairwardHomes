@@ -1,0 +1,191 @@
+{
+  "v": 3,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-10-12T09:00:00Z"
+  },
+  "title": "Fairward Broker Console",
+  "launch": {
+    "view": "canvas"
+  },
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 1180,
+      "title": "1 · Today",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Review.dc.html": {
+      "x": 1520,
+      "y": 0,
+      "w": 1440,
+      "h": 1180,
+      "title": "2 · Review queue",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Transaction.dc.html": {
+      "x": 3040,
+      "y": 0,
+      "w": 1440,
+      "h": 1320,
+      "title": "3 · Transactions (list + workspace)",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Pipeline.dc.html": {
+      "x": 0,
+      "y": 1440,
+      "w": 1440,
+      "h": 1000,
+      "title": "4 · Pipeline",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Leads.dc.html": {
+      "x": 1520,
+      "y": 1440,
+      "w": 1440,
+      "h": 1000,
+      "title": "5 · Leads",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Team.dc.html": {
+      "x": 3040,
+      "y": 1440,
+      "w": 1440,
+      "h": 1320,
+      "title": "6 · Team, roles & supervision",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Economics.dc.html": {
+      "x": 0,
+      "y": 2880,
+      "w": 1440,
+      "h": 1100,
+      "title": "7 · Time & economics",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Inbox.dc.html": {
+      "x": 1520,
+      "y": 2880,
+      "w": 1440,
+      "h": 1100,
+      "title": "8 · Inbox",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "Calendar.dc.html": {
+      "x": 3040,
+      "y": 2880,
+      "w": 1440,
+      "h": 1200,
+      "title": "9 · Calendar",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "AgentToday.dc.html": {
+      "x": 0,
+      "y": 4560,
+      "w": 1440,
+      "h": 1200,
+      "title": "A1 · Agent · Today",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "AgentFiles.dc.html": {
+      "x": 1520,
+      "y": 4560,
+      "w": 1440,
+      "h": 1200,
+      "title": "A2 · Agent · Seller files",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "AgentSubmissions.dc.html": {
+      "x": 3040,
+      "y": 4560,
+      "w": 1440,
+      "h": 1200,
+      "title": "A3 · Agent · Submissions",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "AgentInbox.dc.html": {
+      "x": 0,
+      "y": 5880,
+      "w": 1440,
+      "h": 1200,
+      "title": "A4 · Agent · Inbox",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "AgentCalendar.dc.html": {
+      "x": 1520,
+      "y": 5880,
+      "w": 1440,
+      "h": 1200,
+      "title": "A5 · Agent · Calendar",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    "AgentBuyers.dc.html": {
+      "x": 3040,
+      "y": 5880,
+      "w": 1440,
+      "h": 1200,
+      "title": "A6 · Agent · Buyer clients",
+      "expand": "fill",
+      "is_interactive": true
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Review.dc.html",
+    "Transaction.dc.html",
+    "Pipeline.dc.html",
+    "Leads.dc.html",
+    "Team.dc.html",
+    "Economics.dc.html",
+    "Inbox.dc.html",
+    "Calendar.dc.html",
+    "AgentToday.dc.html",
+    "AgentFiles.dc.html",
+    "AgentSubmissions.dc.html",
+    "AgentInbox.dc.html",
+    "AgentCalendar.dc.html",
+    "AgentBuyers.dc.html"
+  ],
+  "notes": {
+    "agentTitle": {
+      "x": 0,
+      "y": 4230,
+      "text": "Agent (salesperson) view — what Jordan Lee sees",
+      "kind": "title1",
+      "maxW": 4480
+    },
+    "title": {
+      "x": 0,
+      "y": -330,
+      "text": "Fairward broker console — clickable prototype",
+      "kind": "title1",
+      "maxW": 4480
+    },
+    "howto": {
+      "x": 4560,
+      "y": 0,
+      "w": 420,
+      "maxH": 520,
+      "fill": "orange",
+      "text": "How to use: press Play on “1 · Today”. The left menu moves between screens. Working controls: reviewer and type filters, approve / request changes and reassigning reviewers; the transactions list (filter, open any of 11 files, switch files) with per-file tabs and deadline confirmation; pipeline filter, lead assignment, the role-permission matrix and invite form, and the hourly-cost tweak on Economics.\n\nDesigned for one designated broker today, with associate brokers, supervised salespersons and an unlicensed coordinator ready to add later. All people, properties and figures are sample data."
+    }
+  },
+  "designSystems": []
+}

@@ -1,0 +1,32 @@
+{
+  "v": 3,
+  "createdOnFiles": { "v": 1, "at": "2026-10-11T09:00:00Z" },
+  "title": "Fairward Seller App Prototype",
+  "launch": { "view": "canvas" },
+  "pages": [],
+  "boards": {
+    "Main.dc.html": { "x": 0, "y": 0, "w": 390, "h": 844, "title": "1 · Welcome", "is_interactive": true, "radius": 36 },
+    "Onboarding.dc.html": { "x": 470, "y": 0, "w": 390, "h": 844, "title": "2 · Onboarding", "is_interactive": true, "radius": 36 },
+    "Home.dc.html": { "x": 940, "y": 0, "w": 390, "h": 844, "title": "3 · Overview", "is_interactive": true, "radius": 36 },
+    "Prep.dc.html": { "x": 1410, "y": 0, "w": 390, "h": 844, "title": "4 · Listing prep", "is_interactive": true, "radius": 36 },
+    "Showings.dc.html": { "x": 0, "y": 964, "w": 390, "h": 844, "title": "5 · Showings", "is_interactive": true, "radius": 36 },
+    "Offers.dc.html": { "x": 470, "y": 964, "w": 390, "h": 844, "title": "6 · Offers", "is_interactive": true, "radius": 36 },
+    "Assistant.dc.html": { "x": 940, "y": 964, "w": 390, "h": 844, "title": "7 · Assistant", "is_interactive": true, "radius": 36 },
+    "Messages.dc.html": { "x": 1410, "y": 964, "w": 390, "h": 844, "title": "8 · Broker & documents", "is_interactive": true, "radius": 36 }
+  },
+  "order": [
+    "Main.dc.html",
+    "Onboarding.dc.html",
+    "Home.dc.html",
+    "Prep.dc.html",
+    "Showings.dc.html",
+    "Offers.dc.html",
+    "Assistant.dc.html",
+    "Messages.dc.html"
+  ],
+  "notes": {
+    "title": { "x": 0, "y": -330, "text": "Fairward seller app — clickable prototype", "kind": "title1", "maxW": 1800 },
+    "howto": { "x": 1880, "y": 0, "w": 300, "maxH": 420, "fill": "orange", "text": "How to use: press Play on “1 · Welcome” and tap through. Bottom tabs move between screens; buttons, checklists, showing requests, offer cards, assistant questions and the message box all respond.\n\nEverything shown is sample data. Pricing and services are proposed and subject to approval. The assistant gives general information only; decisions go through the licensed broker." }
+  },
+  "designSystems": []
+}

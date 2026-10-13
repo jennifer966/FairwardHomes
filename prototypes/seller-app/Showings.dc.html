@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fairward — Showings</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#223A4E}a:hover{color:#9A6A4C}
+.tabs{position:absolute;left:0;right:0;bottom:0;height:84px;box-sizing:border-box;padding:8px 6px 22px;background:#FFFFFF;border-top:1px solid rgba(34,58,78,0.10);display:flex}
+.tab{flex:1;min-height:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font:500 11px 'DM Sans',sans-serif;color:#596E81;text-decoration:none}
+.tab.on{color:#223A4E;font-weight:600}
+.tab.on svg{color:#9A6A4C}
+.card{background:#FFFFFF;border:1px solid rgba(34,58,78,0.12);border-radius:18px;padding:16px}
+.label{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#596E81}
+.btn{flex:1;min-height:44px;border-radius:999px;font:500 14px 'DM Sans',sans-serif;cursor:pointer}
+.btn.primary{background:#223A4E;border:1px solid #223A4E;color:#F5F3ED}
+.btn.ghost{background:transparent;border:1px solid rgba(34,58,78,0.22);color:#223A4E}
+.status{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px}
+.status.accepted{background:#E3EBE4;color:#3F5E48}
+.status.proposed{background:rgba(177,129,98,0.14);color:#85593E}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F5F3ED; color: #223A4E; font-family: 'DM Sans', system-ui, sans-serif">
+  <div style="position: absolute; left: 0; right: 0; top: 0; bottom: 84px; overflow-y: auto; box-sizing: border-box; padding: 44px 20px 28px; display: flex; flex-direction: column; gap: 16px">
+    <div>
+      <div style="font-size: 13px; color: #596E81">Showings</div>
+      <div style="font-family: 'Newsreader', Georgia, serif; font-size: 28px; line-height: 1.15; letter-spacing: -0.02em">Who wants to see your home</div>
+    </div>
+
+    <div class="label" style="padding: 0 4px">Requests</div>
+    <sc-for list="{{requests}}" as="r" hint-placeholder-count="2">
+      <div class="card" style="display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; justify-content: space-between; gap: 12px; align-items: flex-start">
+          <div>
+            <div style="font-size: 16px; font-weight: 600">{{r.when}}</div>
+            <div style="font-size: 13px; color: #596E81; margin-top: 2px">{{r.who}}</div>
+          </div>
+          <sc-if value="{{r.isDone}}" hint-placeholder-val="{{ false }}">
+            <span class="status {{r.cls}}">{{r.statusLabel}}</span>
+          </sc-if>
+        </div>
+        <sc-if value="{{r.isPending}}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; gap: 8px">
+            <button type="button" class="btn primary" onClick="{{r.accept}}">Accept</button>
+            <button type="button" class="btn ghost" onClick="{{r.propose}}">Suggest another time</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{r.isDone}}" hint-placeholder-val="{{ false }}">
+          <button type="button" onClick="{{r.undo}}" style="align-self: flex-start; min-height: 44px; padding: 0; border: 0; background: transparent; color: #596E81; font: 500 13px 'DM Sans', sans-serif; text-decoration: underline; cursor: pointer">Undo</button>
+        </sc-if>
+      </div>
+    </sc-for>
+
+    <div class="card">
+      <div class="label">Confirmed</div>
+      <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 12px; font-size: 14px">
+        <div style="display: flex; justify-content: space-between; gap: 12px"><span><b style="font-weight: 600">Sat, Mar 22 · 1–4 pm</b><br><span style="color: #596E81">Open house</span></span><span class="status accepted" style="align-self: center">Confirmed</span></div>
+        <div style="display: flex; justify-content: space-between; gap: 12px"><span><b style="font-weight: 600">Sun, Mar 23 · 11:00 am</b><br><span style="color: #596E81">Private showing · buyer’s agent</span></span><span class="status accepted" style="align-self: center">Confirmed</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="label">Recent feedback · sample</div>
+      <p style="margin: 10px 0 0; font-family: 'Newsreader', Georgia, serif; font-size: 18px; line-height: 1.4">“Loved the kitchen light and backyard. Buyers asked about street noise in the evenings.”</p>
+      <p style="margin: 8px 0 0; font-size: 12.5px; color: #596E81">Shared by a buyer’s agent after the Mar 16 showing</p>
+    </div>
+
+    <div style="display: flex; gap: 10px; align-items: flex-start; padding: 14px; border-radius: 14px; background: #E3EBE4; font-size: 13px; line-height: 1.5">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 1px"><path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+      <span>Access instructions are shared only with confirmed, verified agents.</span>
+    </div>
+  </div>
+
+  <nav class="tabs" aria-label="App sections">
+    <a href="Home.dc.html" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Overview</a>
+    <a href="Prep.dc.html" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 6h10M10 12h10M10 18h10"/><path d="m3.5 6 1.5 1.5L7.5 5M3.5 12l1.5 1.5 2.5-2.5M3.5 18l1.5 1.5 2.5-2.5"/></svg>Listing</a>
+    <a href="Showings.dc.html" class="tab on" aria-current="page"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Showings</a>
+    <a href="Offers.dc.html" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg>Offers</a>
+    <a href="Assistant.dc.html" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6.5 6.5l2 2M15.5 15.5l2 2M6.5 17.5l2-2M15.5 8.5l2-2"/></svg>Assistant</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { status: { a: 'pending', b: 'pending' } };
+  }
+  renderVals() {
+    const st = this.state.status;
+    const set = (id, v) => this.setState({ status: { ...st, [id]: v } });
+    const list = [
+      { id: 'a', when: 'Thu, Mar 20 · 5:30 pm', who: 'Buyer’s agent · pre-approved buyer · 30 min' },
+      { id: 'b', when: 'Fri, Mar 21 · 12:00 pm', who: 'Buyer’s agent · first-time buyer · 30 min' },
+    ];
+    return {
+      requests: list.map((r) => {
+        const s = st[r.id];
+        return {
+          ...r,
+          isPending: s === 'pending',
+          isDone: s !== 'pending',
+          cls: s,
+          statusLabel: s === 'accepted' ? 'Accepted' : 'New time suggested',
+          accept: () => set(r.id, 'accepted'),
+          propose: () => set(r.id, 'proposed'),
+          undo: () => set(r.id, 'pending'),
+        };
+      }),
+    };
+  }
+}
+</script>
+</body>
+</html>

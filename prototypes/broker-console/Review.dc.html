@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fairward Broker — Review queue</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F3ED}
+a{color:#223A4E}a:hover{color:#9A6A4C}
+.side{flex:1 1 232px;box-sizing:border-box;padding:24px 14px;background:#1A2E3F;color:#F5F3ED;display:flex;flex-direction:column;gap:22px}
+.brand{font-family:'Newsreader',Georgia,serif;font-size:26px;font-weight:500;letter-spacing:-0.03em;padding:0 10px}
+.brand span{color:#B18162}
+.brand small{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#D4A88A;margin-left:6px}
+.ws{margin:0 4px;padding:10px 12px;border-radius:10px;background:rgba(245,243,237,.06);font-size:12px;color:rgba(245,243,237,.72)}
+.ws b{display:block;color:#F5F3ED;font-weight:600;font-size:13px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;justify-content:space-between;align-items:center;min-height:42px;padding:0 12px;border-radius:10px;color:rgba(245,243,237,.8);text-decoration:none;font-weight:500;font-size:14px}
+.nav a:hover{background:rgba(245,243,237,.06);color:#FFFFFF}
+.nav a.on{background:rgba(245,243,237,.12);color:#FFFFFF}
+.badge{min-width:22px;height:22px;padding:0 6px;box-sizing:border-box;border-radius:999px;background:#9A6A4C;color:#FFFFFF;font-size:11.5px;font-weight:600;display:inline-grid;place-items:center}
+.me{margin-top:auto;display:flex;gap:10px;align-items:center;padding:14px 10px 0;border-top:1px solid rgba(245,243,237,.12);font-size:12px;color:rgba(245,243,237,.72)}
+.me b{display:block;color:#F5F3ED;font-size:13px;font-weight:600}
+.av{width:34px;height:34px;flex:none;border-radius:999px;background:#2C4860;color:#D4A88A;display:grid;place-items:center;font-family:'Newsreader',Georgia,serif;font-size:15px}
+.card{background:#FFFFFF;border:1px solid rgba(34,58,78,.12);border-radius:16px;padding:18px 20px}
+.label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#596E81}
+.tag{display:inline-flex;align-items:center;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-copper{background:rgba(177,129,98,.14);color:#85593E}
+.t-sage{background:#E3EBE4;color:#3F5E48}
+.t-gray{background:#ECE8DE;color:#223A4E}
+.t-red{background:#FBEFED;color:#8A2F27}
+.t-navy{background:#223A4E;color:#F5F3ED}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:0 18px;border-radius:999px;border:1px solid transparent;font:500 13.5px 'DM Sans',sans-serif;cursor:pointer;text-decoration:none}
+.b-primary{background:#9A6A4C;color:#FFFFFF}
+.b-ghost{background:transparent;border-color:rgba(34,58,78,.22);color:#223A4E}
+.chip{min-height:36px;padding:0 14px;border-radius:999px;border:1px solid rgba(34,58,78,.18);background:#FFFFFF;color:#223A4E;font:500 13px 'DM Sans',sans-serif;cursor:pointer}
+.chip.on{background:#223A4E;border-color:#223A4E;color:#F5F3ED}
+.item{width:100%;text-align:left;display:flex;flex-direction:column;gap:6px;padding:14px 16px;border-radius:14px;border:1px solid rgba(34,58,78,.12);background:#FFFFFF;cursor:pointer;font-family:'DM Sans',sans-serif;color:#223A4E}
+.item.on{border:2px solid #B18162;padding:13px 15px;background:#FBF7F3}
+.check{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid rgba(34,58,78,.08)}
+.dot{width:20px;height:20px;flex:none;border-radius:999px;display:grid;place-items:center;font-size:11px;font-weight:700}
+.d-ok{background:#E3EBE4;color:#3F5E48}
+.d-attn{background:rgba(177,129,98,.18);color:#85593E}
+.d-wait{border:1.5px dashed #9AA9B6}
+.note{width:100%;box-sizing:border-box;min-height:84px;padding:10px 12px;border-radius:12px;border:1px solid rgba(34,58,78,.22);font:400 14px 'DM Sans',sans-serif;color:#223A4E;resize:vertical}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 100vh; background: #F5F3ED; color: #223A4E; font-family: 'DM Sans', system-ui, sans-serif; font-size: 14px">
+  <aside class="side" aria-label="Broker console">
+    <div class="brand">fairward<span>.</span><small>Broker</small></div>
+    <div class="ws">Brokerage<b>Fairward · Sacramento office</b></div>
+    <nav class="nav" aria-label="Sections">
+      <a href="Main.dc.html">Today</a>
+      <a href="Inbox.dc.html">Inbox <span class="badge">5</span></a>
+      <a href="Calendar.dc.html">Calendar</a>
+      <a href="Review.dc.html" class="on" aria-current="page">Review queue <span class="badge">{{openCount}}</span></a>
+      <a href="Pipeline.dc.html">Pipeline</a>
+      <a href="Transaction.dc.html">Transactions</a>
+      <a href="Leads.dc.html">Leads <span class="badge">3</span></a>
+      <a href="Team.dc.html">Team &amp; roles</a>
+      <a href="Economics.dc.html">Time &amp; economics</a>
+    </nav>
+    <div class="me"><span class="av">Y</span><span><b>You</b>Designated broker · DRE # [to be added]</span></div>
+  </aside>
+
+  <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; padding: 32px clamp(16px, 3vw, 40px) 48px; display: flex; flex-direction: column; gap: 18px">
+    <div>
+      <div class="label">Licensed review · sample data</div>
+      <h1 style="margin: 4px 0 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 34px; letter-spacing: -0.02em; line-height: 1.1">Review queue</h1>
+      <p style="margin: 6px 0 0; color: #596E81">Everything that needs a licensed decision before it reaches a seller, the MLS or the public.</p>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
+      <span class="label" style="margin-right: 4px">Reviewer</span>
+      <sc-for list="{{reviewerFilters}}" as="f" hint-placeholder-count="3">
+        <button type="button" class="chip {{f.cls}}" aria-pressed="{{f.on}}" onClick="{{f.pick}}">{{f.label}}</button>
+      </sc-for>
+    </div>
+    <div role="group" aria-label="Filter by type" style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
+      <span class="label" style="margin-right: 4px">Type</span>
+      <sc-for list="{{filters}}" as="f" hint-placeholder-count="6">
+        <button type="button" class="chip {{f.cls}}" aria-pressed="{{f.on}}" onClick="{{f.pick}}">{{f.label}}</button>
+      </sc-for>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start">
+      <div style="flex: 2 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+        <sc-for list="{{items}}" as="i" hint-placeholder-count="6">
+          <button type="button" class="item {{i.cls}}" aria-pressed="{{i.on}}" onClick="{{i.pick}}">
+            <span style="display: flex; justify-content: space-between; gap: 8px; width: 100%"><span class="tag {{i.typeCls}}">{{i.type}}</span><span class="tag {{i.statusCls}}">{{i.statusLabel}}</span></span>
+            <b style="font-weight: 600; font-size: 15px">{{i.title}}</b>
+            <span style="font-size: 12.5px; color: #596E81">{{i.property}} · {{i.preparedBy}} · due {{i.due}}</span>
+            <span style="font-size: 12px; font-weight: 600; color: #223A4E">Reviewer: {{i.reviewerName}}</span>
+          </button>
+        </sc-for>
+        <sc-if value="{{empty}}" hint-placeholder-val="{{ false }}">
+          <div class="card" style="color: #596E81">Nothing waiting in this category.</div>
+        </sc-if>
+      </div>
+
+      <section class="card" aria-label="Review detail" style="flex: 3 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 16px; padding: 22px 24px">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; align-items: flex-start">
+          <div>
+            <span class="tag {{sel.typeCls}}">{{sel.type}}</span>
+            <h2 style="margin: 8px 0 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 26px; line-height: 1.2">{{sel.title}}</h2>
+            <div style="margin-top: 4px; color: #596E81">{{sel.property}} · prepared by {{sel.preparedBy}} · due {{sel.due}}</div>
+          </div>
+          <span class="tag {{sel.statusCls}}">{{sel.statusLabel}}</span>
+        </div>
+
+        <p style="margin: 0; line-height: 1.55">{{sel.summary}}</p>
+
+        <div>
+          <div class="label">Checks</div>
+          <sc-for list="{{sel.checks}}" as="c" hint-placeholder-count="5">
+            <div class="check">
+              <span class="dot {{c.cls}}">{{c.mark}}</span>
+              <span style="flex: 1"><b style="font-weight: 500">{{c.label}}</b><span style="display: block; font-size: 12.5px; color: #596E81">{{c.detail}}</span></span>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 8px">
+          <sc-for list="{{sel.materials}}" as="m" hint-placeholder-count="3">
+            <span class="tag t-gray" style="padding: 6px 12px">{{m}}</span>
+          </sc-for>
+        </div>
+
+        <div style="padding: 12px 14px; border-radius: 12px; background: #F5F3ED; font-size: 13px; line-height: 1.5">
+          <b style="font-weight: 600">Who can approve:</b> {{sel.authority}}
+        </div>
+
+        <sc-if value="{{sel.isOpen}}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; flex-direction: column; gap: 10px">
+            <label for="rnote" class="label">Note to the preparer or seller (optional)</label>
+            <textarea id="rnote" class="note" value="{{draft}}" onChange="{{setDraft}}" placeholder="E.g. remove “perfect for families” and resubmit"></textarea>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px">
+              <button type="button" class="btn b-primary" onClick="{{approve}}">{{sel.approveLabel}}</button>
+              <button type="button" class="btn b-ghost" onClick="{{requestChanges}}">Request changes</button>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
+              <label for="reassign" class="label">Reviewer</label>
+              <select id="reassign" value="{{sel.reviewer}}" onChange="{{reassign}}" style="min-height: 40px; padding: 0 12px; border-radius: 12px; border: 1px solid rgba(34,58,78,.22); background: #FFFFFF; font: 500 13.5px 'DM Sans', sans-serif; color: #223A4E">
+                <option value="you">You · designated broker</option>
+                <option value="priya">Priya Shah · associate broker</option>
+              </select>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{sel.isClosed}}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 12px; background: #E3EBE4">
+            <span><b style="font-weight: 600">{{sel.statusLabel}}</b> by you · recorded in the audit log{{sel.noteSuffix}}</span>
+            <button type="button" class="btn b-ghost" onClick="{{undo}}">Undo</button>
+          </div>
+        </sc-if>
+      </section>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1180}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { filter: 'all', picked: 'mls', status: {}, notes: {}, draft: '' };
+  }
+  data() {
+    const ok = (label, detail) => ({ label, detail, cls: 'd-ok', mark: '✓' });
+    const attn = (label, detail) => ({ label, detail, cls: 'd-attn', mark: '!' });
+    const wait = (label, detail) => ({ label, detail, cls: 'd-wait', mark: '' });
+    return [
+      {
+        id: 'mls', kind: 'mls', type: 'MLS gate', typeCls: 't-copper', title: 'Authorize MLS publication',
+        property: '1234 Sample Lane', preparedBy: 'you', due: 'today', approveLabel: 'Authorize publication',
+        summary: 'All seller-side prerequisites are complete. Your authorization is the final step before the listing can be submitted to the MLS. Any later change to price, photos or copy reopens the relevant approval.',
+        checks: [
+          ok('Listing agreement signed', 'Both owners signed · countersigned by you'),
+          ok('Ownership and signing authority verified', 'Vesting matches county record'),
+          ok('Material listing facts verified', '14 facts with sources · square footage marked approximate'),
+          ok('Disclosures addressed', 'Rules-based checklist complete for an owner-occupied resale'),
+          ok('Photos and copy approved', 'Virtually staged images labeled; originals linked'),
+          ok('Seller instructions documented', 'Marketing timing and buyer-broker compensation decision on file (not an MLS field)'),
+          wait('Broker authorization', 'Waiting on you'),
+        ],
+        materials: ['MLS data sheet', '24 photos', 'Listing copy v3', 'Instruction form'],
+        authority: 'Designated broker or associate broker. Salespersons can prepare but not authorize.',
+      },
+      {
+        id: 'deadlines', kind: 'deadlines', type: 'Deadlines', typeCls: 't-gray', title: 'Confirm recalculated contract deadlines',
+        property: '88 Oak Park Way', preparedBy: 'deadline engine', due: 'today', approveLabel: 'Confirm deadlines',
+        summary: 'Amendment 1 extended the appraisal and loan contingencies by 4 days. The engine recalculated 3 dates from the signed terms; they show to the seller as “pending confirmation” until you confirm.',
+        checks: [
+          ok('Source: Amendment 1, signed Oct 10', 'Both parties signed'),
+          attn('Appraisal contingency: Oct 12 → Oct 16', 'Recalculated · calendar days per contract'),
+          attn('Loan contingency: Oct 12 → Oct 16', 'Recalculated'),
+          ok('Close of escrow: Oct 30', 'Unchanged'),
+        ],
+        materials: ['Purchase agreement', 'Amendment 1'],
+        authority: 'Any broker. Salespersons can see calculated dates and request confirmation.',
+      },
+      {
+        id: 'pricing', kind: 'pricing', type: 'Pricing', typeCls: 't-sage', title: 'Approve list price recommendation',
+        property: '52 Fremont Ct', preparedBy: 'Jordan Lee (salesperson)', due: 'tomorrow', approveLabel: 'Approve recommendation',
+        summary: 'Recommended range $575,000–$595,000 based on 6 closed sales within 0.5 miles in the last 120 days. The seller decides the final price after reviewing it with the agent.',
+        checks: [
+          ok('Comparables within policy', '6 sales · 0.5 mi · 120 days'),
+          ok('Condition adjustments explained', 'Kitchen remodel 2022, original baths'),
+          attn('One comparable is a probate sale', 'Consider excluding or noting it'),
+        ],
+        materials: ['CMA report', 'Seller goals'],
+        authority: 'Any broker. Required for every salesperson-prepared CMA.',
+      },
+      {
+        id: 'marketing', kind: 'marketing', type: 'Marketing', typeCls: 't-copper', title: 'Approve marketing package',
+        property: '1234 Sample Lane', preparedBy: 'seller + assistant draft', due: 'Wed', approveLabel: 'Approve for publication',
+        summary: 'Property page, flyer and two virtually staged living room images. The fair housing language check flagged one phrase in the description.',
+        checks: [
+          ok('Altered images labeled “Virtually staged”', 'Label present on every placement'),
+          ok('Original images linked and viewable', 'Required for altered images'),
+          ok('Brokerage name and license number on all assets', 'Added automatically'),
+          attn('Fair housing language check', '“Perfect for young families” — suggest “three bedrooms near two parks”'),
+          ok('Facts match the verified fact sheet', '12 of 12 claims sourced'),
+        ],
+        materials: ['Property page', 'Flyer', '2 staged + 2 original images'],
+        authority: 'Any broker.',
+      },
+      {
+        id: 'disclosures', kind: 'disclosures', type: 'Disclosures', typeCls: 't-gray', title: 'Review seller disclosure answers',
+        property: '9 Riverbend Dr', preparedBy: 'seller', due: 'Thu', approveLabel: 'Mark review complete',
+        summary: 'Trust sale. The checklist applied the trust-sale rules, so some forms differ from an owner-occupied resale. Two answers are marked “not sure” and need a conversation with the trustee.',
+        checks: [
+          ok('Checklist matched to transaction type', 'Trust sale · built 1962'),
+          attn('2 answers marked “not sure”', 'Roof age; past water intrusion'),
+          wait('Broker’s own visual inspection disclosure', 'Not started · schedule site visit'),
+        ],
+        materials: ['Disclosure answers', 'Trust certification'],
+        authority: 'Any broker. The broker’s visual inspection is a personal duty and is completed by the inspecting licensee.',
+      },
+      {
+        id: 'counter', kind: 'offers', type: 'Offer response', typeCls: 't-navy', title: 'Approve counteroffer draft',
+        property: '88 Oak Park Way (back-up)', preparedBy: 'Jordan Lee (salesperson)', due: 'Fri', approveLabel: 'Approve and send',
+        summary: 'Back-up counter at $604,000, cash, 14-day close. It takes effect only if the primary contract cancels.',
+        checks: [
+          ok('Seller instructions on file', 'Seller approved terms in a recorded call'),
+          ok('Back-up position language present', 'Second position'),
+        ],
+        materials: ['Counteroffer draft', 'Offer B packet'],
+        authority: 'Any broker. Salespersons can draft; a broker approves before sending.',
+      },
+      {
+        id: 'alder', kind: 'pricing', reviewer: 'priya', type: 'Pricing', typeCls: 't-sage', title: 'Approve pricing update discussion',
+        property: '14 Alder Row', preparedBy: 'Priya Shah', due: 'Oct 18', approveLabel: 'Approve',
+        summary: 'No offers after 34 days. Updated comparables prepared for a pricing conversation with the seller; the seller decides any change.',
+        checks: [ok('4 new comparable sales since listing', 'All within 0.5 mi'), ok('Showing feedback themes attached', 'Lot size, kitchen age')],
+        materials: ['Updated CMA', 'Showing feedback summary'],
+        authority: 'Any broker.',
+      },
+      {
+        id: 'poplar', kind: 'deadlines', reviewer: 'priya', type: 'Closing', typeCls: 't-gray', title: 'Review estimated closing statement',
+        property: '19 Poplar Ct', preparedBy: 'escrow', due: 'Oct 20', approveLabel: 'Mark reviewed',
+        summary: 'Escrow’s estimated statement for the Oct 22 close. Checked against the contract, listing fee and seller credits.',
+        checks: [ok('Listing fee matches agreement', '$2,995'), attn('Prorated HOA dues differ from statement', 'Confirm with escrow')],
+        materials: ['Estimated closing statement'],
+        authority: 'Any broker.',
+      },
+    ];
+  }
+  renderVals() {
+    const s = this.state;
+    const reviewers = { you: 'You', priya: 'Priya Shah' };
+    const reviewerOf = (i) => (s.reviewers || {})[i.id] || i.reviewer || 'you';
+    const scope = s.scope || 'me';
+    const all = this.data().map((i) => ({ ...i, reviewer: reviewerOf(i), reviewerName: reviewers[reviewerOf(i)] }));
+    const statusOf = (id) => s.status[id] || 'open';
+    const labelFor = (st) => st === 'approved' ? 'Approved' : st === 'changes' ? 'Changes requested' : st === 'reassigned' ? 'Reassigned' : 'Waiting';
+    const clsFor = (st) => st === 'approved' ? 't-sage' : st === 'changes' ? 't-red' : st === 'reassigned' ? 't-gray' : 't-copper';
+    const kinds = [['all', 'All'], ['mls', 'MLS gate'], ['pricing', 'Pricing'], ['disclosures', 'Disclosures'], ['marketing', 'Marketing'], ['offers', 'Offers'], ['deadlines', 'Deadlines']];
+    const visible = all.filter((i) => (s.filter === 'all' || i.kind === s.filter) && (scope === 'all' || i.reviewer === 'you'));
+    const selRaw = all.find((i) => i.id === s.picked) || all[0];
+    const selSt = statusOf(selRaw.id);
+    const setStatus = (st) => this.setState({ status: { ...s.status, [selRaw.id]: st }, notes: { ...s.notes, [selRaw.id]: s.draft }, draft: '' });
+    return {
+      openCount: all.filter((i) => statusOf(i.id) === 'open' && i.reviewer === 'you').length,
+      reviewerFilters: [['me', 'Assigned to me'], ['all', 'Whole brokerage']].map(([k, label]) => ({ label, on: scope === k, cls: scope === k ? 'on' : '', pick: () => this.setState({ scope: k }) })),
+      filters: kinds.map(([k, label]) => ({ label, on: s.filter === k, cls: s.filter === k ? 'on' : '', pick: () => this.setState({ filter: k }) })),
+      items: visible.map((i) => ({
+        ...i, on: i.id === selRaw.id, cls: i.id === selRaw.id ? 'on' : '',
+        statusLabel: labelFor(statusOf(i.id)), statusCls: clsFor(statusOf(i.id)),
+        pick: () => this.setState({ picked: i.id, draft: '' }),
+      })),
+      empty: visible.length === 0,
+      sel: {
+        ...selRaw, statusLabel: labelFor(selSt), statusCls: clsFor(selSt),
+        isOpen: selSt === 'open', isClosed: selSt !== 'open',
+        noteSuffix: s.notes[selRaw.id] ? ' · note: “' + s.notes[selRaw.id] + '”' : '',
+      },
+      draft: s.draft,
+      setDraft: (e) => this.setState({ draft: e.target.value }),
+      approve: () => setStatus('approved'),
+      requestChanges: () => setStatus('changes'),
+      reassign: (e) => this.setState({ reviewers: { ...(s.reviewers || {}), [selRaw.id]: e.target.value } }),
+      undo: () => this.setState({ status: { ...s.status, [selRaw.id]: 'open' } }),
+    };
+  }
+}
+</script>
+</body>
+</html>

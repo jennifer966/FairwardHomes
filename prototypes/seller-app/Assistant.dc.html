@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fairward — Assistant</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#223A4E}a:hover{color:#9A6A4C}
+.tabs{position:absolute;left:0;right:0;bottom:0;height:84px;box-sizing:border-box;padding:8px 6px 22px;background:#FFFFFF;border-top:1px solid rgba(34,58,78,0.10);display:flex}
+.tab{flex:1;min-height:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font:500 11px 'DM Sans',sans-serif;color:#596E81;text-decoration:none}
+.tab.on{color:#223A4E;font-weight:600}
+.tab.on svg{color:#9A6A4C}
+.q{min-height:44px;padding:10px 14px;border-radius:14px;border:1px solid rgba(34,58,78,0.16);background:#FFFFFF;color:#223A4E;font:500 13.5px 'DM Sans',sans-serif;text-align:left;cursor:pointer}
+.q.on{border-color:#B18162;background:#FBF7F3}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F5F3ED; color: #223A4E; font-family: 'DM Sans', system-ui, sans-serif">
+  <div style="position: absolute; left: 0; right: 0; top: 0; bottom: 84px; overflow-y: auto; box-sizing: border-box; padding: 44px 20px 28px; display: flex; flex-direction: column; gap: 14px">
+    <div style="display: flex; align-items: center; gap: 12px">
+      <span style="width: 40px; height: 40px; border-radius: 999px; background: #223A4E; color: #D4A88A; display: grid; place-items: center; font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: 20px">f</span>
+      <div>
+        <div style="font-family: 'Newsreader', Georgia, serif; font-size: 24px; line-height: 1.15">Fairward Assistant</div>
+        <div style="font-size: 12.5px; color: #596E81">General guidance · sample responses</div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <sc-for list="{{questions}}" as="q" hint-placeholder-count="4">
+        <button type="button" class="q {{q.cls}}" onClick="{{q.pick}}" aria-pressed="{{q.on}}">{{q.question}}</button>
+      </sc-for>
+    </div>
+
+    <div aria-live="polite" style="display: flex; flex-direction: column; gap: 10px">
+      <div style="align-self: flex-end; max-width: 86%; background: #223A4E; color: #F5F3ED; padding: 11px 14px; border-radius: 16px 16px 6px 16px; font-size: 14.5px; line-height: 1.45">{{active.question}}</div>
+      <div style="max-width: 94%; background: #FFFFFF; border: 1px solid rgba(34,58,78,0.10); padding: 14px; border-radius: 16px 16px 16px 6px; display: flex; flex-direction: column; gap: 10px; font-size: 14px; line-height: 1.5">
+        <span style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #596E81">{{active.kind}}</span>
+        <span>{{active.intro}}</span>
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <sc-for list="{{active.points}}" as="p" hint-placeholder-count="4">
+            <div style="display: flex; gap: 8px"><span style="flex: none; width: 6px; height: 6px; margin-top: 8px; border-radius: 999px; background: #B18162"></span><span>{{p}}</span></div>
+          </sc-for>
+        </div>
+        <div style="display: flex; gap: 10px; padding: 10px 12px; border-radius: 12px; background: #F5F3ED; border: 1px solid rgba(177,129,98,0.3); font-size: 13px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9A6A4C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>
+          <span><b style="display: block; font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #85593E">Licensed professional review</b>{{active.handoff}}</span>
+        </div>
+        <a href="Messages.dc.html" style="align-self: flex-start; min-height: 44px; display: inline-flex; align-items: center; font-size: 13.5px; font-weight: 600; color: #85593E; text-decoration: underline; text-underline-offset: 3px">Ask my broker about this</a>
+      </div>
+    </div>
+
+    <p style="margin: 4px 0 0; font-size: 12px; line-height: 1.5; color: #596E81; text-align: center">AI-assisted organization and education. Not legal, tax or personalized brokerage advice.</p>
+  </div>
+
+  <nav class="tabs" aria-label="App sections">
+    <a href="Home.dc.html" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Overview</a>
+    <a href="Prep.dc.html" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 6h10M10 12h10M10 18h10"/><path d="m3.5 6 1.5 1.5L7.5 5M3.5 12l1.5 1.5 2.5-2.5M3.5 18l1.5 1.5 2.5-2.5"/></svg>Listing</a>
+    <a href="Showings.dc.html" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Showings</a>
+    <a href="Offers.dc.html" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg>Offers</a>
+    <a href="Assistant.dc.html" class="tab on" aria-current="page"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6.5 6.5l2 2M15.5 15.5l2 2M6.5 17.5l2-2M15.5 8.5l2-2"/></svg>Assistant</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { picked: 'left' };
+  }
+  renderVals() {
+    const general = 'General information · not personalized advice';
+    const list = [
+      {
+        id: 'left', question: 'What’s left before my home can be listed?', kind: 'From your checklist',
+        intro: 'Based on your listing checklist, three things remain:',
+        points: ['Upload your HOA documents and any permits.', 'Finish the guided seller disclosure questions.', 'Complete the room-by-room showing prep list.'],
+        handoff: 'Your broker is reviewing the list price recommendation now. The listing goes live after their approval.',
+      },
+      {
+        id: 'offer', question: 'What happens when I receive an offer?', kind: general,
+        intro: 'Typically, an offer moves through a few stages:',
+        points: ['Review price, deposit, financing, contingencies and closing date, not just the headline number.', 'You can accept, reject or counter. Offers appear side by side in the Offers tab.', 'After acceptance, contingency periods begin, each with its own deadline in your timeline.'],
+        handoff: 'Evaluating terms and negotiating a counteroffer call for professional judgment, so your broker reviews these with you.',
+      },
+      {
+        id: 'costs', question: 'What expenses should I expect when selling?', kind: general,
+        intro: 'Common categories of selling costs include:',
+        points: ['Your listing brokerage fee (all fees are negotiable).', 'Any buyer-broker compensation you choose to offer.', 'Escrow and title fees, and transfer taxes.', 'Repairs or credits negotiated with the buyer, and your loan payoff.'],
+        handoff: 'Actual amounts depend on your property and agreements. Review your net sheet with your broker.',
+      },
+      {
+        id: 'disclosures', question: 'Which disclosures does California require?', kind: general,
+        intro: 'Many California sales involve several standard disclosures, for example:',
+        points: ['A Transfer Disclosure Statement for most residential sales.', 'A Natural Hazard Disclosure report.', 'Lead-based paint disclosure for homes built before 1978.'],
+        handoff: 'Which disclosures apply to your property is confirmed by your broker. Fairward does not provide legal advice.',
+      },
+    ];
+    const picked = this.state.picked;
+    return {
+      active: list.find((q) => q.id === picked) || list[0],
+      questions: list.map((q) => ({
+        question: q.question,
+        on: q.id === picked,
+        cls: q.id === picked ? 'on' : '',
+        pick: () => this.setState({ picked: q.id }),
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>

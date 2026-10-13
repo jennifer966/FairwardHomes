@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fairward Agent — Seller files</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F3ED}
+a{color:#223A4E}a:hover{color:#9A6A4C}
+.side{flex:1 1 232px;box-sizing:border-box;padding:24px 14px;background:#2C4860;color:#F5F3ED;display:flex;flex-direction:column;gap:22px}
+.brand{font-family:'Newsreader',Georgia,serif;font-size:26px;font-weight:500;letter-spacing:-0.03em;padding:0 10px}
+.brand span{color:#B18162}
+.brand small{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#D4A88A;margin-left:6px}
+.ws{margin:0 4px;padding:10px 12px;border-radius:10px;background:rgba(245,243,237,.08);font-size:12px;color:rgba(245,243,237,.78)}
+.ws b{display:block;color:#F5F3ED;font-weight:600;font-size:13px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;justify-content:space-between;align-items:center;min-height:42px;padding:0 12px;border-radius:10px;color:rgba(245,243,237,.85);text-decoration:none;font-weight:500;font-size:14px}
+.nav a:hover{background:rgba(245,243,237,.08);color:#FFFFFF}
+.nav a.on{background:rgba(245,243,237,.16);color:#FFFFFF}
+.badge{min-width:22px;height:22px;padding:0 6px;box-sizing:border-box;border-radius:999px;background:#9A6A4C;color:#FFFFFF;font-size:11.5px;font-weight:600;display:inline-grid;place-items:center}
+.me{margin-top:auto;display:flex;gap:10px;align-items:center;padding:14px 10px 0;border-top:1px solid rgba(245,243,237,.16);font-size:12px;color:rgba(245,243,237,.78)}
+.me b{display:block;color:#F5F3ED;font-size:13px;font-weight:600}
+.av{width:34px;height:34px;flex:none;border-radius:999px;background:#1A2E3F;color:#D4A88A;display:grid;place-items:center;font-family:'Newsreader',Georgia,serif;font-size:14px}
+.card{background:#FFFFFF;border:1px solid rgba(34,58,78,.12);border-radius:16px;padding:18px 20px}
+.label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#596E81}
+.tag{display:inline-flex;align-items:center;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-copper{background:rgba(177,129,98,.14);color:#85593E}
+.t-sage{background:#E3EBE4;color:#3F5E48}
+.t-gray{background:#ECE8DE;color:#223A4E}
+.t-red{background:#FBEFED;color:#8A2F27}
+.fcard{width:100%;text-align:left;display:flex;flex-direction:column;gap:6px;padding:14px 16px;border-radius:14px;border:1px solid rgba(34,58,78,.12);background:#FFFFFF;cursor:pointer;font-family:'DM Sans',sans-serif;color:#223A4E}
+.fcard.on{border:2px solid #B18162;padding:13px 15px;background:#FBF7F3}
+.tab{min-height:42px;padding:0 16px;border:0;border-bottom:2px solid transparent;background:transparent;font:500 14px 'DM Sans',sans-serif;color:#596E81;cursor:pointer}
+.tab.on{color:#223A4E;font-weight:600;border-bottom-color:#B18162}
+.row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid rgba(34,58,78,.08)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 16px;border-radius:999px;border:1px solid transparent;font:500 13.5px 'DM Sans',sans-serif;cursor:pointer;text-decoration:none}
+.b-primary{background:#9A6A4C;color:#FFFFFF}
+.b-ghost{background:transparent;border-color:rgba(34,58,78,.22);color:#223A4E}
+.lock{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:#596E81}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 100vh; background: #F5F3ED; color: #223A4E; font-family: 'DM Sans', system-ui, sans-serif; font-size: 14px">
+  <aside class="side" aria-label="Agent workspace">
+    <div class="brand">fairward<span>.</span><small>Agent</small></div>
+    <div class="ws">Brokerage<b>Fairward · Sacramento office</b></div>
+    <nav class="nav" aria-label="Sections">
+      <a href="AgentToday.dc.html">Today</a>
+      <a href="AgentInbox.dc.html">Inbox <span class="badge">4</span></a>
+      <a href="AgentCalendar.dc.html">Calendar</a>
+      <a href="AgentFiles.dc.html" class="on" aria-current="page">Seller files <span class="badge">4</span></a>
+      <a href="AgentBuyers.dc.html">Buyer clients <span class="badge">3</span></a>
+      <a href="AgentSubmissions.dc.html">Submissions <span class="badge">1</span></a>
+    </nav>
+    <div style="margin: 0 4px; padding: 12px; border-radius: 10px; border: 1px solid rgba(245,243,237,.16); font-size: 12px; line-height: 1.5; color: rgba(245,243,237,.78)">You prepare, communicate and schedule. Approvals, MLS publication and deadline confirmation go to your supervising broker.</div>
+    <div class="me"><span class="av">JL</span><span><b>Jordan Lee (sample)</b>Salesperson · supervised by [Broker name]</span></div>
+  </aside>
+
+  <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; padding: 32px clamp(16px, 3vw, 40px) 48px; display: flex; flex-direction: column; gap: 18px">
+    <div>
+      <div class="label">Seller files assigned to you · sample data</div>
+      <h1 style="margin: 4px 0 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 34px; letter-spacing: -0.02em; line-height: 1.1">Seller files</h1>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px">
+      <sc-for list="{{files}}" as="f" hint-placeholder-count="4">
+        <button type="button" class="fcard {{f.cls}}" aria-pressed="{{f.on}}" onClick="{{f.pick}}">
+          <span style="display: flex; justify-content: space-between; gap: 8px; width: 100%"><b style="font-weight: 600; font-size: 15px">{{f.address}}</b><span class="tag {{f.hc}}">{{f.health}}</span></span>
+          <span style="font-size: 12.5px; color: #596E81">{{f.stageName}}</span>
+          <span style="font-size: 12.5px"><b style="font-weight: 600">Next:</b> {{f.next}}</span>
+        </button>
+      </sc-for>
+    </div>
+
+    <section class="card" style="display: flex; flex-direction: column; gap: 14px">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; align-items: flex-end">
+        <div>
+          <h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 28px">{{sel.address}}</h2>
+          <div style="color: #596E81">{{sel.price}} · sellers: {{sel.sellers}} · supervising broker: [Broker name]</div>
+        </div>
+        <span class="tag {{sel.hc}}">{{sel.health}}</span>
+      </div>
+
+      <div role="tablist" aria-label="File sections" style="display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid rgba(34,58,78,.12)">
+        <sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+          <button type="button" role="tab" class="tab {{t.cls}}" aria-selected="{{t.on}}" onClick="{{t.pick}}">{{t.label}}</button>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{isWork}}" hint-placeholder-val="{{ true }}">
+        <div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start">
+          <div style="flex: 3 1 380px; min-width: 0">
+            <div class="label">Open items</div>
+            <sc-for list="{{sel.items}}" as="i" hint-placeholder-count="3">
+              <div class="row"><span style="width: 8px; height: 8px; flex: none; border-radius: 999px; background: #B18162"></span><span style="flex: 1">{{i}}</span></div>
+            </sc-for>
+            <sc-if value="{{sel.hasException}}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top: 14px; padding: 14px; border-radius: 12px; background: #FBEFED">
+                <b style="font-weight: 600; color: #8A2F27">Exception · Low appraisal</b>
+                <p style="margin: 6px 0 0; font-size: 13px; line-height: 1.5">Your steps: review the appraisal (done), run tomorrow’s options call, and record the seller’s decision. Your broker records a recommendation before any counter is sent.</p>
+              </div>
+            </sc-if>
+          </div>
+          <div style="flex: 2 1 260px; min-width: 0">
+            <div class="label">Prepare for broker review</div>
+            <sc-for list="{{sel.prep}}" as="p" hint-placeholder-count="2">
+              <div class="row">
+                <span style="flex: 1"><b style="font-weight: 500; display: block">{{p.title}}</b><span style="font-size: 12.5px; color: #596E81">{{p.statusText}}</span></span>
+                <sc-if value="{{p.canSubmit}}" hint-placeholder-val="{{ true }}"><button type="button" class="btn b-primary" onClick="{{p.submit}}">Submit</button></sc-if>
+                <sc-if value="{{p.submitted}}" hint-placeholder-val="{{ false }}"><span class="tag {{p.cls}}">{{p.status}}</span></sc-if>
+              </div>
+            </sc-for>
+            <a href="AgentSubmissions.dc.html" style="display: inline-block; margin-top: 10px; font-weight: 600; color: #85593E">All my submissions</a>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{isDeadlines}}" hint-placeholder-val="{{ false }}">
+        <div>
+          <sc-for list="{{sel.deadlines}}" as="d" hint-placeholder-count="4">
+            <div class="row"><span style="flex: 1"><b style="font-weight: 600">{{d.what}}</b><span style="display: block; font-size: 12.5px; color: #596E81">{{d.source}}</span></span><span style="font-weight: 600">{{d.date}}</span><span class="tag {{d.cls}}">{{d.state}}</span></div>
+          </sc-for>
+          <sc-if value="{{sel.noDeadlines}}" hint-placeholder-val="{{ false }}"><p style="margin: 6px 0 0; color: #596E81">No contract deadlines on this file yet.</p></sc-if>
+          <div style="margin-top: 14px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center">
+            <span class="lock">Only a broker can confirm calculated dates.</span>
+            <sc-if value="{{sel.hasCalculated}}" hint-placeholder-val="{{ false }}"><button type="button" class="btn b-ghost" onClick="{{nudge}}">{{nudgeLabel}}</button></sc-if>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{isAccess}}" hint-placeholder-val="{{ false }}">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px">
+          <sc-for list="{{abilities}}" as="a" hint-placeholder-count="8">
+            <div style="display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 12px; background: {{a.bg}}">
+              <b style="font-weight: 700; color: {{a.color}}">{{a.mark}}</b>
+              <span><b style="font-weight: 600; display: block">{{a.what}}</b><span style="font-size: 12.5px; color: #596E81">{{a.how}}</span></span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1200}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { picked: 'oak', tab: 'work', submitted: {}, nudged: false };
+  }
+  renderVals() {
+    const s = this.state;
+    const files = [
+      { id: 'elm', address: '47 Elm Glen', stageName: 'Explore & get started', price: 'Seller estimate $540,000', sellers: 'Grace W. + co-owner (sample)', health: 'Waiting on seller', hc: 't-copper', next: 'Agreement follow-up · Tue 11:00',
+        items: ['Co-owner hasn’t signed the listing agreement', 'Two owners on title: collect both IDs'], deadlines: [],
+        prep: [['elm-auth', 'Ownership & authority check', 'Ready once the co-owner’s ID is uploaded', false]] },
+      { id: 'fremont', address: '52 Fremont Ct', stageName: 'Prepare your home', price: 'Proposed range $575k–$595k', sellers: 'T. Nguyen (sample)', health: 'Review due', hc: 't-copper', next: 'Pricing call · not scheduled',
+        items: ['Seller hasn’t responded in 4 days', 'Disclosures 60% complete'], deadlines: [],
+        prep: [['fremont-cma', 'Pricing recommendation (CMA)', 'Submitted Oct 8', 'waiting']] },
+      { id: 'sutter', address: '760 Sutter Way', stageName: 'Review offers', price: 'Listed at $575,000 · 2 offers', sellers: 'K. Patel (sample)', health: 'On track', hc: 't-sage', next: 'Offer comparison call · Wed 3:00',
+        items: ['Reply to K. Patel about a faster close (by 12:30)', 'Revise seller net sheet per broker feedback'], deadlines: [['Seller response to offers', 'Oct 16 · 5 pm', 'Seller instruction', false]],
+        prep: [['sutter-net', 'Seller net sheet', 'Changes requested Oct 11', 'changes'], ['sutter-counter', 'Counteroffer drafts (A and B)', 'Draft · not yet submitted', false]] },
+      { id: 'oak', address: '88 Oak Park Way', stageName: 'Escrow & closing', price: '$612,000 contract', sellers: 'Rosa & Miguel Alvarez (sample)', health: 'Exception', hc: 't-red', next: 'Options call · Tue 4:00', exception: true,
+        items: ['Options call with sellers Tue 4:00 pm', 'Payoff demand still missing: follow up with lender', 'Reply to Rosa (advice requested) after broker recommendation'],
+        deadlines: [['Seller disclosures delivered', 'Oct 13', 'Purchase agreement', false], ['Appraisal contingency removal', 'Oct 16', 'Amendment 1 (+4 days)', true], ['Loan contingency removal', 'Oct 16', 'Amendment 1 (+4 days)', true], ['Close of escrow', 'Oct 30', 'Purchase agreement', false]],
+        prep: [['oak-options', 'Options summary for the seller call', 'Draft · not yet submitted', false], ['oak-backup', 'Back-up counteroffer (Offer B)', 'Submitted Oct 11', 'waiting']] },
+    ];
+    const sel = files.find((f) => f.id === s.picked) || files[0];
+    const statusMap = { waiting: ['Waiting on broker', 't-copper'], changes: ['Changes requested', 't-red'], sent: ['Submitted just now', 't-copper'] };
+    return {
+      files: files.map((f) => ({ ...f, on: f.id === sel.id, cls: f.id === sel.id ? 'on' : '', pick: () => this.setState({ picked: f.id }) })),
+      tabs: [['work', 'Work & prepare'], ['deadlines', 'Deadlines'], ['access', 'What I can do']].map(([k, label]) => ({ label, on: s.tab === k, cls: s.tab === k ? 'on' : '', pick: () => this.setState({ tab: k }) })),
+      isWork: s.tab === 'work', isDeadlines: s.tab === 'deadlines', isAccess: s.tab === 'access',
+      sel: {
+        ...sel,
+        hasException: !!sel.exception,
+        prep: sel.prep.map(([id, title, text, st]) => {
+          const status = s.submitted[id] ? 'sent' : st;
+          return {
+            title, statusText: s.submitted[id] ? 'Sent to [Broker name] for review' : text,
+            canSubmit: !status, submitted: !!status,
+            status: status ? statusMap[status][0] : '', cls: status ? statusMap[status][1] : '',
+            submit: () => this.setState({ submitted: { ...s.submitted, [id]: true } }),
+          };
+        }),
+        deadlines: sel.deadlines.map(([what, date, source, calc]) => ({ what, date, source, state: calc ? 'Pending broker confirmation' : 'Confirmed', cls: calc ? 't-copper' : 't-sage' })),
+        noDeadlines: sel.deadlines.length === 0,
+        hasCalculated: sel.deadlines.some((d) => d[3]),
+      },
+      nudge: () => this.setState({ nudged: true }),
+      nudgeLabel: s.nudged ? 'Broker reminded' : 'Remind broker to confirm',
+      abilities: [
+        ['✓', 'Talk with sellers and parties', 'Messages are logged to the file and visible to your broker'],
+        ['✓', 'Schedule showings and calls', 'Host accompanied showings once ID is verified'],
+        ['✓', 'Prepare CMAs, net sheets and drafts', 'Submitted to your broker for review'],
+        ['✓', 'Draft offers and counteroffers', 'A broker approves before anything is sent'],
+        ['—', 'Authorize MLS publication', 'Broker only'],
+        ['—', 'Confirm contract deadlines', 'Broker only; you can send a reminder'],
+        ['—', 'See other agents’ files', 'Only files assigned to you'],
+        ['—', 'View brokerage economics', 'Your own logged time only'],
+      ].map(([mark, what, how]) => ({ mark, what, how, bg: mark === '✓' ? '#E3EBE4' : '#ECE8DE', color: mark === '✓' ? '#3F5E48' : '#596E81' })),
+    };
+  }
+}
+</script>
+</body>
+</html>

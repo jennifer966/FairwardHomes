@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fairward Agent — Inbox</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F3ED}
+a{color:#223A4E}a:hover{color:#9A6A4C}
+.side{flex:1 1 232px;box-sizing:border-box;padding:24px 14px;background:#2C4860;color:#F5F3ED;display:flex;flex-direction:column;gap:22px}
+.brand{font-family:'Newsreader',Georgia,serif;font-size:26px;font-weight:500;letter-spacing:-0.03em;padding:0 10px}
+.brand span{color:#B18162}
+.brand small{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#D4A88A;margin-left:6px}
+.ws{margin:0 4px;padding:10px 12px;border-radius:10px;background:rgba(245,243,237,.08);font-size:12px;color:rgba(245,243,237,.78)}
+.ws b{display:block;color:#F5F3ED;font-weight:600;font-size:13px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;justify-content:space-between;align-items:center;min-height:42px;padding:0 12px;border-radius:10px;color:rgba(245,243,237,.85);text-decoration:none;font-weight:500;font-size:14px}
+.nav a:hover{background:rgba(245,243,237,.08);color:#FFFFFF}
+.nav a.on{background:rgba(245,243,237,.16);color:#FFFFFF}
+.badge{min-width:22px;height:22px;padding:0 6px;box-sizing:border-box;border-radius:999px;background:#9A6A4C;color:#FFFFFF;font-size:11.5px;font-weight:600;display:inline-grid;place-items:center}
+.me{margin-top:auto;display:flex;gap:10px;align-items:center;padding:14px 10px 0;border-top:1px solid rgba(245,243,237,.16);font-size:12px;color:rgba(245,243,237,.78)}
+.me b{display:block;color:#F5F3ED;font-size:13px;font-weight:600}
+.av{width:34px;height:34px;flex:none;border-radius:999px;background:#1A2E3F;color:#D4A88A;display:grid;place-items:center;font-family:'Newsreader',Georgia,serif;font-size:14px}
+.card{background:#FFFFFF;border:1px solid rgba(34,58,78,.12);border-radius:16px;padding:18px 20px}
+.label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#596E81}
+.tag{display:inline-flex;align-items:center;font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.t-copper{background:rgba(177,129,98,.14);color:#85593E}
+.t-sage{background:#E3EBE4;color:#3F5E48}
+.t-gray{background:#ECE8DE;color:#223A4E}
+.t-red{background:#FBEFED;color:#8A2F27}
+.chip{min-height:36px;padding:0 14px;border-radius:999px;border:1px solid rgba(34,58,78,.18);background:#FFFFFF;color:#223A4E;font:500 13px 'DM Sans',sans-serif;cursor:pointer}
+.chip.on{background:#223A4E;border-color:#223A4E;color:#F5F3ED}
+.thread{width:100%;text-align:left;display:flex;flex-direction:column;gap:4px;padding:12px 14px;border:0;border-bottom:1px solid rgba(34,58,78,.08);background:transparent;cursor:pointer;font-family:'DM Sans',sans-serif;color:#223A4E}
+.thread.on{background:#FBF7F3;box-shadow:inset 3px 0 0 #B18162}
+.msg{max-width:80%;padding:11px 14px;font-size:14px;line-height:1.5;border-radius:14px}
+.msg.them{align-self:flex-start;background:#F5F3ED;border-bottom-left-radius:4px}
+.msg.us{align-self:flex-end;background:#2C4860;color:#F5F3ED;border-bottom-right-radius:4px}
+.msg.note{align-self:stretch;max-width:none;background:#FFFFFF;border:1.5px dashed rgba(177,129,98,.6);color:#223A4E}
+.msg.system{align-self:center;max-width:90%;background:transparent;color:#596E81;font-size:12.5px;text-align:center;padding:4px}
+.seg{min-height:36px;padding:0 14px;border-radius:999px;border:0;background:transparent;font:500 13px 'DM Sans',sans-serif;color:#596E81;cursor:pointer}
+.seg.on{background:#FFFFFF;color:#223A4E;font-weight:600;box-shadow:0 1px 3px rgba(26,46,63,.12)}
+.compose{width:100%;box-sizing:border-box;min-height:88px;padding:12px 14px;border-radius:12px;border:1px solid rgba(34,58,78,.22);font:400 14px 'DM Sans',sans-serif;color:#223A4E;resize:vertical}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:0 18px;border-radius:999px;border:1px solid transparent;font:500 13.5px 'DM Sans',sans-serif;cursor:pointer;text-decoration:none}
+.b-primary{background:#9A6A4C;color:#FFFFFF}
+.b-ghost{background:transparent;border-color:rgba(34,58,78,.22);color:#223A4E}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid rgba(34,58,78,.08);font-size:13px}
+.kv span{color:#596E81}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 100vh; background: #F5F3ED; color: #223A4E; font-family: 'DM Sans', system-ui, sans-serif; font-size: 14px">
+  <aside class="side" aria-label="Agent workspace">
+    <div class="brand">fairward<span>.</span><small>Agent</small></div>
+    <div class="ws">Brokerage<b>Fairward · Sacramento office</b></div>
+    <nav class="nav" aria-label="Sections">
+      <a href="AgentToday.dc.html">Today</a>
+      <a href="AgentInbox.dc.html" class="on" aria-current="page">Inbox <span class="badge">{{needsCount}}</span></a>
+      <a href="AgentCalendar.dc.html">Calendar</a>
+      <a href="AgentFiles.dc.html">Seller files <span class="badge">4</span></a>
+      <a href="AgentBuyers.dc.html">Buyer clients <span class="badge">3</span></a>
+      <a href="AgentSubmissions.dc.html">Submissions <span class="badge">1</span></a>
+    </nav>
+    <div style="margin: 0 4px; padding: 12px; border-radius: 10px; border: 1px solid rgba(245,243,237,.16); font-size: 12px; line-height: 1.5; color: rgba(245,243,237,.78)">You prepare, communicate and schedule. Approvals, MLS publication and deadline confirmation go to your supervising broker.</div>
+    <div class="me"><span class="av">JL</span><span><b>Jordan Lee (sample)</b>Salesperson · supervised by [Broker name]</span></div>
+  </aside>
+
+  <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; padding: 32px clamp(16px, 3vw, 40px) 48px; display: flex; flex-direction: column; gap: 16px">
+    <div>
+      <div class="label">Your clients, your files, your broker · sample data</div>
+      <h1 style="margin: 4px 0 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 34px; letter-spacing: -0.02em; line-height: 1.1">Inbox</h1>
+    </div>
+
+    <div role="group" aria-label="Filter" style="display: flex; flex-wrap: wrap; gap: 8px">
+      <sc-for list="{{filters}}" as="f" hint-placeholder-count="4">
+        <button type="button" class="chip {{f.cls}}" aria-pressed="{{f.on}}" onClick="{{f.pick}}">{{f.label}}</button>
+      </sc-for>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start">
+      <section class="card" style="flex: 2 1 280px; min-width: 0; padding: 4px 0" aria-label="Conversations">
+        <sc-for list="{{threads}}" as="t" hint-placeholder-count="6">
+          <button type="button" class="thread {{t.cls}}" aria-pressed="{{t.on}}" onClick="{{t.pick}}">
+            <span style="display: flex; justify-content: space-between; gap: 8px; width: 100%"><b style="font-weight: 600">{{t.from}}</b><span style="font-size: 12px; color: #596E81">{{t.time}}</span></span>
+            <span style="font-size: 12.5px; color: #596E81">{{t.file}}</span>
+            <span style="font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{t.preview}}</span>
+            <span style="display: flex; gap: 6px; flex-wrap: wrap"><span class="tag {{t.stateCls}}">{{t.stateLabel}}</span><span class="tag t-gray">{{t.kindLabel}}</span></span>
+          </button>
+        </sc-for>
+        <sc-if value="{{empty}}" hint-placeholder-val="{{ false }}"><div style="padding: 16px; color: #596E81">Nothing here.</div></sc-if>
+      </section>
+
+      <section class="card" style="flex: 4 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 14px" aria-label="Conversation">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; align-items: flex-start">
+          <div>
+            <h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 24px">{{sel.from}}</h2>
+            <div style="color: #596E81; font-size: 13px">{{sel.role}} · {{sel.file}}</div>
+          </div>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap"><span class="tag {{sel.stateCls}}">{{sel.stateLabel}}</span><sc-if value="{{sel.hasFlag}}" hint-placeholder-val="{{ false }}"><span class="tag t-red">{{sel.flag}}</span></sc-if></div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px; min-height: 240px" aria-live="polite">
+          <sc-for list="{{sel.msgs}}" as="m" hint-placeholder-count="3">
+            <div class="msg {{m.who}}"><div style="font-size: 11px; font-weight: 600; letter-spacing: .04em; opacity: .75; margin-bottom: 3px">{{m.head}}</div>{{m.text}}</div>
+          </sc-for>
+        </div>
+
+        <sc-if value="{{sel.hasGuard}}" hint-placeholder-val="{{ false }}">
+          <div style="padding: 10px 12px; border-radius: 12px; background: #FBEFED; font-size: 13px; line-height: 1.5"><b style="font-weight: 600; color: #8A2F27">Before you reply:</b> {{sel.guard}}</div>
+        </sc-if>
+        <sc-if value="{{sel.hasDraft}}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; padding: 10px 12px; border-radius: 12px; background: #E3EBE4; font-size: 13px">
+            <span><b style="font-weight: 600">Assistant draft available.</b> Facts from the file only. Review before sending.</span>
+            <button type="button" class="btn b-ghost" onClick="{{useDraft}}">Insert draft</button>
+          </div>
+        </sc-if>
+
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <div role="group" aria-label="Message type" style="display: flex; gap: 4px; padding: 4px; border-radius: 999px; background: #ECE8DE; align-self: flex-start">
+            <button type="button" class="seg {{replyCls}}" aria-pressed="{{isReply}}" onClick="{{modeReply}}">Reply</button>
+            <button type="button" class="seg {{noteCls}}" aria-pressed="{{isNote}}" onClick="{{modeNote}}">Note to my broker</button>
+          </div>
+          <label for="compose" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Message</label>
+          <textarea id="compose" class="compose" value="{{draft}}" onChange="{{setDraft}}" placeholder="{{placeholder}}"></textarea>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; align-items: center">
+            <span style="font-size: 12px; color: #596E81">{{hint}}</span>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap">
+              <sc-if value="{{canAsk}}" hint-placeholder-val="{{ false }}"><button type="button" class="btn b-ghost" onClick="{{askBroker}}">Ask broker first</button></sc-if>
+              <button type="button" class="btn b-primary" onClick="{{send}}">{{sendLabel}}</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="card" style="flex: 2 1 230px; min-width: 0; display: flex; flex-direction: column; gap: 10px" aria-label="Context">
+        <div class="label">Context</div>
+        <a href="{{sel.link}}" style="font-family: 'Newsreader', Georgia, serif; font-size: 20px; text-decoration: none">{{sel.file}}</a>
+        <div>
+          <div class="kv"><span>Reply expected</span><b style="font-weight: 600">{{sel.due}}</b></div>
+          <div class="kv"><span>Visible to</span><b style="font-weight: 600">You + [Broker name]</b></div>
+        </div>
+        <p style="margin: 0; font-size: 12px; color: #596E81; line-height: 1.5">All messages are logged to the file. Notes to your broker are never shown to clients.</p>
+      </aside>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1200}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { filter: 'needs', picked: 'oak', mode: 'reply', draft: '', added: {}, asked: {} };
+  }
+  base() {
+    return [
+      { id: 'oak', from: 'Rosa Alvarez (sample)', role: 'Seller', file: '88 Oak Park Way', link: 'AgentFiles.dc.html', kind: 'client', time: '9:12 am', due: 'Today, 2:00 pm', needs: true,
+        flag: 'Advice requested', guard: 'This asks for pricing advice during an open exception. Your broker records a recommendation first. Acknowledge now; advise after.',
+        msgs: [['system', 'Assistant handoff', 'Rosa asked the assistant whether they have to lower the price. The assistant explained the general options and passed the question to you.'], ['them', 'Rosa Alvarez · 9:12 am', 'Do we have to lower the price, or can we wait and see what the buyer does?']],
+        draft: 'Hi Rosa, no decision is needed today; your appraisal contingency runs to Oct 16. We’ll go through every option and what each means for your proceeds on tomorrow’s 4:00 call, with [Broker name]’s recommendation in hand.' },
+      { id: 'sutter', from: 'K. Patel (sample)', role: 'Seller', file: '760 Sutter Way', link: 'AgentFiles.dc.html', kind: 'client', time: '8:30 am', due: 'Today, 12:30 pm', needs: true, flag: '', guard: '',
+        msgs: [['them', 'K. Patel · 8:30 am', 'Could we ask Offer A to close in 21 days instead of 30? We’d accept a little less for that.']],
+        draft: 'Good question. We can propose a shorter close in a counteroffer. I’ll prepare the counter with that change and have it approved before Wednesday’s 3:00 call, so you can review exactly what would be sent.' },
+      { id: 'elm', from: 'Grace W. (sample)', role: 'Seller', file: '47 Elm Glen', link: 'AgentFiles.dc.html', kind: 'client', time: '7:55 am', due: 'Today, 5:00 pm', needs: true, flag: '', guard: '',
+        msgs: [['them', 'Grace W. · 7:55 am', 'My co-owner is traveling until Friday. Can he sign the agreement electronically from his phone?']],
+        draft: 'Yes. He can sign electronically from his phone. He’ll also need to verify his identity once, which takes a couple of minutes. I’ll resend his signing link now.' },
+      { id: 'morgan', from: 'Morgan T. (sample)', role: 'Buyer client', file: 'Buyer · Morgan & Sam T.', link: 'AgentBuyers.dc.html', kind: 'buyer', time: 'Yesterday', due: 'Today', needs: true,
+        flag: 'Fairward listing', guard: '305 Laurel St is listed by Fairward. Showing it to your buyer client creates a dual-agency situation that needs written disclosure and consent and your broker’s decision before you schedule.',
+        msgs: [['them', 'Morgan T. · 6:40 pm', 'Can we add 305 Laurel St to Thursday’s tour? It looks perfect.']], draft: '' },
+      { id: 'fremont', from: 'T. Nguyen (sample)', role: 'Seller', file: '52 Fremont Ct', link: 'AgentFiles.dc.html', kind: 'client', time: 'Oct 8', due: 'Waiting on seller', needs: false, flag: '', guard: '',
+        msgs: [['us', 'You · Oct 8', 'Hi T., your pricing research is ready. When works for a 30-minute call this week?']], draft: '' },
+      { id: 'broker', from: '[Broker name]', role: 'Your supervising broker', file: '760 Sutter Way', link: 'AgentSubmissions.dc.html', kind: 'internal', time: 'Oct 11', due: '—', needs: false, flag: '', guard: '',
+        msgs: [['them', '[Broker name] · Oct 11', 'Returned the Sutter net sheet with two changes; details are in Submissions. Happy to look again tonight.'], ['us', 'You · Oct 11', 'Thanks, will resubmit before the Wednesday call.']], draft: '' },
+    ];
+  }
+  renderVals() {
+    const s = this.state;
+    const kindLabel = { client: 'Seller', buyer: 'Buyer client', internal: 'Broker' };
+    const all = this.base().map((t) => {
+      const added = (s.added[t.id] || []);
+      const msgs = t.msgs.concat(added);
+      const replied = added.some((m) => m[0] === 'us');
+      return { ...t, msgs, needsNow: t.needs && !replied };
+    });
+    const visible = all.filter((t) => s.filter === 'all' || (s.filter === 'needs' && t.needsNow) || (s.filter === 'buyers' && t.kind === 'buyer') || (s.filter === 'broker' && t.kind === 'internal'));
+    const sel = all.find((t) => t.id === s.picked) || all[0];
+    const stateOf = (t) => s.asked[t.id] && t.needsNow ? ['With broker', 't-gray'] : t.needsNow ? ['Needs reply', 't-copper'] : t.due === 'Waiting on seller' ? ['Waiting on seller', 't-gray'] : ['Answered', 't-sage'];
+    const isNote = s.mode === 'note';
+    const add = (entry) => this.setState({ draft: '', added: { ...s.added, [sel.id]: (s.added[sel.id] || []).concat([entry]) } });
+    return {
+      needsCount: all.filter((t) => t.needsNow).length,
+      filters: [['needs', 'Needs reply'], ['all', 'All'], ['buyers', 'Buyer clients'], ['broker', 'With my broker']].map(([k, label]) => ({ label, on: s.filter === k, cls: s.filter === k ? 'on' : '', pick: () => this.setState({ filter: k }) })),
+      threads: visible.map((t) => {
+        const st = stateOf(t);
+        return { ...t, kindLabel: kindLabel[t.kind], preview: t.msgs[t.msgs.length - 1][2], stateLabel: st[0], stateCls: st[1], on: t.id === sel.id, cls: t.id === sel.id ? 'on' : '', pick: () => this.setState({ picked: t.id, draft: '', mode: 'reply' }) };
+      }),
+      empty: visible.length === 0,
+      sel: { ...sel, stateLabel: stateOf(sel)[0], stateCls: stateOf(sel)[1], hasFlag: !!sel.flag, hasGuard: !!sel.guard && sel.needsNow, hasDraft: !!sel.draft && !isNote, msgs: sel.msgs.map(([who, head, text]) => ({ who, head, text })) },
+      isReply: !isNote, isNote, replyCls: isNote ? '' : 'on', noteCls: isNote ? 'on' : '',
+      modeReply: () => this.setState({ mode: 'reply' }), modeNote: () => this.setState({ mode: 'note' }),
+      draft: s.draft, setDraft: (e) => this.setState({ draft: e.target.value }),
+      useDraft: () => this.setState({ draft: sel.draft, mode: 'reply' }),
+      placeholder: isNote ? 'Only you and your broker see this' : 'Write a reply…',
+      hint: isNote ? 'Notes go to the file and your broker’s inbox.' : 'Replies are logged to the file and visible to your broker.',
+      sendLabel: isNote ? 'Add note' : 'Send reply',
+      canAsk: sel.needsNow && !s.asked[sel.id] && sel.kind !== 'internal',
+      askBroker: () => this.setState({ asked: { ...s.asked, [sel.id]: true }, added: { ...s.added, [sel.id]: (s.added[sel.id] || []).concat([['system', 'Advice check', 'Sent to [Broker name] with your draft. You’ll be notified when they respond.']]) } }),
+      send: () => {
+        const text = s.draft.trim();
+        if (!text) return;
+        add(isNote ? ['note', 'You · note to broker · now', text] : ['us', 'You · now', text]);
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

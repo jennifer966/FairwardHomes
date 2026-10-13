@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fairward Agent — Submissions</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F3ED}
+a{color:#223A4E}a:hover{color:#9A6A4C}
+.side{flex:1 1 232px;box-sizing:border-box;padding:24px 14px;background:#2C4860;color:#F5F3ED;display:flex;flex-direction:column;gap:22px}
+.brand{font-family:'Newsreader',Georgia,serif;font-size:26px;font-weight:500;letter-spacing:-0.03em;padding:0 10px}
+.brand span{color:#B18162}
+.brand small{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#D4A88A;margin-left:6px}
+.ws{margin:0 4px;padding:10px 12px;border-radius:10px;background:rgba(245,243,237,.08);font-size:12px;color:rgba(245,243,237,.78)}
+.ws b{display:block;color:#F5F3ED;font-weight:600;font-size:13px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;justify-content:space-between;align-items:center;min-height:42px;padding:0 12px;border-radius:10px;color:rgba(245,243,237,.85);text-decoration:none;font-weight:500;font-size:14px}
+.nav a:hover{background:rgba(245,243,237,.08);color:#FFFFFF}
+.nav a.on{background:rgba(245,243,237,.16);color:#FFFFFF}
+.badge{min-width:22px;height:22px;padding:0 6px;box-sizing:border-box;border-radius:999px;background:#9A6A4C;color:#FFFFFF;font-size:11.5px;font-weight:600;display:inline-grid;place-items:center}
+.me{margin-top:auto;display:flex;gap:10px;align-items:center;padding:14px 10px 0;border-top:1px solid rgba(245,243,237,.16);font-size:12px;color:rgba(245,243,237,.78)}
+.me b{display:block;color:#F5F3ED;font-size:13px;font-weight:600}
+.av{width:34px;height:34px;flex:none;border-radius:999px;background:#1A2E3F;color:#D4A88A;display:grid;place-items:center;font-family:'Newsreader',Georgia,serif;font-size:14px}
+.card{background:#FFFFFF;border:1px solid rgba(34,58,78,.12);border-radius:16px;padding:18px 20px}
+.label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#596E81}
+.tag{display:inline-flex;align-items:center;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-copper{background:rgba(177,129,98,.14);color:#85593E}
+.t-sage{background:#E3EBE4;color:#3F5E48}
+.t-gray{background:#ECE8DE;color:#223A4E}
+.t-red{background:#FBEFED;color:#8A2F27}
+.chip{min-height:36px;padding:0 14px;border-radius:999px;border:1px solid rgba(34,58,78,.18);background:#FFFFFF;color:#223A4E;font:500 13px 'DM Sans',sans-serif;cursor:pointer}
+.chip.on{background:#223A4E;border-color:#223A4E;color:#F5F3ED}
+.item{width:100%;text-align:left;display:flex;flex-direction:column;gap:5px;padding:13px 15px;border-radius:14px;border:1px solid rgba(34,58,78,.12);background:#FFFFFF;cursor:pointer;font-family:'DM Sans',sans-serif;color:#223A4E}
+.item.on{border:2px solid #B18162;padding:12px 14px;background:#FBF7F3}
+.row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(34,58,78,.08)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:0 18px;border-radius:999px;border:1px solid transparent;font:500 13.5px 'DM Sans',sans-serif;cursor:pointer}
+.b-primary{background:#9A6A4C;color:#FFFFFF}
+.b-ghost{background:transparent;border-color:rgba(34,58,78,.22);color:#223A4E}
+.fld{width:100%;box-sizing:border-box;min-height:44px;padding:0 12px;border-radius:12px;border:1px solid rgba(34,58,78,.22);background:#FFFFFF;font:400 14px 'DM Sans',sans-serif;color:#223A4E}
+.area{width:100%;box-sizing:border-box;min-height:84px;padding:10px 12px;border-radius:12px;border:1px solid rgba(34,58,78,.22);font:400 14px 'DM Sans',sans-serif;color:#223A4E;resize:vertical}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 100vh; background: #F5F3ED; color: #223A4E; font-family: 'DM Sans', system-ui, sans-serif; font-size: 14px">
+  <aside class="side" aria-label="Agent workspace">
+    <div class="brand">fairward<span>.</span><small>Agent</small></div>
+    <div class="ws">Brokerage<b>Fairward · Sacramento office</b></div>
+    <nav class="nav" aria-label="Sections">
+      <a href="AgentToday.dc.html">Today</a>
+      <a href="AgentInbox.dc.html">Inbox <span class="badge">4</span></a>
+      <a href="AgentCalendar.dc.html">Calendar</a>
+      <a href="AgentFiles.dc.html">Seller files <span class="badge">4</span></a>
+      <a href="AgentBuyers.dc.html">Buyer clients <span class="badge">3</span></a>
+      <a href="AgentSubmissions.dc.html" class="on" aria-current="page">Submissions <span class="badge">{{changesCount}}</span></a>
+    </nav>
+    <div style="margin: 0 4px; padding: 12px; border-radius: 10px; border: 1px solid rgba(245,243,237,.16); font-size: 12px; line-height: 1.5; color: rgba(245,243,237,.78)">You prepare, communicate and schedule. Approvals, MLS publication and deadline confirmation go to your supervising broker.</div>
+    <div class="me"><span class="av">JL</span><span><b>Jordan Lee (sample)</b>Salesperson · supervised by [Broker name]</span></div>
+  </aside>
+
+  <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; padding: 32px clamp(16px, 3vw, 40px) 48px; display: flex; flex-direction: column; gap: 18px">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 14px">
+      <div>
+        <div class="label">Work sent to your supervising broker · sample data</div>
+        <h1 style="margin: 4px 0 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 34px; letter-spacing: -0.02em; line-height: 1.1">Submissions</h1>
+      </div>
+      <button type="button" class="btn b-primary" onClick="{{openNew}}">New submission</button>
+    </div>
+
+    <div role="group" aria-label="Filter" style="display: flex; flex-wrap: wrap; gap: 8px">
+      <sc-for list="{{filters}}" as="f" hint-placeholder-count="4">
+        <button type="button" class="chip {{f.cls}}" aria-pressed="{{f.on}}" onClick="{{f.pick}}">{{f.label}}</button>
+      </sc-for>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start">
+      <div style="flex: 2 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
+        <sc-for list="{{items}}" as="i" hint-placeholder-count="5">
+          <button type="button" class="item {{i.cls}}" aria-pressed="{{i.on}}" onClick="{{i.pick}}">
+            <span style="display: flex; justify-content: space-between; gap: 8px; width: 100%"><b style="font-weight: 600">{{i.title}}</b><span class="tag {{i.statusCls}}">{{i.statusLabel}}</span></span>
+            <span style="font-size: 12.5px; color: #596E81">{{i.file}} · {{i.when}}</span>
+          </button>
+        </sc-for>
+      </div>
+
+      <section class="card" style="flex: 3 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+        <sc-if value="{{showNew}}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 12px">
+            <h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 24px">New submission</h2>
+            <div style="display: flex; flex-direction: column; gap: 6px"><label for="ntype" style="font-weight: 500">What are you submitting?</label>
+              <select id="ntype" class="fld" value="{{nw.type}}" onChange="{{setType}}">
+                <option>Pricing recommendation (CMA)</option>
+                <option>Seller net sheet</option>
+                <option>Offer or counteroffer draft</option>
+                <option>Listing copy and photos</option>
+                <option>Disclosure review request</option>
+                <option>Advice check before replying to a seller</option>
+              </select>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px"><label for="nfile" style="font-weight: 500">File</label>
+              <select id="nfile" class="fld" value="{{nw.file}}" onChange="{{setFile}}">
+                <option>47 Elm Glen</option><option>52 Fremont Ct</option><option>760 Sutter Way</option><option>88 Oak Park Way</option>
+              </select>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px"><label for="nnote" style="font-weight: 500">What do you need from your broker?</label>
+              <textarea id="nnote" class="area" value="{{nw.note}}" onChange="{{setNote}}" placeholder="E.g. approve before I send to the seller tonight"></textarea>
+            </div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap">
+              <button type="button" class="btn b-primary" onClick="{{createNew}}">Submit for review</button>
+              <button type="button" class="btn b-ghost" onClick="{{closeNew}}">Cancel</button>
+            </div>
+            <p style="margin: 0; font-size: 12px; color: #596E81">Documents come from the file’s vault, so the broker reviews the exact version you prepared.</p>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{showDetail}}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; flex-direction: column; gap: 14px">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px">
+              <div>
+                <h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 24px">{{sel.title}}</h2>
+                <div style="color: #596E81">{{sel.file}} · reviewer: [Broker name]</div>
+              </div>
+              <span class="tag {{sel.statusCls}}">{{sel.statusLabel}}</span>
+            </div>
+            <p style="margin: 0; line-height: 1.55">{{sel.summary}}</p>
+            <sc-if value="{{sel.hasFeedback}}" hint-placeholder-val="{{ false }}">
+              <div style="padding: 12px 14px; border-radius: 12px; background: #FBEFED; line-height: 1.5"><b style="font-weight: 600; color: #8A2F27">Broker feedback</b><div>{{sel.feedback}}</div></div>
+            </sc-if>
+            <sc-if value="{{sel.isChanges}}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 8px">
+                <label for="rev" class="label">What you changed</label>
+                <textarea id="rev" class="area" value="{{revision}}" onChange="{{setRevision}}" placeholder="E.g. compensation line now reads ‘per seller’s written decision’; escrow fees labeled estimates"></textarea>
+                <button type="button" class="btn b-primary" style="align-self: flex-start" onClick="{{resubmit}}">Resubmit for review</button>
+              </div>
+            </sc-if>
+            <div>
+              <div class="label">History</div>
+              <sc-for list="{{sel.history}}" as="h" hint-placeholder-count="3">
+                <div class="row"><span style="width: 92px; flex: none; font-size: 12.5px; color: #596E81">{{h.when}}</span><span style="flex: 1">{{h.what}}</span></div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+      </section>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1200}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { filter: 'all', picked: 'net', status: {}, extra: [], newOpen: false, nw: { type: 'Pricing recommendation (CMA)', file: '52 Fremont Ct', note: '' }, revision: '', hist: {} };
+  }
+  base() {
+    return [
+      { id: 'net', title: 'Seller net sheet', file: '760 Sutter Way', when: 'Returned Oct 11', status: 'changes',
+        summary: 'Illustrative net proceeds for Offers A and B, prepared before the seller call on Wednesday.',
+        feedback: 'Show buyer-broker compensation as “per seller’s written decision” rather than an assumed percentage, and label escrow fees as estimates.',
+        history: [['Oct 10', 'Submitted by you'], ['Oct 11', 'Changes requested by [Broker name]']] },
+      { id: 'cma', title: 'Pricing recommendation (CMA)', file: '52 Fremont Ct', when: 'Submitted Oct 8', status: 'waiting',
+        summary: 'Range $575,000–$595,000 from 6 closed sales within 0.5 miles in 120 days.', feedback: '',
+        history: [['Oct 8', 'Submitted by you'], ['Oct 12', 'In [Broker name]’s review queue · due tomorrow']] },
+      { id: 'backup', title: 'Back-up counteroffer (Offer B)', file: '88 Oak Park Way', when: 'Submitted Oct 11', status: 'waiting',
+        summary: '$604,000 cash, 14-day close, in second position. Takes effect only if the primary contract cancels.', feedback: '',
+        history: [['Oct 11', 'Submitted by you · seller approved terms on a recorded call']] },
+      { id: 'rla', title: 'Listing agreement before sending', file: '47 Elm Glen', when: 'Approved Oct 7', status: 'approved',
+        summary: 'Residential listing agreement with Fairward Guided Selling service scope.', feedback: '',
+        history: [['Oct 6', 'Submitted by you'], ['Oct 7', 'Approved by [Broker name]'], ['Oct 8', 'Sent to sellers']] },
+    ];
+  }
+  renderVals() {
+    const s = this.state;
+    const labels = { waiting: ['Waiting on broker', 't-copper'], changes: ['Changes requested', 't-red'], approved: ['Approved', 't-sage'], resubmitted: ['Resubmitted', 't-copper'] };
+    const all = s.extra.concat(this.base()).map((i) => {
+      const st = s.status[i.id] || i.status;
+      return { ...i, st, statusLabel: labels[st][0], statusCls: labels[st][1], history: i.history.concat(s.hist[i.id] || []) };
+    });
+    const match = (i) => s.filter === 'all' || (s.filter === 'waiting' && (i.st === 'waiting' || i.st === 'resubmitted')) || i.st === s.filter;
+    const visible = all.filter(match);
+    const sel = all.find((i) => i.id === s.picked) || all[0];
+    return {
+      changesCount: all.filter((i) => i.st === 'changes').length,
+      filters: [['all', 'All'], ['changes', 'Changes requested'], ['waiting', 'Waiting on broker'], ['approved', 'Approved']].map(([k, label]) => ({ label, on: s.filter === k, cls: s.filter === k ? 'on' : '', pick: () => this.setState({ filter: k }) })),
+      items: visible.map((i) => ({ ...i, on: !s.newOpen && i.id === sel.id, cls: !s.newOpen && i.id === sel.id ? 'on' : '', pick: () => this.setState({ picked: i.id, newOpen: false, revision: '' }) })),
+      showNew: s.newOpen, showDetail: !s.newOpen,
+      openNew: () => this.setState({ newOpen: true }),
+      closeNew: () => this.setState({ newOpen: false }),
+      nw: s.nw,
+      setType: (e) => this.setState({ nw: { ...s.nw, type: e.target.value } }),
+      setFile: (e) => this.setState({ nw: { ...s.nw, file: e.target.value } }),
+      setNote: (e) => this.setState({ nw: { ...s.nw, note: e.target.value } }),
+      createNew: () => {
+        const id = 'n' + (s.extra.length + 1);
+        const item = { id, title: s.nw.type, file: s.nw.file, when: 'Submitted just now', status: 'waiting', summary: s.nw.note || 'No note added.', feedback: '', history: [['Now', 'Submitted by you']] };
+        this.setState({ extra: [item].concat(s.extra), picked: id, newOpen: false, nw: { ...s.nw, note: '' } });
+      },
+      sel: { ...sel, hasFeedback: !!sel.feedback, isChanges: sel.st === 'changes', history: sel.history.map(([when, what]) => ({ when, what })) },
+      revision: s.revision,
+      setRevision: (e) => this.setState({ revision: e.target.value }),
+      resubmit: () => this.setState({
+        status: { ...s.status, [sel.id]: 'resubmitted' },
+        hist: { ...s.hist, [sel.id]: (s.hist[sel.id] || []).concat([['Now', 'Resubmitted by you' + (s.revision ? ': ' + s.revision : '')]]) },
+        revision: '',
+      }),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fairward Broker — Transactions</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F3ED}
+a{color:#223A4E}a:hover{color:#9A6A4C}
+.side{flex:1 1 232px;box-sizing:border-box;padding:24px 14px;background:#1A2E3F;color:#F5F3ED;display:flex;flex-direction:column;gap:22px}
+.brand{font-family:'Newsreader',Georgia,serif;font-size:26px;font-weight:500;letter-spacing:-0.03em;padding:0 10px}
+.brand span{color:#B18162}
+.brand small{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#D4A88A;margin-left:6px}
+.ws{margin:0 4px;padding:10px 12px;border-radius:10px;background:rgba(245,243,237,.06);font-size:12px;color:rgba(245,243,237,.72)}
+.ws b{display:block;color:#F5F3ED;font-weight:600;font-size:13px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;justify-content:space-between;align-items:center;min-height:42px;padding:0 12px;border-radius:10px;color:rgba(245,243,237,.8);text-decoration:none;font-weight:500;font-size:14px}
+.nav a:hover{background:rgba(245,243,237,.06);color:#FFFFFF}
+.nav a.on{background:rgba(245,243,237,.12);color:#FFFFFF}
+.badge{min-width:22px;height:22px;padding:0 6px;box-sizing:border-box;border-radius:999px;background:#9A6A4C;color:#FFFFFF;font-size:11.5px;font-weight:600;display:inline-grid;place-items:center}
+.me{margin-top:auto;display:flex;gap:10px;align-items:center;padding:14px 10px 0;border-top:1px solid rgba(245,243,237,.12);font-size:12px;color:rgba(245,243,237,.72)}
+.me b{display:block;color:#F5F3ED;font-size:13px;font-weight:600}
+.av{width:34px;height:34px;flex:none;border-radius:999px;background:#2C4860;color:#D4A88A;display:grid;place-items:center;font-family:'Newsreader',Georgia,serif;font-size:15px}
+.card{background:#FFFFFF;border:1px solid rgba(34,58,78,.12);border-radius:16px;padding:18px 20px}
+.label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#596E81}
+.tag{display:inline-flex;align-items:center;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-copper{background:rgba(177,129,98,.14);color:#85593E}
+.t-sage{background:#E3EBE4;color:#3F5E48}
+.t-gray{background:#ECE8DE;color:#223A4E}
+.t-red{background:#FBEFED;color:#8A2F27}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:0 18px;border-radius:999px;border:1px solid transparent;font:500 13.5px 'DM Sans',sans-serif;cursor:pointer;text-decoration:none}
+.b-primary{background:#9A6A4C;color:#FFFFFF}
+.b-ghost{background:transparent;border-color:rgba(34,58,78,.22);color:#223A4E}
+.chip{min-height:36px;padding:0 14px;border-radius:999px;border:1px solid rgba(34,58,78,.18);background:#FFFFFF;color:#223A4E;font:500 13px 'DM Sans',sans-serif;cursor:pointer}
+.chip.on{background:#223A4E;border-color:#223A4E;color:#F5F3ED}
+.tab{min-height:42px;padding:0 16px;border:0;border-bottom:2px solid transparent;background:transparent;font:500 14px 'DM Sans',sans-serif;color:#596E81;cursor:pointer}
+.tab.on{color:#223A4E;font-weight:600;border-bottom-color:#B18162}
+.stage{flex:1 1 110px;padding:10px 12px;border-radius:10px;background:#FFFFFF;border:1px solid rgba(34,58,78,.12);font-size:12.5px;color:#596E81}
+.stage.done{background:#E3EBE4;border-color:#E3EBE4;color:#3F5E48}
+.stage.now{background:#223A4E;border-color:#223A4E;color:#F5F3ED}
+.row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(34,58,78,.08)}
+.tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.tbl th{text-align:left;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#596E81;padding:10px 12px;border-bottom:1px solid rgba(34,58,78,.12);white-space:nowrap}
+.tbl td{padding:12px;border-bottom:1px solid rgba(34,58,78,.08);vertical-align:middle}
+.open{min-height:40px;padding:0;border:0;background:transparent;text-align:left;font:600 14px 'DM Sans',sans-serif;color:#223A4E;cursor:pointer;text-decoration:underline;text-decoration-color:rgba(177,129,98,.6);text-underline-offset:4px}
+.sel{min-height:42px;padding:0 12px;border-radius:12px;border:1px solid rgba(34,58,78,.22);background:#FFFFFF;font:500 14px 'DM Sans',sans-serif;color:#223A4E}
+.yes{color:#3F5E48;font-weight:600}
+.no{color:#596E81}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 100vh; background: #F5F3ED; color: #223A4E; font-family: 'DM Sans', system-ui, sans-serif; font-size: 14px">
+  <aside class="side" aria-label="Broker console">
+    <div class="brand">fairward<span>.</span><small>Broker</small></div>
+    <div class="ws">Brokerage<b>Fairward · Sacramento office</b></div>
+    <nav class="nav" aria-label="Sections">
+      <a href="Main.dc.html">Today</a>
+      <a href="Inbox.dc.html">Inbox <span class="badge">5</span></a>
+      <a href="Calendar.dc.html">Calendar</a>
+      <a href="Review.dc.html">Review queue <span class="badge">6</span></a>
+      <a href="Pipeline.dc.html">Pipeline</a>
+      <a href="Transaction.dc.html" class="on" aria-current="page">Transactions</a>
+      <a href="Leads.dc.html">Leads <span class="badge">3</span></a>
+      <a href="Team.dc.html">Team &amp; roles</a>
+      <a href="Economics.dc.html">Time &amp; economics</a>
+    </nav>
+    <div class="me"><span class="av">Y</span><span><b>You</b>Designated broker · DRE # [to be added]</span></div>
+  </aside>
+
+  <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; padding: 32px clamp(16px, 3vw, 40px) 48px; display: flex; flex-direction: column; gap: 18px">
+
+    <sc-if value="{{isList}}" hint-placeholder-val="{{ true }}">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 14px">
+        <div>
+          <div class="label">All seller files · sample data</div>
+          <h1 style="margin: 4px 0 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 34px; letter-spacing: -0.02em; line-height: 1.1">Transactions</h1>
+          <p style="margin: 6px 0 0; color: #596E81">{{listSummary}}</p>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
+        <span class="label" style="margin-right: 4px">Assigned to</span>
+        <sc-for list="{{whoFilters}}" as="f" hint-placeholder-count="4">
+          <button type="button" class="chip {{f.cls}}" aria-pressed="{{f.on}}" onClick="{{f.pick}}">{{f.label}}</button>
+        </sc-for>
+        <span style="width: 12px"></span>
+        <button type="button" class="chip {{attnCls}}" aria-pressed="{{attnOnly}}" onClick="{{toggleAttn}}">Needs attention only</button>
+        <button type="button" class="chip {{closedCls}}" aria-pressed="{{showClosed}}" onClick="{{toggleClosed}}">Include completed</button>
+      </div>
+      <section class="card" style="padding: 6px 8px">
+        <div style="overflow-x: auto">
+          <table class="tbl">
+            <thead><tr><th>Property</th><th>Stage</th><th>Assigned · supervising</th><th>Next date</th><th>Open items</th><th>Health</th></tr></thead>
+            <tbody>
+              <sc-for list="{{rows}}" as="t" hint-placeholder-count="10">
+                <tr>
+                  <td><button type="button" class="open" onClick="{{t.open}}">{{t.address}}</button><div style="font-size: 12px; color: #596E81">{{t.price}}</div></td>
+                  <td>{{t.stageName}}</td>
+                  <td>{{t.whoName}}<div style="font-size: 12px; color: #596E81">{{t.supLabel}}</div></td>
+                  <td><b style="font-weight: 600">{{t.nextDate}}</b><div style="font-size: 12px; color: #596E81">{{t.nextWhat}}</div></td>
+                  <td>{{t.itemCount}}</td>
+                  <td><span class="tag {{t.healthCls}}">{{t.health}}</span></td>
+                </tr>
+              </sc-for>
+            </tbody>
+          </table>
+        </div>
+        <sc-if value="{{noRows}}" hint-placeholder-val="{{ false }}"><div style="padding: 16px; color: #596E81">No files match these filters.</div></sc-if>
+      </section>
+      <p style="margin: 0; font-size: 12.5px; color: #596E81">Salespersons see only their own files. Brokers see the files they’re responsible for or supervise; the designated broker sees everything.</p>
+    </sc-if>
+
+    <sc-if value="{{isDetail}}" hint-placeholder-val="{{ false }}">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+        <button type="button" class="btn b-ghost" onClick="{{backToList}}">All transactions</button>
+        <div style="display: flex; align-items: center; gap: 8px">
+          <label for="switch" class="label">Switch file</label>
+          <select id="switch" class="sel" value="{{tx.id}}" onChange="{{switchTx}}">
+            <sc-for list="{{allOptions}}" as="o" hint-placeholder-count="11"><option value="{{o.id}}">{{o.label}}</option></sc-for>
+          </select>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 14px">
+        <div>
+          <div class="label">{{tx.stageName}} · sample data</div>
+          <h1 style="margin: 4px 0 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 34px; letter-spacing: -0.02em; line-height: 1.1">{{tx.address}}</h1>
+          <div style="margin-top: 4px; color: #596E81">Sacramento · {{tx.price}} · sellers: {{tx.sellerNames}}</div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
+          <span class="tag t-gray">Assigned: {{tx.whoName}}</span>
+          <span class="tag t-gray">{{tx.supLabel}}</span>
+          <span class="tag {{tx.healthCls}}">{{tx.health}}</span>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 8px" aria-label="Stage">
+        <sc-for list="{{tx.stages}}" as="s" hint-placeholder-count="6">
+          <div class="stage {{s.cls}}">{{s.label}}</div>
+        </sc-for>
+      </div>
+
+      <div role="tablist" aria-label="File sections" style="display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid rgba(34,58,78,.12)">
+        <sc-for list="{{tabs}}" as="t" hint-placeholder-count="5">
+          <button type="button" role="tab" class="tab {{t.cls}}" aria-selected="{{t.on}}" onClick="{{t.pick}}">{{t.label}}</button>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{isOverview}}" hint-placeholder-val="{{ true }}">
+        <div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start">
+          <div style="flex: 3 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+            <sc-if value="{{tx.hasException}}" hint-placeholder-val="{{ false }}">
+              <section class="card" style="border-color: rgba(177,129,98,.5)">
+                <span class="tag t-red">{{tx.exception.type}}</span>
+                <h2 style="margin: 8px 0 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 24px">{{tx.exception.title}}</h2>
+                <div class="label" style="margin-top: 14px">Playbook</div>
+                <sc-for list="{{playbook}}" as="p" hint-placeholder-count="5">
+                  <div class="row">
+                    <button type="button" onClick="{{p.toggle}}" aria-pressed="{{p.done}}" aria-label="Mark step done" style="width: 28px; height: 28px; flex: none; border-radius: 999px; border: {{p.border}}; background: {{p.bg}}; color: #3F5E48; cursor: pointer; font-weight: 700">{{p.mark}}</button>
+                    <span style="flex: 1"><b style="font-weight: 600">{{p.title}}</b><span style="display: block; font-size: 12.5px; color: #596E81">{{p.detail}}</span></span>
+                    <span class="tag t-gray">{{p.owner}}</span>
+                  </div>
+                </sc-for>
+              </section>
+            </sc-if>
+            <section class="card">
+              <div class="label">Open items</div>
+              <sc-for list="{{tx.itemRows}}" as="i" hint-placeholder-count="3">
+                <div class="row"><span style="width: 8px; height: 8px; flex: none; border-radius: 999px; background: #B18162"></span><span style="flex: 1">{{i}}</span></div>
+              </sc-for>
+              <sc-if value="{{tx.noItems}}" hint-placeholder-val="{{ false }}"><p style="margin: 10px 0 0; color: #596E81">Nothing open on this file.</p></sc-if>
+            </section>
+          </div>
+          <section class="card" style="flex: 2 1 280px; min-width: 0">
+            <div class="label">Key facts</div>
+            <sc-for list="{{tx.facts}}" as="f" hint-placeholder-count="5">
+              <div class="row" style="justify-content: space-between"><span style="color: #596E81">{{f.k}}</span><b style="font-weight: 600; text-align: right">{{f.v}}</b></div>
+            </sc-for>
+          </section>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{isDeadlines}}" hint-placeholder-val="{{ false }}">
+        <section class="card">
+          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px">
+            <div><div class="label">Calculated from signed terms and amendments</div><div style="margin-top: 4px; color: #596E81">Sellers see “pending confirmation” until a broker confirms.</div></div>
+            <sc-if value="{{tx.hasCalculated}}" hint-placeholder-val="{{ false }}"><button type="button" class="btn b-primary" onClick="{{confirmAll}}">Confirm calculated dates</button></sc-if>
+          </div>
+          <sc-if value="{{tx.hasDeadlines}}" hint-placeholder-val="{{ true }}">
+            <div style="overflow-x: auto; margin-top: 12px">
+              <table class="tbl">
+                <thead><tr><th>Deadline</th><th>Date</th><th>Source</th><th>Status</th></tr></thead>
+                <tbody>
+                  <sc-for list="{{tx.deadlineRows}}" as="d" hint-placeholder-count="5">
+                    <tr><td><b style="font-weight: 600">{{d.what}}</b></td><td>{{d.date}}</td><td style="color: #596E81">{{d.source}}</td><td><span class="tag {{d.cls}}">{{d.state}}</span></td></tr>
+                  </sc-for>
+                </tbody>
+              </table>
+            </div>
+          </sc-if>
+          <sc-if value="{{tx.noDeadlines}}" hint-placeholder-val="{{ false }}"><p style="margin: 14px 0 0; color: #596E81">No contract deadlines yet. They’re calculated once an offer or agreement with dates is signed.</p></sc-if>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{isPeople}}" hint-placeholder-val="{{ false }}">
+        <section class="card">
+          <div class="label">Parties and authority · enforced per action</div>
+          <div style="overflow-x: auto; margin-top: 10px">
+            <table class="tbl">
+              <thead><tr><th>Person</th><th>Role</th><th>View</th><th>Approve</th><th>Sign</th></tr></thead>
+              <tbody>
+                <sc-for list="{{tx.people}}" as="p" hint-placeholder-count="4">
+                  <tr><td><b style="font-weight: 600">{{p.name}}</b></td><td style="color: #596E81">{{p.role}}</td><td class="{{p.vc}}">{{p.v}}</td><td class="{{p.ac}}">{{p.a}}</td><td class="{{p.sc}}">{{p.s}}</td></tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{isDocs}}" hint-placeholder-val="{{ false }}">
+        <section class="card">
+          <div class="label">Documents</div>
+          <sc-for list="{{tx.docRows}}" as="d" hint-placeholder-count="4">
+            <div class="row"><span style="flex: 1"><b style="font-weight: 600">{{d.name}}</b><span style="display: block; font-size: 12.5px; color: #596E81">{{d.meta}}</span></span><span class="tag {{d.cls}}">{{d.status}}</span></div>
+          </sc-for>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{isActivity}}" hint-placeholder-val="{{ false }}">
+        <div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start">
+          <section class="card" style="flex: 3 1 420px; min-width: 0">
+            <div class="label">Audit log</div>
+            <sc-for list="{{tx.logRows}}" as="l" hint-placeholder-count="4">
+              <div class="row"><span style="width: 64px; flex: none; font-size: 12.5px; color: #596E81">{{l.when}}</span><span style="flex: 1">{{l.what}}</span><span style="font-size: 12.5px; color: #596E81">{{l.who}}</span></div>
+            </sc-for>
+          </section>
+          <section class="card" style="flex: 2 1 260px; min-width: 0">
+            <div class="label">Time on this file</div>
+            <div style="font-family: 'Newsreader', Georgia, serif; font-size: 34px; margin-top: 6px">{{tx.hoursLabel}}</div>
+            <button type="button" class="btn b-ghost" style="margin-top: 12px" onClick="{{logTime}}">Log 30 min to this file</button>
+          </section>
+        </div>
+      </sc-if>
+    </sc-if>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1320}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { view: 'list', picked: 'oak', tab: 'overview', who: 'all', attn: false, closed: false, confirmed: {}, steps: { notify: true, review: true }, extra: {} };
+  }
+  files() {
+    const doc = (name, meta, status, cls) => ({ name, meta, status, cls });
+    return [
+      { id: 'capitol', address: '2210 Capitol Ave', stage: 0, who: 'you', sup: 'you', price: 'Seller estimate $720,000', sellers: ['Dana K. (sample)'], health: 'New', hc: 't-gray', next: ['Intake call', 'Oct 14'],
+        items: ['Schedule intake call', 'Send service-scope summary'], deadlines: [], docs: [doc('Lead record', 'Website form · Oct 12', 'Received', 't-gray')], log: [['Oct 12', 'Lead converted to seller file', 'You']], hours: 0.5 },
+      { id: 'elm', address: '47 Elm Glen', stage: 0, who: 'jordan', sup: 'you', price: 'Seller estimate $540,000', sellers: ['Grace W. (sample)', 'Co-owner (sample)'], health: 'Waiting on seller', hc: 't-copper', next: ['Agreement follow-up', 'Oct 13'],
+        items: ['Co-owner hasn’t signed the listing agreement', 'Two owners on title: verify both IDs'], deadlines: [], docs: [doc('Residential listing agreement', 'Sent Oct 8 · 1 of 2 signed', 'Partially signed', 't-copper')], log: [['Oct 8', 'Listing agreement sent', 'Jordan Lee'], ['Oct 9', 'Grace W. signed', 'Seller']], hours: 2 },
+      { id: 'fremont', address: '52 Fremont Ct', stage: 1, who: 'jordan', sup: 'you', price: 'Proposed range $575k–$595k', sellers: ['T. Nguyen (sample)'], health: 'Review due', hc: 't-copper', next: ['Your pricing approval', 'Oct 13'],
+        items: ['Pricing recommendation waiting in your review queue', 'Seller hasn’t responded in 4 days', 'Disclosures 60% complete'], deadlines: [],
+        docs: [doc('Listing agreement', 'Signed Oct 1', 'Signed', 't-sage'), doc('CMA report', 'Prepared by Jordan Lee', 'In review', 't-copper')], log: [['Oct 1', 'Listing agreement signed', 'Seller'], ['Oct 8', 'CMA submitted for review', 'Jordan Lee']], hours: 3.5 },
+      { id: 'riverbend', address: '9 Riverbend Dr', stage: 1, who: 'you', sup: 'you', price: 'Seller estimate $650,000', sellers: ['Riverbend Family Trust · trustee (sample)'], health: 'Missing documents', hc: 't-red', next: ['Disclosure review', 'Oct 15'],
+        items: ['HOA documents requested 6 days ago', '2 disclosure answers marked “not sure”', 'Schedule your visual inspection', 'Special path: trust sale rules apply'], deadlines: [],
+        docs: [doc('Certification of trust', 'Trustee authority verified Oct 3', 'Verified', 't-sage'), doc('HOA documents', 'Requested Oct 6', 'Missing', 't-red'), doc('Disclosure answers', '2 items “not sure”', 'In progress', 't-copper')],
+        log: [['Oct 3', 'Trustee authority verified', 'You'], ['Oct 6', 'HOA documents requested', 'System']], hours: 10.5 },
+      { id: 'sample', address: '1234 Sample Lane', stage: 1, who: 'you', sup: 'you', price: 'List price $600,000 (seller-approved)', sellers: ['A. & J. Sample (sample)'], health: 'Review due', hc: 't-copper', next: ['MLS authorization', 'Oct 12'],
+        items: ['Authorize MLS publication (6 of 7 prerequisites met)', 'Approve marketing package (1 phrase flagged)'], deadlines: [],
+        docs: [doc('Listing agreement', 'Signed Sep 29 · both owners', 'Signed', 't-sage'), doc('Disclosure package', 'Rules-based checklist complete', 'Ready', 't-sage'), doc('Marketing package', '2 virtually staged images labeled', 'In review', 't-copper')],
+        log: [['Sep 29', 'Listing agreement signed', 'Sellers'], ['Oct 10', 'Marketing submitted for review', 'Sellers']], hours: 6 },
+      { id: 'alder', address: '14 Alder Row', stage: 2, who: 'priya', sup: 'priya', price: 'Listed at $689,000', sellers: ['L. Brooks (sample)'], health: 'On track', hc: 't-sage', next: ['Listing review', 'Oct 18'],
+        items: ['No offers after 34 days: pricing conversation due'], deadlines: [], docs: [doc('Listing agreement', 'Expires Dec 8', 'Signed', 't-sage')], log: [['Sep 8', 'Listed on MLS', 'Priya Shah']], hours: 12.5 },
+      { id: 'laurel', address: '305 Laurel St', stage: 2, who: 'you', sup: 'you', price: 'Listed at $615,000', sellers: ['Owen P. (sample)'], health: 'On track', hc: 't-sage', next: ['Open house', 'Oct 17'],
+        items: ['Confirm open-house host', '2 showing requests waiting on the seller'], deadlines: [], docs: [doc('Listing agreement', 'Signed Oct 2', 'Signed', 't-sage')], log: [['Oct 6', 'Listed on MLS', 'You']], hours: 4 },
+      { id: 'sutter', address: '760 Sutter Way', stage: 3, who: 'jordan', sup: 'you', price: 'Listed at $575,000 · 2 offers', sellers: ['K. Patel (sample)'], health: 'On track', hc: 't-sage', next: ['Offer response deadline', 'Oct 16'],
+        items: ['Offer comparison call with seller Oct 14', 'Counteroffer drafts need broker approval before sending'], deadlines: [['Seller response to offers', 'Oct 16 · 5 pm', 'Seller instruction', false]],
+        docs: [doc('Offer A packet', 'Received Oct 10', 'New', 't-copper'), doc('Offer B packet', 'Received Oct 11', 'New', 't-copper')], log: [['Oct 10', 'Offer A received', 'Buyer’s agent'], ['Oct 11', 'Offer B received', 'Buyer’s agent']], hours: 9 },
+      { id: 'oak', address: '88 Oak Park Way', stage: 4, who: 'jordan', sup: 'you', price: '$612,000 contract', sellers: ['Rosa Alvarez (sample)', 'Miguel Alvarez (sample)'], health: 'Exception', hc: 't-red', next: ['Appraisal contingency', 'Oct 16'],
+        exception: { type: 'Exception · Low appraisal', title: 'Appraised at $598,000, $14,000 below contract price' },
+        items: ['Seller options call Oct 13, 4 pm', 'Payoff demand still missing', 'Back-up counter waiting in review queue'],
+        deadlines: [['Seller disclosures delivered', 'Oct 13', 'Purchase agreement', false], ['Appraisal contingency removal', 'Oct 16', 'Amendment 1 (+4 days)', true], ['Loan contingency removal', 'Oct 16', 'Amendment 1 (+4 days)', true], ['Final walkthrough', 'Oct 25', 'Purchase agreement', false], ['Close of escrow', 'Oct 30', 'Purchase agreement', false]],
+        docs: [doc('Purchase agreement + counter 1', 'Accepted Sep 28', 'Signed', 't-sage'), doc('Amendment 1', 'Signed Oct 10', 'Signed', 't-sage'), doc('Appraisal report', 'Received Oct 11', 'New', 't-copper'), doc('Payoff demand', 'Requested Oct 9', 'Missing', 't-red')],
+        log: [['Oct 10', 'Amendment 1 signed · 2 deadlines recalculated', 'All parties'], ['Oct 11', 'Exception opened: low appraisal', 'System'], ['Oct 11', 'Seller notified with options explainer', 'System']], hours: 19.75 },
+      { id: 'poplar', address: '19 Poplar Ct', stage: 4, who: 'priya', sup: 'priya', price: '$548,000 contract', sellers: ['D. Okafor (sample)'], health: 'On track', hc: 't-sage', next: ['Close of escrow', 'Oct 22'],
+        items: ['Closing statement review (Priya)'], deadlines: [['All contingencies removed', 'Oct 5', 'Purchase agreement', false], ['Final walkthrough', 'Oct 20', 'Purchase agreement', false], ['Close of escrow', 'Oct 22', 'Purchase agreement', false]],
+        docs: [doc('Purchase agreement', 'Accepted Sep 14', 'Signed', 't-sage'), doc('Contingency removal', 'Oct 5', 'Signed', 't-sage')], log: [['Oct 5', 'All contingencies removed', 'Buyer’s agent']], hours: 10.5 },
+      { id: 'willow', address: '6 Willow Bend', stage: 5, who: 'you', sup: 'you', price: 'Sold $585,000', sellers: ['M. Chen (sample)'], health: 'Complete', hc: 't-gray', next: ['Records retained until', 'Sep 2029'],
+        items: [], deadlines: [['Close of escrow', 'Sep 30', 'Purchase agreement', false]], docs: [doc('Final closing statement', 'Sep 30', 'Archived', 't-gray')], log: [['Sep 30', 'Closed and recorded', 'Escrow']], hours: 11.5 },
+    ];
+  }
+  renderVals() {
+    const s = this.state;
+    const names = { you: 'You', jordan: 'Jordan Lee', priya: 'Priya Shah' };
+    const stageNames = ['Explore & get started', 'Prepare your home', 'Manage your listing', 'Review offers', 'Escrow & closing', 'Completed sale'];
+    const all = this.files().map((t) => ({
+      ...t,
+      whoName: names[t.who],
+      supLabel: t.who === 'jordan' ? 'Supervised by You' : t.who === 'priya' ? 'Responsible broker · Priya Shah' : 'Responsible broker · You',
+      stageName: stageNames[t.stage],
+      hours: t.hours + (s.extra[t.id] || 0),
+    }));
+    const needsAttn = (t) => t.health !== 'On track' && t.health !== 'Complete';
+    const rowsRaw = all.filter((t) => (s.who === 'all' || t.who === s.who) && (s.closed || t.stage < 5) && (!s.attn || needsAttn(t)));
+    const active = all.filter((t) => t.stage < 5);
+    const sel = all.find((t) => t.id === s.picked) || all[0];
+    const confirmed = !!s.confirmed[sel.id];
+    const yes = 'yes', no = 'no';
+    const people = sel.sellers.map((n) => ({ name: n, role: 'Seller', v: 'Yes', vc: yes, a: 'Yes', ac: yes, s: 'Yes', sc: yes }))
+      .concat(sel.who === 'jordan' ? [{ name: 'Jordan Lee', role: 'Salesperson', v: 'Yes', vc: yes, a: 'Prepare', ac: yes, s: '—', sc: no }] : [])
+      .concat([{ name: names[sel.sup], role: sel.sup === 'you' ? 'Designated broker' : 'Associate broker', v: 'Yes', vc: yes, a: 'Yes', ac: yes, s: 'Brokerage', sc: yes }])
+      .concat(sel.stage >= 4 && sel.stage < 5 ? [{ name: 'Escrow officer (sample)', role: 'Escrow · title', v: 'Documents', vc: yes, a: '—', ac: no, s: '—', sc: no }] : []);
+    const playSteps = [
+      ['notify', 'Seller notified in plain language', 'Options explainer and deadline sent', 'System'],
+      ['review', 'Appraisal report reviewed', 'Two comparables older than 6 months noted', 'Agent'],
+      ['call', 'Options call with seller', 'Scheduled Oct 13, 4:00 pm', 'Agent'],
+      ['advice', 'Broker recommendation recorded', 'Required before any counter is sent', 'Broker'],
+      ['decision', 'Seller decision documented and signed', 'Amendment or cancellation path opens', 'Seller'],
+    ];
+    const tabList = [['overview', 'Overview'], ['deadlines', 'Deadlines'], ['people', 'People & authority'], ['docs', 'Documents'], ['activity', 'Activity & time']];
+    const deadlineRows = sel.deadlines.map(([what, date, source, calc]) => {
+      const c = calc && !confirmed;
+      return { what, date, source, state: c ? 'Calculated' : 'Confirmed', cls: c ? 't-copper' : 't-sage' };
+    });
+    return {
+      isList: s.view === 'list', isDetail: s.view === 'detail',
+      listSummary: active.length + ' active files · ' + active.filter(needsAttn).length + ' need attention · ' + all.filter((t) => t.stage === 5).length + ' completed this quarter',
+      whoFilters: [['all', 'Everyone'], ['you', 'You'], ['jordan', 'Jordan Lee'], ['priya', 'Priya Shah']].map(([k, label]) => ({ label, on: s.who === k, cls: s.who === k ? 'on' : '', pick: () => this.setState({ who: k }) })),
+      attnOnly: s.attn, attnCls: s.attn ? 'on' : '', toggleAttn: () => this.setState({ attn: !s.attn }),
+      showClosed: s.closed, closedCls: s.closed ? 'on' : '', toggleClosed: () => this.setState({ closed: !s.closed }),
+      rows: rowsRaw.map((t) => ({ ...t, healthCls: t.hc, nextWhat: t.next[0], nextDate: t.next[1], itemCount: t.items.length || '—', open: () => this.setState({ view: 'detail', picked: t.id, tab: 'overview' }) })),
+      noRows: rowsRaw.length === 0,
+      backToList: () => this.setState({ view: 'list' }),
+      allOptions: all.map((t) => ({ id: t.id, label: t.address + ' · ' + t.stageName })),
+      switchTx: (e) => this.setState({ picked: e.target.value, tab: 'overview' }),
+      tabs: tabList.map(([k, label]) => ({ label, on: s.tab === k, cls: s.tab === k ? 'on' : '', pick: () => this.setState({ tab: k }) })),
+      isOverview: s.tab === 'overview', isDeadlines: s.tab === 'deadlines', isPeople: s.tab === 'people', isDocs: s.tab === 'docs', isActivity: s.tab === 'activity',
+      tx: {
+        ...sel, healthCls: sel.hc,
+        sellerNames: sel.sellers.join(', '),
+        stages: stageNames.map((n, i) => ({ label: (i + 1) + ' · ' + n, cls: i < sel.stage ? 'done' : i === sel.stage ? 'now' : '' })),
+        hasException: !!sel.exception, exception: sel.exception || { type: '', title: '' },
+        itemRows: sel.items, noItems: sel.items.length === 0,
+        facts: [{ k: 'Price', v: sel.price }, { k: 'Next', v: sel.next[0] + ' · ' + sel.next[1] }, { k: 'Assigned', v: names[sel.who] }, { k: 'Responsible broker', v: names[sel.sup] }, { k: 'Logged time', v: sel.hours + ' h' }],
+        deadlineRows, hasDeadlines: deadlineRows.length > 0, noDeadlines: deadlineRows.length === 0,
+        hasCalculated: deadlineRows.some((d) => d.state === 'Calculated'),
+        people,
+        docRows: sel.docs,
+        logRows: sel.log.map(([when, what, who]) => ({ when, what, who })),
+        hoursLabel: sel.hours + ' h',
+      },
+      playbook: playSteps.map(([id, title, detail, owner]) => {
+        const done = !!s.steps[id];
+        return { title, detail, owner, done, mark: done ? '✓' : '', bg: done ? '#E3EBE4' : '#FFFFFF', border: done ? '0' : '1.5px dashed #9AA9B6', toggle: () => this.setState({ steps: { ...s.steps, [id]: !done } }) };
+      }),
+      confirmAll: () => this.setState({ confirmed: { ...s.confirmed, [sel.id]: true } }),
+      logTime: () => this.setState({ extra: { ...s.extra, [sel.id]: (s.extra[sel.id] || 0) + 0.5 } }),
+    };
+  }
+}
+</script>
+</body>
+</html>

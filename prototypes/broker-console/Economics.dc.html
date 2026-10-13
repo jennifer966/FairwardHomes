@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fairward Broker — Time and economics</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F3ED}
+a{color:#223A4E}a:hover{color:#9A6A4C}
+.side{flex:1 1 232px;box-sizing:border-box;padding:24px 14px;background:#1A2E3F;color:#F5F3ED;display:flex;flex-direction:column;gap:22px}
+.brand{font-family:'Newsreader',Georgia,serif;font-size:26px;font-weight:500;letter-spacing:-0.03em;padding:0 10px}
+.brand span{color:#B18162}
+.brand small{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#D4A88A;margin-left:6px}
+.ws{margin:0 4px;padding:10px 12px;border-radius:10px;background:rgba(245,243,237,.06);font-size:12px;color:rgba(245,243,237,.72)}
+.ws b{display:block;color:#F5F3ED;font-weight:600;font-size:13px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;justify-content:space-between;align-items:center;min-height:42px;padding:0 12px;border-radius:10px;color:rgba(245,243,237,.8);text-decoration:none;font-weight:500;font-size:14px}
+.nav a:hover{background:rgba(245,243,237,.06);color:#FFFFFF}
+.nav a.on{background:rgba(245,243,237,.12);color:#FFFFFF}
+.badge{min-width:22px;height:22px;padding:0 6px;box-sizing:border-box;border-radius:999px;background:#9A6A4C;color:#FFFFFF;font-size:11.5px;font-weight:600;display:inline-grid;place-items:center}
+.me{margin-top:auto;display:flex;gap:10px;align-items:center;padding:14px 10px 0;border-top:1px solid rgba(245,243,237,.12);font-size:12px;color:rgba(245,243,237,.72)}
+.me b{display:block;color:#F5F3ED;font-size:13px;font-weight:600}
+.av{width:34px;height:34px;flex:none;border-radius:999px;background:#2C4860;color:#D4A88A;display:grid;place-items:center;font-family:'Newsreader',Georgia,serif;font-size:15px}
+.card{background:#FFFFFF;border:1px solid rgba(34,58,78,.12);border-radius:16px;padding:18px 20px}
+.label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#596E81}
+.chip{min-height:36px;padding:0 14px;border-radius:999px;border:1px solid rgba(34,58,78,.18);background:#FFFFFF;color:#223A4E;font:500 13px 'DM Sans',sans-serif;cursor:pointer}
+.chip.on{background:#223A4E;border-color:#223A4E;color:#F5F3ED}
+.tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.tbl th{text-align:right;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#596E81;padding:10px 12px;border-bottom:1px solid rgba(34,58,78,.12);white-space:nowrap}
+.tbl th:first-child,.tbl td:first-child{text-align:left}
+.tbl td{padding:12px;border-bottom:1px solid rgba(34,58,78,.08);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.seg{display:flex;height:10px;border-radius:999px;overflow:hidden;background:#ECE8DE;min-width:120px}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 100vh; background: #F5F3ED; color: #223A4E; font-family: 'DM Sans', system-ui, sans-serif; font-size: 14px">
+  <aside class="side" aria-label="Broker console">
+    <div class="brand">fairward<span>.</span><small>Broker</small></div>
+    <div class="ws">Brokerage<b>Fairward · Sacramento office</b></div>
+    <nav class="nav" aria-label="Sections">
+      <a href="Main.dc.html">Today</a>
+      <a href="Inbox.dc.html">Inbox <span class="badge">5</span></a>
+      <a href="Calendar.dc.html">Calendar</a>
+      <a href="Review.dc.html">Review queue <span class="badge">6</span></a>
+      <a href="Pipeline.dc.html">Pipeline</a>
+      <a href="Transaction.dc.html">Transactions</a>
+      <a href="Leads.dc.html">Leads <span class="badge">3</span></a>
+      <a href="Team.dc.html">Team &amp; roles</a>
+      <a href="Economics.dc.html" class="on" aria-current="page">Time &amp; economics</a>
+    </nav>
+    <div class="me"><span class="av">Y</span><span><b>You</b>Designated broker · DRE # [to be added]</span></div>
+  </aside>
+
+  <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; padding: 32px clamp(16px, 3vw, 40px) 48px; display: flex; flex-direction: column; gap: 18px">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 14px">
+      <div>
+        <div class="label">Visible to roles with “View economics” · sample data</div>
+        <h1 style="margin: 4px 0 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 34px; letter-spacing: -0.02em; line-height: 1.1">Time &amp; economics</h1>
+        <p style="margin: 6px 0 0; color: #596E81">Is each file profitable at a $2,995 listing fee? Time is logged on every review, call, showing and exception.</p>
+      </div>
+      <div role="group" aria-label="Loaded hourly cost" style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
+        <span class="label">Loaded cost / hour</span>
+        <sc-for list="{{rates}}" as="r" hint-placeholder-count="3">
+          <button type="button" class="chip {{r.cls}}" aria-pressed="{{r.on}}" onClick="{{r.pick}}">{{r.label}}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px">
+      <sc-for list="{{kpis}}" as="k" hint-placeholder-count="4">
+        <div class="card" style="display: flex; flex-direction: column; gap: 6px">
+          <span class="label">{{k.label}}</span>
+          <span style="font-family: 'Newsreader', Georgia, serif; font-size: 34px; line-height: 1">{{k.value}}</span>
+          <span style="font-size: 12.5px; color: #596E81">{{k.note}}</span>
+        </div>
+      </sc-for>
+    </div>
+
+    <section class="card" aria-labelledby="files-h">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+        <h2 id="files-h" class="label" style="margin: 0">Per file</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 14px; font-size: 12.5px; color: #596E81">
+          <span style="display: inline-flex; align-items: center; gap: 6px"><span style="width: 10px; height: 10px; border-radius: 3px; background: #223A4E"></span>Broker review</span>
+          <span style="display: inline-flex; align-items: center; gap: 6px"><span style="width: 10px; height: 10px; border-radius: 3px; background: #596E81"></span>Seller support</span>
+          <span style="display: inline-flex; align-items: center; gap: 6px"><span style="width: 10px; height: 10px; border-radius: 3px; background: #B9C9BC"></span>Showings</span>
+          <span style="display: inline-flex; align-items: center; gap: 6px"><span style="width: 10px; height: 10px; border-radius: 3px; background: #B18162"></span>Exceptions</span>
+        </div>
+      </div>
+      <div style="overflow-x: auto; margin-top: 8px">
+        <table class="tbl">
+          <thead><tr><th>Property</th><th style="text-align: left">Time mix</th><th>Hours</th><th>Labor cost</th><th>File costs</th><th>Fee</th><th>Contribution</th></tr></thead>
+          <tbody>
+            <sc-for list="{{files}}" as="f" hint-placeholder-count="6">
+              <tr>
+                <td><b style="font-weight: 600">{{f.address}}</b><div style="font-size: 12px; color: #596E81">{{f.stage}}</div></td>
+                <td style="text-align: left"><div class="seg" role="img" aria-label="{{f.mixLabel}}"><span style="width: {{f.w1}}; background: #223A4E"></span><span style="width: {{f.w2}}; background: #596E81"></span><span style="width: {{f.w3}}; background: #B9C9BC"></span><span style="width: {{f.w4}}; background: #B18162"></span></div></td>
+                <td>{{f.hours}}</td>
+                <td>{{f.labor}}</td>
+                <td>{{f.costs}}</td>
+                <td>$2,995</td>
+                <td><b style="font-weight: 600; color: {{f.color}}">{{f.margin}}</b></td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin: 12px 0 0; font-size: 12.5px; color: #596E81">File costs are sample per-file expenses (for example MLS, e-signature, transaction software and insurance allocation). Fee shown assumes the proposed flat fee is collected; payment timing is still to be confirmed.</p>
+    </section>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 18px">
+      <section class="card" style="flex: 1 1 320px; min-width: 0">
+        <div class="label">What drives cost</div>
+        <p style="margin: 8px 0 0; line-height: 1.55">Files with exception or special-path time averaged <b style="font-weight: 600">{{excRatio}}×</b> the hours of files without it. Track accompanied showings for unrepresented buyers as their own category once they start.</p>
+      </section>
+      <section class="card" style="flex: 1 1 320px; min-width: 0">
+        <div class="label">Decisions this informs</div>
+        <p style="margin: 8px 0 0; line-height: 1.55">Included hours or showings in the service terms, add-on pricing for exceptions, and which files go to a salesperson versus a broker.</p>
+      </section>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"hourlyCost":{"editor":"int","default":100,"min":40,"max":250,"step":5,"unit":"$/h"},"$preview":{"width":1440,"height":1100}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { rate: null };
+  }
+  renderVals() {
+    const fee = 2995;
+    const rate = this.state.rate ?? this.props.hourlyCost ?? 100;
+    const usd = (n) => (n < 0 ? '−$' : '$') + Math.abs(Math.round(n)).toLocaleString('en-US');
+    const raw = [
+      ['6 Willow Bend', 'Closed Sep 30', [4.0, 5.5, 2.0, 0], 260],
+      ['19 Poplar Ct', 'Escrow', [3.5, 4.0, 2.5, 0.5], 260],
+      ['88 Oak Park Way', 'Escrow · exception', [5.5, 6.0, 1.75, 6.5], 260],
+      ['14 Alder Row', 'Listed · day 34', [3.0, 5.0, 4.5, 0], 220],
+      ['760 Sutter Way', 'Offers', [3.5, 3.5, 2.0, 0], 220],
+      ['9 Riverbend Dr', 'Prepare · trust sale', [4.5, 3.0, 0, 3.0], 180],
+    ];
+    const files = raw.map(([address, stage, mix, costs]) => {
+      const hours = mix.reduce((a, b) => a + b, 0);
+      const labor = hours * rate;
+      const margin = fee - labor - costs;
+      const pct = (h) => (hours ? (h / hours) * 100 : 0).toFixed(1) + '%';
+      return {
+        address, stage, hours: hours.toFixed(2).replace(/\.?0+$/, '') + ' h', labor: usd(labor), costs: usd(costs), margin: usd(margin),
+        color: margin < 0 ? '#8A2F27' : '#3F5E48', marginNum: margin, hoursNum: hours, exc: mix[3],
+        w1: pct(mix[0]), w2: pct(mix[1]), w3: pct(mix[2]), w4: pct(mix[3]),
+        mixLabel: 'Review ' + mix[0] + ' h, support ' + mix[1] + ' h, showings ' + mix[2] + ' h, exceptions ' + mix[3] + ' h',
+      };
+    });
+    const avgHours = files.reduce((a, f) => a + f.hoursNum, 0) / files.length;
+    const avgMargin = files.reduce((a, f) => a + f.marginNum, 0) / files.length;
+    const excShare = files.reduce((a, f) => a + f.exc, 0) / files.reduce((a, f) => a + f.hoursNum, 0);
+    const breakeven = (fee - 230) / rate;
+    const withExc = files.filter((f) => f.exc > 0), without = files.filter((f) => f.exc === 0);
+    const avg = (xs) => xs.reduce((a, f) => a + f.hoursNum, 0) / xs.length;
+    return {
+      excRatio: (avg(withExc) / avg(without)).toFixed(1),
+      rates: [75, 100, 150].map((r) => ({ label: '$' + r, on: rate === r, cls: rate === r ? 'on' : '', pick: () => this.setState({ rate: r }) })),
+      kpis: [
+        { label: 'Average hours per file', value: avgHours.toFixed(1) + ' h', note: 'Across 6 sample files' },
+        { label: 'Average contribution', value: usd(avgMargin), note: 'Fee minus labor and file costs' },
+        { label: 'Break-even hours', value: breakeven.toFixed(1) + ' h', note: 'At $' + rate + '/h and ~$230 file costs' },
+        { label: 'Hours spent on exceptions', value: Math.round(excShare * 100) + '%', note: 'Low appraisal, trust sale' },
+      ],
+      files,
+    };
+  }
+}
+</script>
+</body>
+</html>

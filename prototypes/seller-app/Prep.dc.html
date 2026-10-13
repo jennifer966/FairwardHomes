@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fairward — Listing preparation</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#223A4E}a:hover{color:#9A6A4C}
+.tabs{position:absolute;left:0;right:0;bottom:0;height:84px;box-sizing:border-box;padding:8px 6px 22px;background:#FFFFFF;border-top:1px solid rgba(34,58,78,0.10);display:flex}
+.tab{flex:1;min-height:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font:500 11px 'DM Sans',sans-serif;color:#596E81;text-decoration:none}
+.tab.on{color:#223A4E;font-weight:600}
+.tab.on svg{color:#9A6A4C}
+.card{background:#FFFFFF;border:1px solid rgba(34,58,78,0.12);border-radius:18px;padding:6px 16px}
+.label{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#596E81}
+.task{width:100%;display:flex;align-items:center;gap:12px;min-height:58px;padding:10px 0;border:0;border-bottom:1px solid rgba(34,58,78,0.08);background:transparent;text-align:left;cursor:pointer;color:#223A4E;font-family:'DM Sans',sans-serif}
+.box{width:24px;height:24px;flex:none;border-radius:999px;border:1.5px dashed #9AA9B6;display:grid;place-items:center;color:transparent}
+.box.done{border:0;background:#E3EBE4;color:#3F5E48}
+.pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.pill.review{background:rgba(177,129,98,0.14);color:#85593E}
+.pill.ok{background:#E3EBE4;color:#3F5E48}
+.pill.you{background:#ECE8DE;color:#223A4E}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F5F3ED; color: #223A4E; font-family: 'DM Sans', system-ui, sans-serif">
+  <div style="position: absolute; left: 0; right: 0; top: 0; bottom: 84px; overflow-y: auto; box-sizing: border-box; padding: 44px 20px 28px; display: flex; flex-direction: column; gap: 16px">
+    <div>
+      <div style="font-size: 13px; color: #596E81">Listing</div>
+      <div style="font-family: 'Newsreader', Georgia, serif; font-size: 28px; line-height: 1.15; letter-spacing: -0.02em">Prepare your listing</div>
+    </div>
+
+    <div style="background: #223A4E; color: #F5F3ED; border-radius: 18px; padding: 18px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline">
+        <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,243,237,0.7)">Your progress</span>
+        <span style="font-family: 'Newsreader', Georgia, serif; font-size: 34px; color: #D4A88A">{{pctLabel}}</span>
+      </div>
+      <div style="margin-top: 10px; height: 6px; border-radius: 999px; background: rgba(245,243,237,0.12); overflow: hidden"><div style="height: 6px; border-radius: 999px; background: #B18162; width: {{pctLabel}}"></div></div>
+      <div style="margin-top: 10px; font-size: 13px; color: rgba(245,243,237,0.78)">{{remaining}}</div>
+    </div>
+
+    <div class="label" style="padding: 0 4px">Your tasks · tap to check off</div>
+    <div class="card">
+      <sc-for list="{{tasks}}" as="t" hint-placeholder-count="5">
+        <button type="button" class="task" onClick="{{t.toggle}}" aria-pressed="{{t.done}}">
+          <span class="box {{t.cls}}"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          <span style="flex: 1"><b style="display: block; font-weight: 500; font-size: 15px">{{t.title}}</b><span style="font-size: 12.5px; color: #596E81">{{t.note}}</span></span>
+        </button>
+      </sc-for>
+    </div>
+
+    <div class="label" style="padding: 0 4px">Licensed review</div>
+    <div class="card">
+      <sc-for list="{{reviews}}" as="r" hint-placeholder-count="3">
+        <div style="display: flex; align-items: center; gap: 12px; min-height: 58px; padding: 10px 0; border-bottom: 1px solid rgba(34,58,78,0.08)">
+          <span style="flex: 1"><b style="display: block; font-weight: 500; font-size: 15px">{{r.title}}</b><span style="font-size: 12.5px; color: #596E81">{{r.note}}</span></span>
+          <span class="pill {{r.cls}}">{{r.status}}</span>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display: flex; gap: 10px; align-items: flex-start; padding: 14px; border-radius: 14px; background: #E3EBE4; font-size: 13px; line-height: 1.5">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 1px"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>
+      <span>Your listing goes live only after your licensed broker approves the price, description and disclosures.</span>
+    </div>
+  </div>
+
+  <nav class="tabs" aria-label="App sections">
+    <a href="Home.dc.html" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Overview</a>
+    <a href="Prep.dc.html" class="tab on" aria-current="page"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 6h10M10 12h10M10 18h10"/><path d="m3.5 6 1.5 1.5L7.5 5M3.5 12l1.5 1.5 2.5-2.5M3.5 18l1.5 1.5 2.5-2.5"/></svg>Listing</a>
+    <a href="Showings.dc.html" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Showings</a>
+    <a href="Offers.dc.html" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg>Offers</a>
+    <a href="Assistant.dc.html" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6.5 6.5l2 2M15.5 15.5l2 2M6.5 17.5l2-2M15.5 8.5l2-2"/></svg>Assistant</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { done: { details: true, photos: true, docs: false, disclosures: false, ready: false } };
+  }
+  renderVals() {
+    const items = [
+      { id: 'details', title: 'Confirm property details', note: 'Beds, baths, square footage, upgrades' },
+      { id: 'photos', title: 'Schedule photography', note: 'Booked for Mar 12, 10 am' },
+      { id: 'docs', title: 'Upload documents', note: 'HOA documents, permits, past inspections' },
+      { id: 'disclosures', title: 'Complete seller disclosures', note: 'Guided questions, reviewed by your broker' },
+      { id: 'ready', title: 'Prepare the home for showings', note: 'Room-by-room checklist' },
+    ];
+    const done = this.state.done;
+    const count = items.filter((i) => done[i.id]).length;
+    // Licensed review items count toward overall progress too (2 of 3 complete in this sample).
+    const pct = Math.round(((count + 2) / (items.length + 3)) * 100);
+    const left = items.length - count;
+    return {
+      pctLabel: pct + '%',
+      remaining: left === 0 ? 'All your tasks are done. Waiting on broker review.' : left + (left === 1 ? ' task' : ' tasks') + ' left for you',
+      tasks: items.map((i) => ({
+        ...i,
+        done: !!done[i.id],
+        cls: done[i.id] ? 'done' : '',
+        toggle: () => this.setState({ done: { ...done, [i.id]: !done[i.id] } }),
+      })),
+      reviews: [
+        { title: 'List price recommendation', note: 'Based on recent nearby sales', status: 'In review', cls: 'review' },
+        { title: 'Listing description', note: 'Drafted with the assistant', status: 'Approved', cls: 'ok' },
+        { title: 'Disclosure review', note: 'Starts when you finish disclosures', status: 'Waiting on you', cls: 'you' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

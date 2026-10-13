@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fairward Broker — Pipeline</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F3ED}
+a{color:#223A4E}a:hover{color:#9A6A4C}
+.side{flex:1 1 232px;box-sizing:border-box;padding:24px 14px;background:#1A2E3F;color:#F5F3ED;display:flex;flex-direction:column;gap:22px}
+.brand{font-family:'Newsreader',Georgia,serif;font-size:26px;font-weight:500;letter-spacing:-0.03em;padding:0 10px}
+.brand span{color:#B18162}
+.brand small{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#D4A88A;margin-left:6px}
+.ws{margin:0 4px;padding:10px 12px;border-radius:10px;background:rgba(245,243,237,.06);font-size:12px;color:rgba(245,243,237,.72)}
+.ws b{display:block;color:#F5F3ED;font-weight:600;font-size:13px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;justify-content:space-between;align-items:center;min-height:42px;padding:0 12px;border-radius:10px;color:rgba(245,243,237,.8);text-decoration:none;font-weight:500;font-size:14px}
+.nav a:hover{background:rgba(245,243,237,.06);color:#FFFFFF}
+.nav a.on{background:rgba(245,243,237,.12);color:#FFFFFF}
+.badge{min-width:22px;height:22px;padding:0 6px;box-sizing:border-box;border-radius:999px;background:#9A6A4C;color:#FFFFFF;font-size:11.5px;font-weight:600;display:inline-grid;place-items:center}
+.me{margin-top:auto;display:flex;gap:10px;align-items:center;padding:14px 10px 0;border-top:1px solid rgba(245,243,237,.12);font-size:12px;color:rgba(245,243,237,.72)}
+.me b{display:block;color:#F5F3ED;font-size:13px;font-weight:600}
+.av{width:34px;height:34px;flex:none;border-radius:999px;background:#2C4860;color:#D4A88A;display:grid;place-items:center;font-family:'Newsreader',Georgia,serif;font-size:15px}
+.label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#596E81}
+.tag{display:inline-flex;align-items:center;font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.t-copper{background:rgba(177,129,98,.14);color:#85593E}
+.t-sage{background:#E3EBE4;color:#3F5E48}
+.t-gray{background:#ECE8DE;color:#223A4E}
+.t-red{background:#FBEFED;color:#8A2F27}
+.chip{min-height:36px;padding:0 14px;border-radius:999px;border:1px solid rgba(34,58,78,.18);background:#FFFFFF;color:#223A4E;font:500 13px 'DM Sans',sans-serif;cursor:pointer}
+.chip.on{background:#223A4E;border-color:#223A4E;color:#F5F3ED}
+.col{flex:1 0 210px;min-width:210px;display:flex;flex-direction:column;gap:8px;padding:12px;border-radius:14px;background:#ECE8DE}
+.pcard{display:flex;flex-direction:column;gap:6px;padding:12px 14px;border-radius:12px;background:#FFFFFF;border:1px solid rgba(34,58,78,.10);text-decoration:none;color:#223A4E}
+.pcard:hover{border-color:#B18162}
+.mini{width:24px;height:24px;border-radius:999px;display:inline-grid;place-items:center;font-size:10.5px;font-weight:700;background:#223A4E;color:#F5F3ED}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 100vh; background: #F5F3ED; color: #223A4E; font-family: 'DM Sans', system-ui, sans-serif; font-size: 14px">
+  <aside class="side" aria-label="Broker console">
+    <div class="brand">fairward<span>.</span><small>Broker</small></div>
+    <div class="ws">Brokerage<b>Fairward · Sacramento office</b></div>
+    <nav class="nav" aria-label="Sections">
+      <a href="Main.dc.html">Today</a>
+      <a href="Inbox.dc.html">Inbox <span class="badge">5</span></a>
+      <a href="Calendar.dc.html">Calendar</a>
+      <a href="Review.dc.html">Review queue <span class="badge">6</span></a>
+      <a href="Pipeline.dc.html" class="on" aria-current="page">Pipeline</a>
+      <a href="Transaction.dc.html">Transactions</a>
+      <a href="Leads.dc.html">Leads <span class="badge">3</span></a>
+      <a href="Team.dc.html">Team &amp; roles</a>
+      <a href="Economics.dc.html">Time &amp; economics</a>
+    </nav>
+    <div class="me"><span class="av">Y</span><span><b>You</b>Designated broker · DRE # [to be added]</span></div>
+  </aside>
+
+  <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; padding: 32px clamp(16px, 3vw, 40px) 48px; display: flex; flex-direction: column; gap: 18px">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 14px">
+      <div>
+        <div class="label">All seller transactions · sample data</div>
+        <h1 style="margin: 4px 0 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 34px; letter-spacing: -0.02em; line-height: 1.1">Pipeline</h1>
+      </div>
+      <div style="font-size: 13px; color: #596E81">{{countLabel}}</div>
+    </div>
+
+    <div role="group" aria-label="Filter by assigned licensee" style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
+      <span class="label" style="margin-right: 4px">Assigned to</span>
+      <sc-for list="{{filters}}" as="f" hint-placeholder-count="4">
+        <button type="button" class="chip {{f.cls}}" aria-pressed="{{f.on}}" onClick="{{f.pick}}">{{f.label}}</button>
+      </sc-for>
+    </div>
+
+    <div style="overflow-x: auto; padding-bottom: 6px">
+      <div style="display: flex; gap: 12px; align-items: flex-start; min-width: min-content">
+        <sc-for list="{{columns}}" as="c" hint-placeholder-count="6">
+          <section class="col" aria-label="{{c.name}}">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0 2px 4px">
+              <b style="font-size: 13.5px; font-weight: 600">{{c.name}}</b>
+              <span style="font-size: 12px; color: #596E81">{{c.count}}</span>
+            </div>
+            <sc-for list="{{c.cards}}" as="p" hint-placeholder-count="2">
+              <a href="Transaction.dc.html" class="pcard">
+                <span style="display: flex; justify-content: space-between; align-items: center; gap: 6px"><b style="font-weight: 600; font-size: 14px">{{p.address}}</b><span class="mini" title="{{p.assignee}}">{{p.initials}}</span></span>
+                <span style="font-size: 12.5px; color: #596E81">{{p.detail}}</span>
+                <span style="display: flex; gap: 6px; flex-wrap: wrap"><span class="tag {{p.cls}}">{{p.health}}</span></span>
+              </a>
+            </sc-for>
+            <sc-if value="{{c.empty}}" hint-placeholder-val="{{ false }}">
+              <div style="font-size: 12.5px; color: #596E81; padding: 8px 4px">None for this filter</div>
+            </sc-if>
+          </section>
+        </sc-for>
+      </div>
+    </div>
+
+    <p style="margin: 0; font-size: 12.5px; color: #596E81">Stages match what sellers see in their app. Health tags reflect overdue tasks, missing documents and unconfirmed deadlines only.</p>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1000}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { who: 'all' };
+  }
+  renderVals() {
+    const who = this.state.who;
+    const people = { you: ['You', 'Y'], jordan: ['Jordan Lee', 'JL'], priya: ['Priya Shah', 'PS'] };
+    const tx = [
+      ['explore', '2210 Capitol Ave', 'Lead · wants net proceeds estimate', 'you', 'New', 't-gray'],
+      ['explore', '47 Elm Glen', 'Agreement sent · awaiting co-owner', 'jordan', 'Waiting on seller', 't-copper'],
+      ['prepare', '52 Fremont Ct', 'Pricing review · disclosures 60%', 'jordan', 'Review due', 't-copper'],
+      ['prepare', '9 Riverbend Dr', 'Trust sale · HOA docs missing', 'you', 'Missing documents', 't-red'],
+      ['prepare', '1234 Sample Lane', 'MLS gate 6/7 · authorize today', 'you', 'Review due', 't-copper'],
+      ['listing', '14 Alder Row', 'Day 34 · 11 showings', 'priya', 'On track', 't-sage'],
+      ['listing', '305 Laurel St', 'Day 6 · open house Sat', 'you', 'On track', 't-sage'],
+      ['offers', '760 Sutter Way', '2 offers · deadline Fri 5 pm', 'jordan', 'On track', 't-sage'],
+      ['escrow', '88 Oak Park Way', 'Low appraisal · exception open', 'jordan', 'Exception', 't-red'],
+      ['escrow', '19 Poplar Ct', 'Closing Oct 22 · all contingencies removed', 'priya', 'On track', 't-sage'],
+      ['done', '6 Willow Bend', 'Closed Sep 30 · records complete', 'you', 'Complete', 't-gray'],
+    ];
+    const stages = [['explore', 'Explore & get started'], ['prepare', 'Prepare your home'], ['listing', 'Manage your listing'], ['offers', 'Review offers'], ['escrow', 'Escrow & closing'], ['done', 'Completed sale']];
+    const visible = tx.filter((t) => who === 'all' || t[3] === who);
+    const opts = [['all', 'Everyone'], ['you', 'You'], ['jordan', 'Jordan Lee · salesperson'], ['priya', 'Priya Shah · associate broker']];
+    return {
+      countLabel: visible.length + ' transactions',
+      filters: opts.map(([k, label]) => ({ label, on: who === k, cls: who === k ? 'on' : '', pick: () => this.setState({ who: k }) })),
+      columns: stages.map(([k, name]) => {
+        const cards = visible.filter((t) => t[0] === k).map((t) => ({ address: t[1], detail: t[2], assignee: people[t[3]][0], initials: people[t[3]][1], health: t[4], cls: t[5] }));
+        return { name, count: cards.length, cards, empty: cards.length === 0 };
+      }),
+    };
+  }
+}
+</script>
+</body>
+</html>

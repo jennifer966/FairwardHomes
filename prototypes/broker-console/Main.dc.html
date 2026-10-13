@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fairward Broker — Today</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F3ED}
+a{color:#223A4E}a:hover{color:#9A6A4C}
+.side{flex:1 1 232px;box-sizing:border-box;padding:24px 14px;background:#1A2E3F;color:#F5F3ED;display:flex;flex-direction:column;gap:22px}
+.brand{font-family:'Newsreader',Georgia,serif;font-size:26px;font-weight:500;letter-spacing:-0.03em;padding:0 10px}
+.brand span{color:#B18162}
+.brand small{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#D4A88A;margin-left:6px}
+.ws{margin:0 4px;padding:10px 12px;border-radius:10px;background:rgba(245,243,237,.06);font-size:12px;color:rgba(245,243,237,.72)}
+.ws b{display:block;color:#F5F3ED;font-weight:600;font-size:13px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;justify-content:space-between;align-items:center;min-height:42px;padding:0 12px;border-radius:10px;color:rgba(245,243,237,.8);text-decoration:none;font-weight:500;font-size:14px}
+.nav a:hover{background:rgba(245,243,237,.06);color:#FFFFFF}
+.nav a.on{background:rgba(245,243,237,.12);color:#FFFFFF}
+.badge{min-width:22px;height:22px;padding:0 6px;box-sizing:border-box;border-radius:999px;background:#9A6A4C;color:#FFFFFF;font-size:11.5px;font-weight:600;display:inline-grid;place-items:center}
+.me{margin-top:auto;display:flex;gap:10px;align-items:center;padding:14px 10px 0;border-top:1px solid rgba(245,243,237,.12);font-size:12px;color:rgba(245,243,237,.72)}
+.me b{display:block;color:#F5F3ED;font-size:13px;font-weight:600}
+.av{width:34px;height:34px;flex:none;border-radius:999px;background:#2C4860;color:#D4A88A;display:grid;place-items:center;font-family:'Newsreader',Georgia,serif;font-size:15px}
+.card{background:#FFFFFF;border:1px solid rgba(34,58,78,.12);border-radius:16px;padding:18px 20px}
+.label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#596E81}
+.tag{display:inline-flex;align-items:center;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-copper{background:rgba(177,129,98,.14);color:#85593E}
+.t-sage{background:#E3EBE4;color:#3F5E48}
+.t-gray{background:#ECE8DE;color:#223A4E}
+.t-red{background:#FBEFED;color:#8A2F27}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 16px;border-radius:999px;border:1px solid transparent;font:500 13.5px 'DM Sans',sans-serif;cursor:pointer;text-decoration:none}
+.b-navy{background:#223A4E;color:#F5F3ED}
+.b-ghost{background:transparent;border-color:rgba(34,58,78,.22);color:#223A4E}
+.seg{min-height:36px;padding:0 14px;border-radius:999px;border:0;background:transparent;font:500 13px 'DM Sans',sans-serif;color:#596E81;cursor:pointer}
+.seg.on{background:#FFFFFF;color:#223A4E;font-weight:600;box-shadow:0 1px 3px rgba(26,46,63,.12)}
+.row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(34,58,78,.08);text-decoration:none;color:#223A4E}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 100vh; background: #F5F3ED; color: #223A4E; font-family: 'DM Sans', system-ui, sans-serif; font-size: 14px">
+  <aside class="side" aria-label="Broker console">
+    <div class="brand">fairward<span>.</span><small>Broker</small></div>
+    <div class="ws">Brokerage<b>Fairward · Sacramento office</b></div>
+    <nav class="nav" aria-label="Sections">
+      <a href="Main.dc.html" class="on" aria-current="page">Today</a>
+      <a href="Inbox.dc.html">Inbox <span class="badge">5</span></a>
+      <a href="Calendar.dc.html">Calendar</a>
+      <a href="Review.dc.html">Review queue <span class="badge">6</span></a>
+      <a href="Pipeline.dc.html">Pipeline</a>
+      <a href="Transaction.dc.html">Transactions</a>
+      <a href="Leads.dc.html">Leads <span class="badge">3</span></a>
+      <a href="Team.dc.html">Team &amp; roles</a>
+      <a href="Economics.dc.html">Time &amp; economics</a>
+    </nav>
+    <div class="me"><span class="av">Y</span><span><b>You</b>Designated broker · DRE # [to be added]</span></div>
+  </aside>
+
+  <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; padding: 32px clamp(16px, 3vw, 40px) 48px; display: flex; flex-direction: column; gap: 22px">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+      <div>
+        <div class="label">Monday, October 12 · sample data</div>
+        <h1 style="margin: 4px 0 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 34px; letter-spacing: -0.02em; line-height: 1.1">Good morning. Here’s what needs you.</h1>
+      </div>
+      <div role="group" aria-label="Scope" style="display: flex; gap: 4px; padding: 4px; border-radius: 999px; background: #ECE8DE">
+        <button type="button" class="seg {{mineCls}}" aria-pressed="{{isMine}}" onClick="{{showMine}}">My work</button>
+        <button type="button" class="seg {{allCls}}" aria-pressed="{{isAll}}" onClick="{{showAll}}">Whole brokerage</button>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px">
+      <sc-for list="{{stats}}" as="s" hint-placeholder-count="4">
+        <a href="{{s.href}}" class="card" style="text-decoration: none; color: #223A4E; display: flex; flex-direction: column; gap: 6px">
+          <span class="label">{{s.label}}</span>
+          <span style="font-family: 'Newsreader', Georgia, serif; font-size: 38px; line-height: 1">{{s.value}}</span>
+          <span style="font-size: 13px; color: #596E81">{{s.note}}</span>
+        </a>
+      </sc-for>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start">
+      <div style="flex: 3 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+        <section class="card" aria-labelledby="decide-h">
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+            <h2 id="decide-h" class="label" style="margin: 0">Needs your decision</h2>
+            <a href="Review.dc.html" style="font-size: 13px; font-weight: 600; color: #85593E">Open review queue</a>
+          </div>
+          <div style="margin-top: 6px">
+            <sc-for list="{{decisions}}" as="d" hint-placeholder-count="4">
+              <a href="Review.dc.html" class="row">
+                <span class="tag {{d.cls}}" style="min-width: 92px; justify-content: center">{{d.type}}</span>
+                <span style="flex: 1; min-width: 0"><b style="font-weight: 600; display: block">{{d.title}}</b><span style="font-size: 12.5px; color: #596E81">{{d.meta}}</span></span>
+                <span style="font-size: 12.5px; font-weight: 600; white-space: nowrap; color: {{d.dueColor}}">{{d.due}}</span>
+              </a>
+            </sc-for>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="dl-h">
+          <h2 id="dl-h" class="label" style="margin: 0">Contract deadlines · next 7 days</h2>
+          <div style="margin-top: 6px">
+            <sc-for list="{{deadlines}}" as="d" hint-placeholder-count="4">
+              <a href="Transaction.dc.html" class="row">
+                <span style="width: 52px; flex: none; text-align: center; padding: 6px 0; border-radius: 10px; background: #F5F3ED; line-height: 1.15"><span style="display: block; font-size: 10px; font-weight: 600; letter-spacing: .08em; color: #596E81">{{d.mon}}</span><b style="font-size: 16px">{{d.day}}</b></span>
+                <span style="flex: 1; min-width: 0"><b style="font-weight: 600; display: block">{{d.what}}</b><span style="font-size: 12.5px; color: #596E81">{{d.where}}</span></span>
+                <span class="tag {{d.cls}}">{{d.state}}</span>
+              </a>
+            </sc-for>
+          </div>
+        </section>
+      </div>
+
+      <div style="flex: 2 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+        <a href="Transaction.dc.html" style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; border-radius: 16px; background: #223A4E; color: #F5F3ED; text-decoration: none">
+          <span style="font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #D4A88A">Open exception · 1</span>
+          <span style="font-family: 'Newsreader', Georgia, serif; font-size: 22px; line-height: 1.2">Low appraisal on 88 Oak Park Way</span>
+          <span style="font-size: 13px; color: rgba(245,243,237,.8)">Appraised $598,000 vs. $612,000 contract price. Seller options call scheduled; appraisal contingency ends Oct 16.</span>
+          <span style="font-size: 13px; font-weight: 600; color: #D4A88A">Open the exception playbook</span>
+        </a>
+
+        <section class="card" aria-labelledby="health-h">
+          <h2 id="health-h" class="label" style="margin: 0">Transaction health</h2>
+          <div style="margin-top: 6px">
+            <sc-for list="{{alerts}}" as="a" hint-placeholder-count="4">
+              <div class="row">
+                <span style="width: 8px; height: 8px; flex: none; border-radius: 999px; background: {{a.dot}}"></span>
+                <span style="flex: 1"><b style="font-weight: 600; display: block">{{a.title}}</b><span style="font-size: 12.5px; color: #596E81">{{a.detail}}</span></span>
+              </div>
+            </sc-for>
+          </div>
+          <p style="margin: 12px 0 0; font-size: 12px; color: #596E81">Alerts are based on tasks, documents and dates only. No predictions about whether a sale will close.</p>
+        </section>
+
+        <section class="card" aria-labelledby="time-h">
+          <div style="display: flex; justify-content: space-between; align-items: baseline">
+            <h2 id="time-h" class="label" style="margin: 0">Your time this week</h2>
+            <span style="font-family: 'Newsreader', Georgia, serif; font-size: 22px">11.5 h</span>
+          </div>
+          <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 10px">
+            <sc-for list="{{time}}" as="t" hint-placeholder-count="4">
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 13px"><span>{{t.label}}</span><b style="font-weight: 600">{{t.hours}}</b></div>
+                <div style="margin-top: 4px; height: 6px; border-radius: 999px; background: #ECE8DE"><div style="height: 6px; border-radius: 999px; background: {{t.color}}; width: {{t.pct}}"></div></div>
+              </div>
+            </sc-for>
+          </div>
+          <a href="Economics.dc.html" style="display: inline-block; margin-top: 12px; font-size: 13px; font-weight: 600; color: #85593E">See time &amp; economics</a>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1180}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { scope: 'mine' };
+  }
+  renderVals() {
+    const mine = this.state.scope === 'mine';
+    const red = '#8A2F27', slate = '#596E81';
+    const decisions = [
+      { type: 'MLS gate', cls: 't-copper', title: '1234 Sample Lane · Authorize publication', meta: '6 of 7 prerequisites met · prepared by you', due: 'Today', dueColor: red, mineOnly: true },
+      { type: 'Deadlines', cls: 't-gray', title: '88 Oak Park Way · Confirm recalculated dates', meta: 'Amendment 1 extended appraisal contingency', due: 'Today', dueColor: red },
+      { type: 'Pricing', cls: 't-sage', title: '52 Fremont Ct · List price recommendation', meta: 'CMA prepared by Jordan Lee (salesperson)', due: 'Tomorrow', dueColor: slate },
+      { type: 'Marketing', cls: 't-copper', title: '1234 Sample Lane · Virtually staged images', meta: 'Fair housing check flagged 1 phrase', due: 'Wed', dueColor: slate, mineOnly: true },
+    ];
+    return {
+      isMine: mine, isAll: !mine,
+      mineCls: mine ? 'on' : '', allCls: mine ? '' : 'on',
+      showMine: () => this.setState({ scope: 'mine' }),
+      showAll: () => this.setState({ scope: 'all' }),
+      stats: [
+        { label: 'Reviews waiting', value: mine ? '6' : '8', note: mine ? 'Assigned to you · 2 due today' : '6 yours · 2 with Priya Shah', href: 'Review.dc.html' },
+        { label: 'Contract dates · 7 days', value: mine ? '4' : '5', note: '2 awaiting your confirmation', href: 'Transaction.dc.html' },
+        { label: 'Open exceptions', value: '1', note: 'Low appraisal · 88 Oak Park Way', href: 'Transaction.dc.html' },
+        { label: 'Active files', value: mine ? '8' : '10', note: mine ? '4 yours · 4 you supervise' : '+2 with Priya Shah', href: 'Transaction.dc.html' },
+      ],
+      decisions,
+      deadlines: [
+        { mon: 'OCT', day: '13', what: 'Seller disclosures due to buyer', where: '88 Oak Park Way · Jordan Lee', state: 'Confirmed', cls: 't-sage', mine: true },
+        { mon: 'OCT', day: '16', what: 'Appraisal contingency removal', where: '88 Oak Park Way · after Amendment 1', state: 'Calculated', cls: 't-copper', mine: true },
+        { mon: 'OCT', day: '16', what: 'Loan contingency removal', where: '88 Oak Park Way · after Amendment 1', state: 'Calculated', cls: 't-copper', mine: true },
+        { mon: 'OCT', day: '16', what: 'Seller response to offers, 5 pm', where: '760 Sutter Way · Jordan Lee', state: 'Confirmed', cls: 't-sage', mine: true },
+        { mon: 'OCT', day: '18', what: 'Listing review: no offers in 34 days', where: '14 Alder Row · Priya Shah', state: 'Confirmed', cls: 't-sage', mine: false },
+      ].filter((d) => !mine || d.mine),
+      alerts: [
+        { title: 'Missing HOA documents', detail: '9 Riverbend Dr · requested 6 days ago', dot: '#9A6A4C' },
+        { title: 'Seller hasn’t responded in 4 days', detail: '52 Fremont Ct · pricing call not scheduled', dot: '#9A6A4C' },
+        { title: 'Disclosure items marked “not sure”', detail: '9 Riverbend Dr · 2 items need your review', dot: '#596E81' },
+        { title: 'Lockbox code shared with 1 unverified agent', detail: '1234 Sample Lane · verify or revoke', dot: '#8A2F27' },
+      ],
+      time: [
+        { label: 'Reviews & approvals', hours: '4.5 h', pct: '39%', color: '#223A4E' },
+        { label: 'Seller conversations', hours: '3.0 h', pct: '26%', color: '#596E81' },
+        { label: 'Exceptions', hours: '2.5 h', pct: '22%', color: '#B18162' },
+        { label: 'Showings & open houses', hours: '1.5 h', pct: '13%', color: '#B9C9BC' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fairward Agent — Buyer clients</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F3ED}
+a{color:#223A4E}a:hover{color:#9A6A4C}
+.side{flex:1 1 232px;box-sizing:border-box;padding:24px 14px;background:#2C4860;color:#F5F3ED;display:flex;flex-direction:column;gap:22px}
+.brand{font-family:'Newsreader',Georgia,serif;font-size:26px;font-weight:500;letter-spacing:-0.03em;padding:0 10px}
+.brand span{color:#B18162}
+.brand small{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#D4A88A;margin-left:6px}
+.ws{margin:0 4px;padding:10px 12px;border-radius:10px;background:rgba(245,243,237,.08);font-size:12px;color:rgba(245,243,237,.78)}
+.ws b{display:block;color:#F5F3ED;font-weight:600;font-size:13px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;justify-content:space-between;align-items:center;min-height:42px;padding:0 12px;border-radius:10px;color:rgba(245,243,237,.85);text-decoration:none;font-weight:500;font-size:14px}
+.nav a:hover{background:rgba(245,243,237,.08);color:#FFFFFF}
+.nav a.on{background:rgba(245,243,237,.16);color:#FFFFFF}
+.badge{min-width:22px;height:22px;padding:0 6px;box-sizing:border-box;border-radius:999px;background:#9A6A4C;color:#FFFFFF;font-size:11.5px;font-weight:600;display:inline-grid;place-items:center}
+.me{margin-top:auto;display:flex;gap:10px;align-items:center;padding:14px 10px 0;border-top:1px solid rgba(245,243,237,.16);font-size:12px;color:rgba(245,243,237,.78)}
+.me b{display:block;color:#F5F3ED;font-size:13px;font-weight:600}
+.av{width:34px;height:34px;flex:none;border-radius:999px;background:#1A2E3F;color:#D4A88A;display:grid;place-items:center;font-family:'Newsreader',Georgia,serif;font-size:14px}
+.card{background:#FFFFFF;border:1px solid rgba(34,58,78,.12);border-radius:16px;padding:18px 20px}
+.label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#596E81}
+.tag{display:inline-flex;align-items:center;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-copper{background:rgba(177,129,98,.14);color:#85593E}
+.t-sage{background:#E3EBE4;color:#3F5E48}
+.t-gray{background:#ECE8DE;color:#223A4E}
+.t-red{background:#FBEFED;color:#8A2F27}
+.ccard{width:100%;text-align:left;display:flex;flex-direction:column;gap:6px;padding:14px 16px;border-radius:14px;border:1px solid rgba(34,58,78,.12);background:#FFFFFF;cursor:pointer;font-family:'DM Sans',sans-serif;color:#223A4E}
+.ccard.on{border:2px solid #B18162;padding:13px 15px;background:#FBF7F3}
+.stage{flex:1 1 100px;padding:9px 10px;border-radius:10px;background:#FFFFFF;border:1px solid rgba(34,58,78,.12);font-size:12px;color:#596E81}
+.stage.done{background:#E3EBE4;border-color:#E3EBE4;color:#3F5E48}
+.stage.now{background:#2C4860;border-color:#2C4860;color:#F5F3ED}
+.row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(34,58,78,.08)}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid rgba(34,58,78,.08);font-size:13.5px}
+.kv span{color:#596E81}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 16px;border-radius:999px;border:1px solid transparent;font:500 13px 'DM Sans',sans-serif;cursor:pointer}
+.b-primary{background:#9A6A4C;color:#FFFFFF}
+.b-ghost{background:transparent;border-color:rgba(34,58,78,.22);color:#223A4E}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 100vh; background: #F5F3ED; color: #223A4E; font-family: 'DM Sans', system-ui, sans-serif; font-size: 14px">
+  <aside class="side" aria-label="Agent workspace">
+    <div class="brand">fairward<span>.</span><small>Agent</small></div>
+    <div class="ws">Brokerage<b>Fairward · Sacramento office</b></div>
+    <nav class="nav" aria-label="Sections">
+      <a href="AgentToday.dc.html">Today</a>
+      <a href="AgentInbox.dc.html">Inbox <span class="badge">4</span></a>
+      <a href="AgentCalendar.dc.html">Calendar</a>
+      <a href="AgentFiles.dc.html">Seller files <span class="badge">4</span></a>
+      <a href="AgentBuyers.dc.html" class="on" aria-current="page">Buyer clients <span class="badge">3</span></a>
+      <a href="AgentSubmissions.dc.html">Submissions <span class="badge">1</span></a>
+    </nav>
+    <div style="margin: 0 4px; padding: 12px; border-radius: 10px; border: 1px solid rgba(245,243,237,.16); font-size: 12px; line-height: 1.5; color: rgba(245,243,237,.78)">You prepare, communicate and schedule. Approvals, MLS publication and deadline confirmation go to your supervising broker.</div>
+    <div class="me"><span class="av">JL</span><span><b>Jordan Lee (sample)</b>Salesperson · supervised by [Broker name]</span></div>
+  </aside>
+
+  <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; padding: 32px clamp(16px, 3vw, 40px) 48px; display: flex; flex-direction: column; gap: 18px">
+    <div>
+      <div class="label">Buyer representation · in development · sample data</div>
+      <h1 style="margin: 4px 0 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 34px; letter-spacing: -0.02em; line-height: 1.1">Buyer clients</h1>
+      <p style="margin: 6px 0 0; color: #596E81">Buyer terms, compensation and any buyer credits come from each client’s signed agreement. No tours before it’s signed.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px">
+      <sc-for list="{{clients}}" as="c" hint-placeholder-count="3">
+        <button type="button" class="ccard {{c.cls}}" aria-pressed="{{c.on}}" onClick="{{c.pick}}">
+          <span style="display: flex; justify-content: space-between; gap: 8px; width: 100%"><b style="font-weight: 600; font-size: 15px">{{c.name}}</b><span class="tag {{c.hc}}">{{c.health}}</span></span>
+          <span style="font-size: 12.5px; color: #596E81">{{c.stageName}} · {{c.area}}</span>
+          <span style="font-size: 12.5px"><b style="font-weight: 600">Next:</b> {{c.next}}</span>
+        </button>
+      </sc-for>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 8px" aria-label="Buyer stage">
+      <sc-for list="{{sel.stages}}" as="s" hint-placeholder-count="6">
+        <div class="stage {{s.cls}}">{{s.label}}</div>
+      </sc-for>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start">
+      <div style="flex: 3 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+        <section class="card">
+          <div class="label">Homes</div>
+          <sc-for list="{{sel.homes}}" as="h" hint-placeholder-count="3">
+            <div class="row">
+              <span style="flex: 1; min-width: 0"><b style="font-weight: 600; display: block">{{h.addr}}</b><span style="font-size: 12.5px; color: #596E81">{{h.note}}</span></span>
+              <span class="tag {{h.cls}}">{{h.status}}</span>
+              <sc-if value="{{h.needsDecision}}" hint-placeholder-val="{{ false }}"><button type="button" class="btn b-ghost" onClick="{{h.request}}">Request broker decision</button></sc-if>
+            </div>
+          </sc-for>
+          <sc-if value="{{sel.noHomes}}" hint-placeholder-val="{{ false }}"><p style="margin: 10px 0 0; color: #596E81">No saved homes yet. Touring starts after the representation agreement is signed.</p></sc-if>
+          <sc-if value="{{sel.hasDual}}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top: 12px; padding: 12px 14px; border-radius: 12px; background: #FBEFED; font-size: 13px; line-height: 1.5">
+              <b style="font-weight: 600; color: #8A2F27">Fairward listing.</b> Showing or writing an offer on a Fairward listing for this buyer makes Fairward a dual agent. That requires written disclosure, both the seller’s and buyer’s written consent, and your broker’s decision before you schedule or advise.
+            </div>
+          </sc-if>
+        </section>
+
+        <section class="card">
+          <div class="label">Offers</div>
+          <sc-for list="{{sel.offers}}" as="o" hint-placeholder-count="1">
+            <div class="row">
+              <span style="flex: 1"><b style="font-weight: 600; display: block">{{o.addr}}</b><span style="font-size: 12.5px; color: #596E81">{{o.note}}</span></span>
+              <sc-if value="{{o.canSubmit}}" hint-placeholder-val="{{ false }}"><button type="button" class="btn b-primary" onClick="{{o.submit}}">Submit for broker review</button></sc-if>
+              <sc-if value="{{o.isSent}}" hint-placeholder-val="{{ false }}"><span class="tag t-copper">Waiting on broker</span></sc-if>
+            </div>
+          </sc-for>
+          <sc-if value="{{sel.noOffers}}" hint-placeholder-val="{{ false }}"><p style="margin: 10px 0 0; color: #596E81">No offers yet.</p></sc-if>
+        </section>
+      </div>
+
+      <section class="card" style="flex: 2 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+        <div class="label">Representation &amp; financing</div>
+        <div class="kv"><span>Buyer representation agreement</span><b style="font-weight: 600; text-align: right">{{sel.agreement}}</b></div>
+        <div class="kv"><span>Term</span><b style="font-weight: 600; text-align: right">{{sel.term}}</b></div>
+        <div class="kv"><span>Buyer-broker compensation</span><b style="font-weight: 600; text-align: right">Per signed agreement</b></div>
+        <div class="kv"><span>Potential buyer credit</span><b style="font-weight: 600; text-align: right">Not yet offered · subject to lender approval</b></div>
+        <div class="kv"><span>Financing</span><b style="font-weight: 600; text-align: right">{{sel.financing}}</b></div>
+        <div class="kv" style="border-bottom: 0"><span>Price range</span><b style="font-weight: 600; text-align: right">{{sel.range}}</b></div>
+        <sc-if value="{{sel.needsAgreement}}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top: 10px; padding: 12px 14px; border-radius: 12px; background: #F5F3ED; font-size: 13px; line-height: 1.5">
+            Agreement draft is in your broker’s review queue. Once approved, send it for the buyer’s signature before the Saturday consultation ends.
+          </div>
+        </sc-if>
+      </section>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1200}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { picked: 'morgan', requested: {}, sent: {} };
+  }
+  renderVals() {
+    const s = this.state;
+    const stageNames = ['Consultation', 'Agreement signed', 'Touring', 'Offer', 'Escrow', 'Closed'];
+    const clients = [
+      { id: 'morgan', name: 'Morgan & Sam T. (sample)', stage: 2, area: 'Midtown, East Sacramento', health: 'Touring', hc: 't-sage', next: 'Tour · Thu 11:00 am',
+        agreement: 'Signed Oct 2', term: 'Through Jan 2, 2027', financing: 'Pre-approved · conventional', range: 'Up to $650,000',
+        homes: [['2718 Q St', 'Saved Oct 9 · other brokerage', 'Tour Thu', 't-sage', false], ['1612 39th St', 'Saved Oct 10 · other brokerage', 'Tour Thu', 't-sage', false], ['305 Laurel St', 'Fairward listing · requested Oct 11', 'Dual agency check', 't-red', true]], offers: [] },
+      { id: 'alex', name: 'Alex R. (sample)', stage: 0, area: 'Land Park', health: 'Agreement pending', hc: 't-copper', next: 'Consultation · Sat 10:00 am',
+        agreement: 'Draft · in broker review', term: 'To be agreed', financing: 'Not yet provided', range: 'Prefer not to say', homes: [], offers: [], needsAgreement: true },
+      { id: 'chris', name: 'Chris D. (sample)', stage: 3, area: 'Curtis Park', health: 'Offer in progress', hc: 't-copper', next: 'Second showing · Sun 2:00 pm',
+        agreement: 'Signed Sep 20', term: 'Through Dec 20, 2026', financing: 'Pre-approved · FHA', range: 'Up to $560,000',
+        homes: [['1450 Elmwood Ave', 'Other brokerage · second showing Sun', 'Writing offer', 't-copper', false]],
+        offers: [['chris-offer', '1450 Elmwood Ave', 'Draft: $548,000 · FHA · 30-day close · inspection 17 days']] },
+    ];
+    const sel = clients.find((c) => c.id === s.picked) || clients[0];
+    return {
+      clients: clients.map((c) => ({ ...c, stageName: stageNames[c.stage], on: c.id === sel.id, cls: c.id === sel.id ? 'on' : '', pick: () => this.setState({ picked: c.id }) })),
+      sel: {
+        ...sel,
+        stages: stageNames.map((n, i) => ({ label: n, cls: i < sel.stage ? 'done' : i === sel.stage ? 'now' : '' })),
+        homes: sel.homes.map(([addr, note, status, cls, dual]) => {
+          const key = sel.id + addr;
+          const asked = !!s.requested[key];
+          return { addr, note, status: dual && asked ? 'Sent to broker' : status, cls: dual && asked ? 't-copper' : cls, needsDecision: dual && !asked, request: () => this.setState({ requested: { ...s.requested, [key]: true } }) };
+        }),
+        noHomes: sel.homes.length === 0,
+        hasDual: sel.homes.some((h) => h[4]),
+        offers: sel.offers.map(([id, addr, note]) => ({ addr, note, canSubmit: !s.sent[id], isSent: !!s.sent[id], submit: () => this.setState({ sent: { ...s.sent, [id]: true } }) })),
+        noOffers: sel.offers.length === 0,
+        needsAgreement: !!sel.needsAgreement,
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

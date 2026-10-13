@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fairward — Broker and documents</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#223A4E}a:hover{color:#9A6A4C}
+.seg{flex:1;min-height:44px;border-radius:999px;border:0;background:transparent;color:#596E81;font:500 14px 'DM Sans',sans-serif;cursor:pointer}
+.seg.on{background:#FFFFFF;color:#223A4E;font-weight:600;box-shadow:0 1px 3px rgba(26,46,63,0.12)}
+.msg{max-width:84%;padding:11px 14px;font-size:14.5px;line-height:1.45}
+.msg.them{align-self:flex-start;background:#FFFFFF;border:1px solid rgba(34,58,78,0.10);border-radius:16px 16px 16px 6px}
+.msg.me{align-self:flex-end;background:#223A4E;color:#F5F3ED;border-radius:16px 16px 6px 16px}
+.doc{display:flex;align-items:center;gap:12px;min-height:60px;padding:10px 14px;background:#FFFFFF;border:1px solid rgba(34,58,78,0.12);border-radius:14px}
+.pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.pill.review{background:rgba(177,129,98,0.14);color:#85593E}
+.pill.ok{background:#E3EBE4;color:#3F5E48}
+.pill.you{background:#ECE8DE;color:#223A4E}
+.compose{flex:1;min-height:48px;box-sizing:border-box;padding:12px 14px;border-radius:999px;border:1px solid rgba(34,58,78,0.22);background:#FFFFFF;color:#223A4E;font:400 15px 'DM Sans',sans-serif}
+.compose:focus{outline:none;border-color:#223A4E}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F5F3ED; color: #223A4E; font-family: 'DM Sans', system-ui, sans-serif; display: flex; flex-direction: column">
+  <div style="padding: 40px 20px 12px; display: flex; flex-direction: column; gap: 14px; border-bottom: 1px solid rgba(34,58,78,0.10)">
+    <div style="display: flex; align-items: center; gap: 12px">
+      <a href="Home.dc.html" aria-label="Back to overview" style="width: 44px; height: 44px; flex: none; border-radius: 999px; border: 1px solid rgba(34,58,78,0.22); display: grid; place-items: center; color: #223A4E">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      </a>
+      <span style="width: 44px; height: 44px; flex: none; border-radius: 999px; background: #223A4E; color: #D4A88A; display: grid; place-items: center; font-family: 'Newsreader', Georgia, serif; font-size: 18px">B</span>
+      <div style="flex: 1">
+        <div style="font-size: 16px; font-weight: 600">[Broker name]</div>
+        <div style="font-size: 12.5px; color: #596E81">Licensed broker · DRE # to be provided</div>
+      </div>
+    </div>
+    <div role="tablist" aria-label="View" style="display: flex; gap: 4px; padding: 4px; border-radius: 999px; background: #ECE8DE">
+      <button type="button" role="tab" class="seg {{chatCls}}" aria-selected="{{isChat}}" onClick="{{showChat}}">Messages</button>
+      <button type="button" role="tab" class="seg {{docsCls}}" aria-selected="{{isDocs}}" onClick="{{showDocs}}">Documents</button>
+    </div>
+  </div>
+
+  <sc-if value="{{isChat}}" hint-placeholder-val="{{ true }}">
+    <div style="flex: 1; overflow-y: auto; padding: 16px 20px; display: flex; flex-direction: column; gap: 10px">
+      <div style="align-self: center; font-size: 11.5px; color: #596E81">Sample conversation</div>
+      <sc-for list="{{messages}}" as="m" hint-placeholder-count="4">
+        <div class="msg {{m.cls}}">{{m.text}}</div>
+      </sc-for>
+    </div>
+    <form onSubmit="{{send}}" style="display: flex; gap: 8px; padding: 12px 16px 28px; background: #F5F3ED; border-top: 1px solid rgba(34,58,78,0.10)">
+      <label for="compose" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Message your broker</label>
+      <input id="compose" class="compose" placeholder="Message your broker…" value="{{draft}}" onChange="{{setDraft}}">
+      <button type="submit" aria-label="Send" style="width: 48px; height: 48px; flex: none; border-radius: 999px; border: 0; background: #9A6A4C; color: #FFFFFF; display: grid; place-items: center; cursor: pointer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </form>
+  </sc-if>
+
+  <sc-if value="{{isDocs}}" hint-placeholder-val="{{ false }}">
+    <div style="flex: 1; overflow-y: auto; padding: 16px 20px 28px; display: flex; flex-direction: column; gap: 8px">
+      <sc-for list="{{docs}}" as="d" hint-placeholder-count="5">
+        <div class="doc">
+          <span style="width: 36px; height: 36px; flex: none; border-radius: 10px; background: #F5F3ED; display: grid; place-items: center; color: #9A6A4C">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/></svg>
+          </span>
+          <span style="flex: 1"><b style="display: block; font-weight: 500; font-size: 15px">{{d.name}}</b><span style="font-size: 12.5px; color: #596E81">{{d.note}}</span></span>
+          <span class="pill {{d.cls}}">{{d.status}}</span>
+        </div>
+      </sc-for>
+      <p style="margin: 8px 0 0; font-size: 12px; line-height: 1.5; color: #596E81">Documents are stored securely and shared only with the people on your transaction. Final agreement terms are pending approval.</p>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      view: 'chat',
+      draft: '',
+      messages: [
+        { from: 'them', text: 'I’ve reviewed the pricing research for your home. I’d like to walk you through my recommendation before we finalize it.' },
+        { from: 'me', text: 'Sounds good. Is Thursday afternoon okay?' },
+        { from: 'them', text: 'Thursday at 3 works. I’ll also go over the three offers so you can see how the terms compare.' },
+      ],
+    };
+  }
+  renderVals() {
+    const s = this.state;
+    const isChat = s.view === 'chat';
+    return {
+      isChat, isDocs: !isChat,
+      chatCls: isChat ? 'on' : '', docsCls: isChat ? '' : 'on',
+      showChat: () => this.setState({ view: 'chat' }),
+      showDocs: () => this.setState({ view: 'docs' }),
+      draft: s.draft,
+      setDraft: (e) => this.setState({ draft: e.target.value }),
+      send: (e) => {
+        e.preventDefault();
+        const text = s.draft.trim();
+        if (!text) return;
+        this.setState({ draft: '', messages: s.messages.concat([{ from: 'me', text }]) });
+      },
+      messages: s.messages.map((m) => ({ text: m.text, cls: m.from })),
+      docs: [
+        { name: 'Listing agreement', note: 'Draft · final terms pending approval', status: 'Draft', cls: 'you' },
+        { name: 'Seller disclosures', note: 'Guided questions in progress', status: 'In progress', cls: 'review' },
+        { name: 'Pricing research', note: 'Recent nearby sales', status: 'In review', cls: 'review' },
+        { name: 'Listing description', note: 'Approved by your broker', status: 'Approved', cls: 'ok' },
+        { name: 'Offer packets A–C', note: 'Received Mar 24', status: 'New', cls: 'review' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

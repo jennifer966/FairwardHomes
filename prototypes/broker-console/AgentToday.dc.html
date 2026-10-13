@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fairward Agent — Today</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F3ED}
+a{color:#223A4E}a:hover{color:#9A6A4C}
+.side{flex:1 1 232px;box-sizing:border-box;padding:24px 14px;background:#2C4860;color:#F5F3ED;display:flex;flex-direction:column;gap:22px}
+.brand{font-family:'Newsreader',Georgia,serif;font-size:26px;font-weight:500;letter-spacing:-0.03em;padding:0 10px}
+.brand span{color:#B18162}
+.brand small{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#D4A88A;margin-left:6px}
+.ws{margin:0 4px;padding:10px 12px;border-radius:10px;background:rgba(245,243,237,.08);font-size:12px;color:rgba(245,243,237,.78)}
+.ws b{display:block;color:#F5F3ED;font-weight:600;font-size:13px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;justify-content:space-between;align-items:center;min-height:42px;padding:0 12px;border-radius:10px;color:rgba(245,243,237,.85);text-decoration:none;font-weight:500;font-size:14px}
+.nav a:hover{background:rgba(245,243,237,.08);color:#FFFFFF}
+.nav a.on{background:rgba(245,243,237,.16);color:#FFFFFF}
+.badge{min-width:22px;height:22px;padding:0 6px;box-sizing:border-box;border-radius:999px;background:#9A6A4C;color:#FFFFFF;font-size:11.5px;font-weight:600;display:inline-grid;place-items:center}
+.me{margin-top:auto;display:flex;gap:10px;align-items:center;padding:14px 10px 0;border-top:1px solid rgba(245,243,237,.16);font-size:12px;color:rgba(245,243,237,.78)}
+.me b{display:block;color:#F5F3ED;font-size:13px;font-weight:600}
+.av{width:34px;height:34px;flex:none;border-radius:999px;background:#1A2E3F;color:#D4A88A;display:grid;place-items:center;font-family:'Newsreader',Georgia,serif;font-size:14px}
+.card{background:#FFFFFF;border:1px solid rgba(34,58,78,.12);border-radius:16px;padding:18px 20px}
+.label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#596E81}
+.tag{display:inline-flex;align-items:center;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-copper{background:rgba(177,129,98,.14);color:#85593E}
+.t-sage{background:#E3EBE4;color:#3F5E48}
+.t-gray{background:#ECE8DE;color:#223A4E}
+.t-red{background:#FBEFED;color:#8A2F27}
+.row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid rgba(34,58,78,.08);text-decoration:none;color:#223A4E}
+.task{width:100%;display:flex;align-items:center;gap:12px;min-height:52px;padding:8px 0;border:0;border-bottom:1px solid rgba(34,58,78,.08);background:transparent;text-align:left;cursor:pointer;font-family:'DM Sans',sans-serif;color:#223A4E}
+.box{width:22px;height:22px;flex:none;border-radius:999px;border:1.5px dashed #9AA9B6;display:grid;place-items:center;color:transparent;font-size:12px;font-weight:700}
+.box.done{border:0;background:#E3EBE4;color:#3F5E48}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 100vh; background: #F5F3ED; color: #223A4E; font-family: 'DM Sans', system-ui, sans-serif; font-size: 14px">
+  <aside class="side" aria-label="Agent workspace">
+    <div class="brand">fairward<span>.</span><small>Agent</small></div>
+    <div class="ws">Brokerage<b>Fairward · Sacramento office</b></div>
+    <nav class="nav" aria-label="Sections">
+      <a href="AgentToday.dc.html" class="on" aria-current="page">Today</a>
+      <a href="AgentInbox.dc.html">Inbox <span class="badge">4</span></a>
+      <a href="AgentCalendar.dc.html">Calendar</a>
+      <a href="AgentFiles.dc.html">Seller files <span class="badge">4</span></a>
+      <a href="AgentBuyers.dc.html">Buyer clients <span class="badge">3</span></a>
+      <a href="AgentSubmissions.dc.html">Submissions <span class="badge">1</span></a>
+    </nav>
+    <div style="margin: 0 4px; padding: 12px; border-radius: 10px; border: 1px solid rgba(245,243,237,.16); font-size: 12px; line-height: 1.5; color: rgba(245,243,237,.78)">You prepare, communicate and schedule. Approvals, MLS publication and deadline confirmation go to your supervising broker.</div>
+    <div class="me"><span class="av">JL</span><span><b>Jordan Lee (sample)</b>Salesperson · supervised by [Broker name]</span></div>
+  </aside>
+
+  <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; padding: 32px clamp(16px, 3vw, 40px) 48px; display: flex; flex-direction: column; gap: 20px">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 14px">
+      <div>
+        <div class="label">Monday, October 12 · sample data</div>
+        <h1 style="margin: 4px 0 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 34px; letter-spacing: -0.02em; line-height: 1.1">Good morning, Jordan.</h1>
+      </div>
+      <span class="tag t-gray" style="padding: 6px 12px">Supervising broker: [Broker name] · available today</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px">
+      <a href="AgentFiles.dc.html" class="card" style="text-decoration: none; display: flex; flex-direction: column; gap: 6px"><span class="label">My active files</span><span style="font-family: 'Newsreader', Georgia, serif; font-size: 38px; line-height: 1">4</span><span style="font-size: 13px; color: #596E81">1 with an open exception</span></a>
+      <a href="AgentSubmissions.dc.html" class="card" style="text-decoration: none; display: flex; flex-direction: column; gap: 6px"><span class="label">Waiting on broker</span><span style="font-family: 'Newsreader', Georgia, serif; font-size: 38px; line-height: 1">2</span><span style="font-size: 13px; color: #596E81">Pricing · back-up counter</span></a>
+      <a href="AgentSubmissions.dc.html" class="card" style="text-decoration: none; display: flex; flex-direction: column; gap: 6px; border-color: rgba(138,47,39,.3)"><span class="label">Changes requested</span><span style="font-family: 'Newsreader', Georgia, serif; font-size: 38px; line-height: 1; color: #8A2F27">1</span><span style="font-size: 13px; color: #596E81">Seller net sheet · 760 Sutter Way</span></a>
+      <div class="card" style="display: flex; flex-direction: column; gap: 6px"><span class="label">Replies due today</span><span style="font-family: 'Newsreader', Georgia, serif; font-size: 38px; line-height: 1">4</span><span style="font-size: 13px; color: #596E81">Earliest at 12:30 pm</span></div>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start">
+      <div style="flex: 3 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+        <section class="card" aria-labelledby="tasks-h">
+          <div style="display: flex; justify-content: space-between; align-items: baseline">
+            <h2 id="tasks-h" class="label" style="margin: 0">Your tasks today</h2>
+            <span style="font-size: 13px; color: #596E81">{{doneLabel}}</span>
+          </div>
+          <sc-for list="{{tasks}}" as="t" hint-placeholder-count="6">
+            <button type="button" class="task" aria-pressed="{{t.done}}" onClick="{{t.toggle}}">
+              <span class="box {{t.cls}}">✓</span>
+              <span style="flex: 1; min-width: 0"><b style="font-weight: 500; display: block">{{t.title}}</b><span style="font-size: 12.5px; color: #596E81">{{t.file}}</span></span>
+              <span class="tag {{t.tagCls}}">{{t.tag}}</span>
+            </button>
+          </sc-for>
+        </section>
+
+        <section class="card" aria-labelledby="msg-h">
+          <div style="display: flex; justify-content: space-between; align-items: baseline"><h2 id="msg-h" class="label" style="margin: 0">Messages needing your reply</h2><a href="AgentInbox.dc.html" style="font-size: 13px; font-weight: 600; color: #85593E">Open inbox (4)</a></div>
+          <div class="row"><span style="flex: 1"><b style="font-weight: 600; display: block">K. Patel · 760 Sutter Way</b><span style="font-size: 12.5px; color: #596E81">“Could we ask Offer A to close in 21 days instead of 30?”</span></span><span class="tag t-copper">Reply by 12:30</span></div>
+          <div class="row"><span style="flex: 1"><b style="font-weight: 600; display: block">Rosa Alvarez · 88 Oak Park Way</b><span style="font-size: 12.5px; color: #596E81">“Do we have to lower the price?” · from the assistant</span></span><span class="tag t-red">Advice requested · by 2:00</span></div>
+          <p style="margin: 10px 0 0; font-size: 12.5px; color: #596E81">Your broker can see conversations on your files. Advice on the low appraisal waits for the broker’s recommendation on the file.</p>
+        </section>
+      </div>
+
+      <div style="flex: 2 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+        <section class="card" aria-labelledby="ag-h">
+          <h2 id="ag-h" class="label" style="margin: 0">This week</h2>
+          <sc-for list="{{agenda}}" as="a" hint-placeholder-count="6">
+            <div class="row">
+              <span style="width: 64px; flex: none; font-size: 12px; color: #596E81"><b style="display: block; color: #223A4E; font-weight: 600">{{a.day}}</b>{{a.time}}</span>
+              <span style="flex: 1"><b style="font-weight: 500; display: block">{{a.what}}</b><span style="font-size: 12.5px; color: #596E81">{{a.file}}</span></span>
+              <span class="tag {{a.cls}}">{{a.kind}}</span>
+            </div>
+          </sc-for>
+        </section>
+
+        <section class="card" style="border-color: rgba(138,47,39,.3)" aria-labelledby="fb-h">
+          <h2 id="fb-h" class="label" style="margin: 0">Broker feedback</h2>
+          <p style="margin: 10px 0 0; line-height: 1.55"><b style="font-weight: 600">Seller net sheet · 760 Sutter Way</b> — “Show buyer-broker compensation as ‘per seller’s written decision’ rather than an assumed percentage, and label escrow fees as estimates.”</p>
+          <a href="AgentSubmissions.dc.html" style="display: inline-block; margin-top: 10px; font-weight: 600; color: #85593E">Revise and resubmit</a>
+        </section>
+
+        <section class="card" aria-labelledby="lic-h">
+          <h2 id="lic-h" class="label" style="margin: 0">License &amp; supervision</h2>
+          <div class="row" style="justify-content: space-between"><span style="color: #596E81">Salesperson license</span><b style="font-weight: 600">Active · renews Mar 2027</b></div>
+          <div class="row" style="justify-content: space-between"><span style="color: #596E81">Continuing education</span><b style="font-weight: 600">18 of 45 hours logged</b></div>
+          <div class="row" style="justify-content: space-between"><span style="color: #596E81">Supervision agreement</span><b style="font-weight: 600">Signed Aug 2026</b></div>
+          <div class="row" style="justify-content: space-between; border-bottom: 0"><span style="color: #596E81">Your time this week</span><b style="font-weight: 600">8.5 h logged</b></div>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1200}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { done: { review: true } };
+  }
+  renderVals() {
+    const d = this.state.done;
+    const list = [
+      ['review', 'Review appraisal report and note comparables', '88 Oak Park Way', 'Done', 't-sage'],
+      ['prep', 'Prepare options summary for tomorrow’s 4:00 call', '88 Oak Park Way', 'Exception', 't-red'],
+      ['patel', 'Reply to K. Patel about a faster close', '760 Sutter Way', 'Due 12:30', 't-copper'],
+      ['netsheet', 'Revise seller net sheet per broker feedback', '760 Sutter Way', 'Changes requested', 't-red'],
+      ['coowner', 'Follow up with co-owner on listing agreement', '47 Elm Glen', 'Waiting on seller', 't-gray'],
+      ['nguyen', 'Call T. Nguyen to schedule pricing review', '52 Fremont Ct', 'No reply in 4 days', 't-copper'],
+    ];
+    const tasks = list.map(([id, title, file, tag, tagCls]) => {
+      const done = !!d[id];
+      return { title, file, tag: done ? 'Done' : tag, tagCls: done ? 't-sage' : tagCls, done, cls: done ? 'done' : '', toggle: () => this.setState({ done: { ...d, [id]: !done } }) };
+    });
+    return {
+      tasks,
+      doneLabel: tasks.filter((t) => t.done).length + ' of ' + tasks.length + ' done',
+      agenda: [
+        { day: 'Tue', time: 'All day', what: 'Seller disclosures due to buyer', file: '88 Oak Park Way', kind: 'Deadline', cls: 't-copper' },
+        { day: 'Tue', time: '11:00 am', what: 'Agreement follow-up', file: '47 Elm Glen', kind: 'Call', cls: 't-gray' },
+        { day: 'Tue', time: '4:00 pm', what: 'Appraisal options call', file: '88 Oak Park Way', kind: 'Call', cls: 't-gray' },
+        { day: 'Wed', time: '3:00 pm', what: 'Offer comparison call', file: '760 Sutter Way', kind: 'Call', cls: 't-gray' },
+        { day: 'Fri', time: 'All day', what: 'Appraisal & loan contingencies', file: '88 Oak Park Way · pending broker confirmation', kind: 'Deadline', cls: 't-copper' },
+        { day: 'Fri', time: '5:00 pm', what: 'Seller response to offers', file: '760 Sutter Way', kind: 'Deadline', cls: 't-copper' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fairward — Overview</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#223A4E}a:hover{color:#9A6A4C}
+.tabs{position:absolute;left:0;right:0;bottom:0;height:84px;box-sizing:border-box;padding:8px 6px 22px;background:#FFFFFF;border-top:1px solid rgba(34,58,78,0.10);display:flex}
+.tab{flex:1;min-height:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font:500 11px 'DM Sans',sans-serif;color:#596E81;text-decoration:none}
+.tab.on{color:#223A4E;font-weight:600}
+.tab.on svg{color:#9A6A4C}
+.card{background:#FFFFFF;border:1px solid rgba(34,58,78,0.12);border-radius:18px;padding:16px}
+.label{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#596E81}
+.row-link{display:flex;align-items:center;gap:12px;min-height:56px;padding:10px 14px;border-radius:14px;background:#FFFFFF;border:1px solid rgba(34,58,78,0.12);text-decoration:none;color:#223A4E}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F5F3ED; color: #223A4E; font-family: 'DM Sans', system-ui, sans-serif">
+  <div style="position: absolute; left: 0; right: 0; top: 0; bottom: 84px; overflow-y: auto; box-sizing: border-box; padding: 44px 20px 28px; display: flex; flex-direction: column; gap: 16px">
+    <div style="display: flex; justify-content: space-between; align-items: center">
+      <div>
+        <div style="font-size: 13px; color: #596E81">Welcome back</div>
+        <div style="font-family: 'Newsreader', Georgia, serif; font-size: 28px; line-height: 1.15; letter-spacing: -0.02em">Your sale at a glance</div>
+      </div>
+      <a href="Messages.dc.html" aria-label="Messages and documents, 1 unread" style="position: relative; width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF; border: 1px solid rgba(34,58,78,0.12); display: grid; place-items: center; color: #223A4E">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>
+        <span style="position: absolute; top: 8px; right: 9px; width: 9px; height: 9px; border-radius: 999px; background: #9A6A4C; border: 2px solid #FFFFFF"></span>
+      </a>
+    </div>
+
+    <div class="card" style="display: flex; gap: 14px; align-items: center">
+      <div style="width: 84px; height: 84px; flex: none; border-radius: 12px; overflow: hidden; position: relative; background: linear-gradient(180deg, #CBD5D5 0%, #ECDCCB 55%, #B9C9BC 55%, #9FB3A4 100%)" role="img" aria-label="Property photo placeholder">
+        <div style="position: absolute; left: 12px; right: 10px; top: 24px; height: 14px; background: #223A4E"></div>
+        <div style="position: absolute; left: 8px; right: 14px; top: 38px; height: 10px; background: linear-gradient(180deg, #F6D5A8, #E2A873)"></div>
+      </div>
+      <div style="flex: 1; min-width: 0">
+        <div style="font-family: 'Newsreader', Georgia, serif; font-size: 19px; line-height: 1.2">1234 Sample Lane</div>
+        <div style="font-size: 13px; color: #596E81; margin-top: 2px">Sacramento, CA · 3 bd · 2 ba · 1,840 sq ft</div>
+        <div style="margin-top: 8px; display: inline-flex; font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: #E3EBE4; color: #223A4E">Preparing to list</div>
+      </div>
+    </div>
+
+    <a href="Prep.dc.html" class="card" style="display: block; text-decoration: none; color: #223A4E">
+      <div style="display: flex; justify-content: space-between; align-items: baseline">
+        <span class="label">Listing preparation</span>
+        <span style="font-family: 'Newsreader', Georgia, serif; font-size: 24px">72%</span>
+      </div>
+      <div style="margin-top: 10px; height: 6px; border-radius: 999px; background: #ECE8DE; overflow: hidden"><div style="width: 72%; height: 6px; background: linear-gradient(90deg, #B9C9BC, #8FA995)"></div></div>
+      <div style="margin-top: 10px; font-size: 13px; color: #596E81">3 tasks left · pricing in broker review</div>
+    </a>
+
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <div class="label" style="padding: 0 4px">Needs your attention</div>
+      <a href="Showings.dc.html" class="row-link">
+        <span style="width: 36px; height: 36px; border-radius: 10px; background: #F5F3ED; display: grid; place-items: center; color: #9A6A4C; flex: none">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+        </span>
+        <span style="flex: 1"><b style="font-weight: 600; display: block; font-size: 15px">2 showing requests</b><span style="font-size: 13px; color: #596E81">Respond by today, 6 pm</span></span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#596E81" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+      <a href="Offers.dc.html" class="row-link">
+        <span style="width: 36px; height: 36px; border-radius: 10px; background: #F5F3ED; display: grid; place-items: center; color: #9A6A4C; flex: none">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg>
+        </span>
+        <span style="flex: 1"><b style="font-weight: 600; display: block; font-size: 15px">3 offers to compare</b><span style="font-size: 13px; color: #596E81">Review with your broker</span></span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#596E81" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <div class="card">
+      <div class="label">Upcoming milestones</div>
+      <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 12px">
+        <sc-for list="{{milestones}}" as="m" hint-placeholder-count="3">
+          <div style="display: flex; gap: 12px; align-items: center">
+            <div style="width: 46px; flex: none; text-align: center; padding: 6px 0; border-radius: 10px; background: #F5F3ED; line-height: 1.1">
+              <div style="font-size: 10px; font-weight: 600; letter-spacing: 0.08em; color: #596E81">{{m.mon}}</div>
+              <div style="font-size: 16px; font-weight: 600">{{m.day}}</div>
+            </div>
+            <div>
+              <div style="font-size: 15px; font-weight: 500">{{m.what}}</div>
+              <div style="font-size: 12.5px; color: #596E81">{{m.who}}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center">
+        <span class="label">Estimated selling costs</span>
+        <span style="font-size: 11px; font-weight: 600; color: #85593E; background: rgba(177,129,98,0.14); padding: 3px 8px; border-radius: 999px">Draft</span>
+      </div>
+      <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 8px; font-size: 14px">
+        <div style="display: flex; justify-content: space-between"><span style="color: #596E81">Listing fee (proposed)</span><b style="font-weight: 600">$2,995</b></div>
+        <div style="display: flex; justify-content: space-between"><span style="color: #596E81">Escrow &amp; title</span><b style="font-weight: 600">Estimate pending</b></div>
+        <div style="display: flex; justify-content: space-between"><span style="color: #596E81">Transfer tax</span><b style="font-weight: 600">Estimate pending</b></div>
+        <div style="display: flex; justify-content: space-between"><span style="color: #596E81">Buyer-broker compensation</span><b style="font-weight: 600">If offered</b></div>
+      </div>
+      <p style="margin: 12px 0 0; font-size: 12px; line-height: 1.5; color: #596E81">Illustrative. Your broker reviews a full net sheet with you before you list.</p>
+    </div>
+
+    <a href="Messages.dc.html" class="card" style="display: flex; gap: 12px; align-items: center; text-decoration: none; color: #223A4E; background: #223A4E; border-color: #223A4E">
+      <span style="width: 44px; height: 44px; flex: none; border-radius: 999px; background: #2C4860; color: #D4A88A; display: grid; place-items: center; font-family: 'Newsreader', Georgia, serif; font-size: 18px">B</span>
+      <span style="flex: 1; color: #F5F3ED"><b style="display: block; font-weight: 600; font-size: 15px">Your licensed broker</b><span style="font-size: 13px; color: rgba(245,243,237,0.75)">[Broker name] · DRE # to be provided</span></span>
+      <span style="font-size: 13px; font-weight: 600; color: #D4A88A">Message</span>
+    </a>
+  </div>
+
+  <nav class="tabs" aria-label="App sections">
+    <a href="Home.dc.html" class="tab on" aria-current="page"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Overview</a>
+    <a href="Prep.dc.html" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 6h10M10 12h10M10 18h10"/><path d="m3.5 6 1.5 1.5L7.5 5M3.5 12l1.5 1.5 2.5-2.5M3.5 18l1.5 1.5 2.5-2.5"/></svg>Listing</a>
+    <a href="Showings.dc.html" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Showings</a>
+    <a href="Offers.dc.html" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg>Offers</a>
+    <a href="Assistant.dc.html" class="tab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6.5 6.5l2 2M15.5 15.5l2 2M6.5 17.5l2-2M15.5 8.5l2-2"/></svg>Assistant</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      milestones: [
+        { mon: 'MAR', day: '14', what: 'Pricing review', who: 'With your licensed broker' },
+        { mon: 'MAR', day: '18', what: 'Listing goes live on MLS', who: 'After broker approval' },
+        { mon: 'MAR', day: '22', what: 'First open house', who: 'Showing schedule ready' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

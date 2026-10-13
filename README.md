@@ -1,5 +1,7 @@
 # Fairward — FairwardHomes.com
 
+> **Full project documentation:** start at [`docs/00_START_HERE.md`](docs/00_START_HERE.md). Design prototypes are in [`prototypes/`](prototypes/). Guidance for AI assistants: [`CLAUDE.md`](CLAUDE.md).
+
 Prelaunch landing page and lead capture for **Fairward**, a proposed California real estate brokerage. Tagline: *A Fairer Way Forward.*
 
 > **Status: private prelaunch prototype.** The Fairward name, brokerage advertising authorization, services, fees and legal disclosures still need final approval. The site ships in **prelaunch mode**: pricing is labeled as proposed, it is `noindex`, and lead capture stores **test** data by default.

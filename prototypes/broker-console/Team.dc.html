@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fairward Broker — Team, roles and supervision</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F3ED}
+a{color:#223A4E}a:hover{color:#9A6A4C}
+.side{flex:1 1 232px;box-sizing:border-box;padding:24px 14px;background:#1A2E3F;color:#F5F3ED;display:flex;flex-direction:column;gap:22px}
+.brand{font-family:'Newsreader',Georgia,serif;font-size:26px;font-weight:500;letter-spacing:-0.03em;padding:0 10px}
+.brand span{color:#B18162}
+.brand small{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#D4A88A;margin-left:6px}
+.ws{margin:0 4px;padding:10px 12px;border-radius:10px;background:rgba(245,243,237,.06);font-size:12px;color:rgba(245,243,237,.72)}
+.ws b{display:block;color:#F5F3ED;font-weight:600;font-size:13px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;justify-content:space-between;align-items:center;min-height:42px;padding:0 12px;border-radius:10px;color:rgba(245,243,237,.8);text-decoration:none;font-weight:500;font-size:14px}
+.nav a:hover{background:rgba(245,243,237,.06);color:#FFFFFF}
+.nav a.on{background:rgba(245,243,237,.12);color:#FFFFFF}
+.badge{min-width:22px;height:22px;padding:0 6px;box-sizing:border-box;border-radius:999px;background:#9A6A4C;color:#FFFFFF;font-size:11.5px;font-weight:600;display:inline-grid;place-items:center}
+.me{margin-top:auto;display:flex;gap:10px;align-items:center;padding:14px 10px 0;border-top:1px solid rgba(245,243,237,.12);font-size:12px;color:rgba(245,243,237,.72)}
+.me b{display:block;color:#F5F3ED;font-size:13px;font-weight:600}
+.av{width:34px;height:34px;flex:none;border-radius:999px;background:#2C4860;color:#D4A88A;display:grid;place-items:center;font-family:'Newsreader',Georgia,serif;font-size:15px}
+.card{background:#FFFFFF;border:1px solid rgba(34,58,78,.12);border-radius:16px;padding:18px 20px}
+.label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#596E81}
+.tag{display:inline-flex;align-items:center;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t-copper{background:rgba(177,129,98,.14);color:#85593E}
+.t-sage{background:#E3EBE4;color:#3F5E48}
+.t-gray{background:#ECE8DE;color:#223A4E}
+.t-navy{background:#223A4E;color:#F5F3ED}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid transparent;font:500 13.5px 'DM Sans',sans-serif;cursor:pointer}
+.b-primary{background:#9A6A4C;color:#FFFFFF}
+.tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.tbl th{text-align:left;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#596E81;padding:10px 12px;border-bottom:1px solid rgba(34,58,78,.12);white-space:nowrap}
+.tbl td{padding:10px 12px;border-bottom:1px solid rgba(34,58,78,.08);vertical-align:middle}
+.tog{min-width:84px;min-height:34px;border-radius:999px;border:1px solid rgba(34,58,78,.2);background:#FFFFFF;color:#596E81;font:600 12px 'DM Sans',sans-serif;cursor:pointer}
+.tog.on{background:#223A4E;border-color:#223A4E;color:#F5F3ED}
+.locked{display:inline-flex;align-items:center;gap:6px;min-width:84px;font-size:12px;font-weight:600;color:#596E81}
+.locked.yes{color:#3F5E48}
+.fld{width:100%;box-sizing:border-box;min-height:44px;padding:0 12px;border-radius:12px;border:1px solid rgba(34,58,78,.22);background:#FFFFFF;font:400 14px 'DM Sans',sans-serif;color:#223A4E}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 100vh; background: #F5F3ED; color: #223A4E; font-family: 'DM Sans', system-ui, sans-serif; font-size: 14px">
+  <aside class="side" aria-label="Broker console">
+    <div class="brand">fairward<span>.</span><small>Broker</small></div>
+    <div class="ws">Brokerage<b>Fairward · Sacramento office</b></div>
+    <nav class="nav" aria-label="Sections">
+      <a href="Main.dc.html">Today</a>
+      <a href="Inbox.dc.html">Inbox <span class="badge">5</span></a>
+      <a href="Calendar.dc.html">Calendar</a>
+      <a href="Review.dc.html">Review queue <span class="badge">6</span></a>
+      <a href="Pipeline.dc.html">Pipeline</a>
+      <a href="Transaction.dc.html">Transactions</a>
+      <a href="Leads.dc.html">Leads <span class="badge">3</span></a>
+      <a href="Team.dc.html" class="on" aria-current="page">Team &amp; roles</a>
+      <a href="Economics.dc.html">Time &amp; economics</a>
+    </nav>
+    <div class="me"><span class="av">Y</span><span><b>You</b>Designated broker · DRE # [to be added]</span></div>
+  </aside>
+
+  <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; padding: 32px clamp(16px, 3vw, 40px) 48px; display: flex; flex-direction: column; gap: 18px">
+    <div>
+      <div class="label">Brokerage settings · sample data</div>
+      <h1 style="margin: 4px 0 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 34px; letter-spacing: -0.02em; line-height: 1.1">Team, roles &amp; supervision</h1>
+      <p style="margin: 6px 0 0; color: #596E81">Today it’s just you. Brokers, salespersons and coordinators can be added without changing how files are reviewed.</p>
+    </div>
+
+    <section class="card" aria-labelledby="people-h">
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap">
+        <h2 id="people-h" class="label" style="margin: 0">People</h2>
+        <span style="font-size: 12.5px; color: #596E81">Offices: Sacramento (1) · more can be added</span>
+      </div>
+      <div style="overflow-x: auto; margin-top: 8px">
+        <table class="tbl">
+          <thead><tr><th>Name</th><th>Role</th><th>License</th><th>Supervised by</th><th>Active files</th><th>Status</th></tr></thead>
+          <tbody>
+            <sc-for list="{{people}}" as="p" hint-placeholder-count="4">
+              <tr>
+                <td><b style="font-weight: 600">{{p.name}}</b></td>
+                <td>{{p.role}}</td>
+                <td style="color: #596E81">{{p.license}}</td>
+                <td>{{p.supervisor}}</td>
+                <td>{{p.files}}</td>
+                <td><span class="tag {{p.cls}}">{{p.status}}</span></td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start">
+      <section class="card" style="flex: 3 1 560px; min-width: 0" aria-labelledby="perm-h">
+        <h2 id="perm-h" class="label" style="margin: 0">Approval authority by role</h2>
+        <p style="margin: 6px 0 0; font-size: 13px; color: #596E81">Tap to change. Locked cells reflect licensing rules and can’t be changed here. Changes are recorded in the audit log.</p>
+        <div style="overflow-x: auto; margin-top: 8px">
+          <table class="tbl">
+            <thead><tr><th>Action</th><th>Designated broker</th><th>Associate broker</th><th>Salesperson</th><th>Coordinator (unlicensed)</th></tr></thead>
+            <tbody>
+              <sc-for list="{{matrix}}" as="r" hint-placeholder-count="9">
+                <tr>
+                  <td><b style="font-weight: 500">{{r.action}}</b></td>
+                  <sc-for list="{{r.cells}}" as="c" hint-placeholder-count="4">
+                    <td>
+                      <sc-if value="{{c.locked}}" hint-placeholder-val="{{ false }}"><span class="locked {{c.lockCls}}">{{c.lockText}}</span></sc-if>
+                      <sc-if value="{{c.editable}}" hint-placeholder-val="{{ true }}"><button type="button" class="tog {{c.cls}}" aria-pressed="{{c.on}}" aria-label="{{c.aria}}" onClick="{{c.toggle}}">{{c.text}}</button></sc-if>
+                    </td>
+                  </sc-for>
+                </tr>
+              </sc-for>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card" style="flex: 2 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 12px" aria-labelledby="inv-h">
+        <h2 id="inv-h" class="label" style="margin: 0">Invite someone</h2>
+        <div style="display: flex; flex-direction: column; gap: 6px"><label for="iname" style="font-weight: 500">Full name</label><input id="iname" class="fld" value="{{inv.name}}" onChange="{{setName}}"></div>
+        <div style="display: flex; flex-direction: column; gap: 6px"><label for="irole" style="font-weight: 500">Role</label>
+          <select id="irole" class="fld" value="{{inv.role}}" onChange="{{setRole}}">
+            <option value="Associate broker">Associate broker</option>
+            <option value="Salesperson">Salesperson</option>
+            <option value="Coordinator">Transaction coordinator (unlicensed)</option>
+          </select>
+        </div>
+        <sc-if value="{{needsLicense}}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; flex-direction: column; gap: 6px"><label for="idre" style="font-weight: 500">DRE license number</label><input id="idre" class="fld" value="{{inv.dre}}" onChange="{{setDre}}" placeholder="Verified against DRE records before access"></div>
+        </sc-if>
+        <sc-if value="{{needsSupervisor}}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; flex-direction: column; gap: 6px"><label for="isup" style="font-weight: 500">Supervising broker</label>
+            <select id="isup" class="fld"><option>You · designated broker</option><option>Priya Shah · associate broker</option></select>
+          </div>
+        </sc-if>
+        <button type="button" class="btn b-primary" onClick="{{invite}}">Send invitation</button>
+        <sc-if value="{{hasMessage}}" hint-placeholder-val="{{ false }}"><div style="padding: 10px 12px; border-radius: 12px; background: #E3EBE4; font-size: 13px">{{message}}</div></sc-if>
+        <p style="margin: 0; font-size: 12px; color: #596E81">Licensed users get access only after their license is verified and, for salespersons, a supervision agreement is signed.</p>
+      </section>
+    </div>
+
+    <section class="card" aria-labelledby="comp-h">
+      <h2 id="comp-h" class="label" style="margin: 0">Supervision &amp; compliance</h2>
+      <div style="margin-top: 10px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px">
+        <div style="padding: 12px 14px; border-radius: 12px; background: #F5F3ED"><b style="font-weight: 600">Written supervision policy</b><div style="font-size: 12.5px; color: #596E81">[To be added] · required before adding salespersons</div></div>
+        <div style="padding: 12px 14px; border-radius: 12px; background: #F5F3ED"><b style="font-weight: 600">License expirations</b><div style="font-size: 12.5px; color: #596E81">Reminders at 90 / 30 days; access pauses if expired</div></div>
+        <div style="padding: 12px 14px; border-radius: 12px; background: #F5F3ED"><b style="font-weight: 600">File reviews</b><div style="font-size: 12.5px; color: #596E81">Every salesperson document is reviewed by a broker</div></div>
+        <div style="padding: 12px 14px; border-radius: 12px; background: #F5F3ED"><b style="font-weight: 600">Record retention</b><div style="font-size: 12.5px; color: #596E81">At least 3 years · litigation holds extend</div></div>
+      </div>
+    </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1320}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      perms: { 'assign-1': true, 'deadlines-1': true, 'econ-1': true, 'assign-3': true },
+      invited: [], inv: { name: '', role: 'Salesperson', dre: '' }, message: '',
+    };
+  }
+  renderVals() {
+    const s = this.state;
+    // Cell spec: 'Y' locked yes, 'N' locked no, 'P' locked prepare-only, 'T' toggleable
+    const rows = [
+      ['mls', 'Authorize MLS publication', ['Y', 'Y', 'N', 'N']],
+      ['pricing', 'Approve pricing recommendation', ['Y', 'Y', 'P', 'N']],
+      ['marketing', 'Approve marketing for publication', ['Y', 'Y', 'T', 'N']],
+      ['disclosures', 'Complete disclosure review', ['Y', 'Y', 'P', 'N']],
+      ['deadlines', 'Confirm calculated deadlines', ['Y', 'T', 'T', 'T']],
+      ['offers', 'Send offers and counteroffers', ['Y', 'Y', 'T', 'N']],
+      ['assign', 'Assign leads and files', ['Y', 'T', 'N', 'T']],
+      ['team', 'Manage team and roles', ['Y', 'T', 'N', 'N']],
+      ['econ', 'View economics', ['Y', 'T', 'T', 'N']],
+    ];
+    const roles = ['Designated broker', 'Associate broker', 'Salesperson', 'Coordinator'];
+    const matrix = rows.map(([id, action, spec]) => ({
+      action,
+      cells: spec.map((c, i) => {
+        const key = id + '-' + i;
+        if (c !== 'T') {
+          const text = c === 'Y' ? 'Always' : c === 'P' ? 'Prepare only' : 'Never';
+          return { locked: true, editable: false, lockText: text, lockCls: c === 'Y' ? 'yes' : '' };
+        }
+        const on = !!s.perms[key];
+        return {
+          locked: false, editable: true, on, cls: on ? 'on' : '', text: on ? 'Allowed' : 'Off',
+          aria: action + ' for ' + roles[i],
+          toggle: () => this.setState({ perms: { ...s.perms, [key]: !on } }),
+        };
+      }),
+    }));
+    const people = [
+      { name: 'You', role: 'Designated broker', license: 'DRE # [to be added]', supervisor: '—', files: '4 · supervising 4', status: 'Active', cls: 't-sage' },
+      { name: 'Priya Shah (sample)', role: 'Associate broker', license: 'Broker · verified', supervisor: 'You (designated)', files: '2', status: 'Active', cls: 't-sage' },
+      { name: 'Jordan Lee (sample)', role: 'Salesperson', license: 'Expires Mar 2027', supervisor: 'You', files: '4', status: 'Active', cls: 't-sage' },
+    ].concat(s.invited.map((p) => ({ name: p.name, role: p.role, license: p.role === 'Coordinator' ? 'Not licensed' : 'Verification pending', supervisor: p.role === 'Associate broker' ? 'You (designated)' : 'You', files: '0', status: 'Invited', cls: 't-copper' })));
+    const role = s.inv.role;
+    return {
+      people, matrix,
+      inv: s.inv,
+      needsLicense: role !== 'Coordinator',
+      needsSupervisor: role !== 'Associate broker',
+      setName: (e) => this.setState({ inv: { ...s.inv, name: e.target.value } }),
+      setRole: (e) => this.setState({ inv: { ...s.inv, role: e.target.value } }),
+      setDre: (e) => this.setState({ inv: { ...s.inv, dre: e.target.value } }),
+      invite: () => {
+        const name = s.inv.name.trim();
+        if (!name) { this.setState({ message: 'Add a name to send the invitation.' }); return; }
+        this.setState({ invited: s.invited.concat([{ name, role: s.inv.role }]), inv: { name: '', role: s.inv.role, dre: '' }, message: 'Invitation sent to ' + name + '. Access starts after verification.' });
+      },
+      hasMessage: !!s.message,
+      message: s.message,
+    };
+  }
+}
+</script>
+</body>
+</html>
