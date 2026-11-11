@@ -6,6 +6,7 @@ export const analyticsEventNames = [
   "seller_form_submitted",
   "buyer_form_submitted",
   "pricing_viewed",
+  "costs_viewed",
   "faq_interaction",
   "assistant_demo_used",
 ] as const;

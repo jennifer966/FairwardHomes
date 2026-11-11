@@ -183,6 +183,82 @@ export const techPillars = [
   },
 ] as const;
 
+/**
+ * "What you'll pay" section. One row per cost category on a seller's closing
+ * statement. `example` is filled in by the component where a number can be
+ * stated honestly; otherwise `exampleText` explains where the figure comes from.
+ */
+export type CostRow = {
+  id: "listing-fee" | "buyer-agent" | "transfer-tax" | "escrow-title" | "other";
+  title: string;
+  body: string;
+  decidedBy: string;
+  exampleText?: string;
+};
+
+export const costRows: CostRow[] = [
+  {
+    id: "listing-fee",
+    title: "Fairward listing fee",
+    body: "Our proposed flat fee for listing, marketing preparation, showing coordination, offer review, negotiation and brokerage supervision.",
+    decidedBy: "Your listing agreement",
+  },
+  {
+    id: "buyer-agent",
+    title: "Buyer's agent compensation",
+    body: "What the buyer's own agent is paid. The buyer agrees to it with their agent, and may ask you to cover some or all of it in their offer.",
+    decidedBy: "You, if a buyer asks",
+    exampleText: "Your choice",
+  },
+  {
+    id: "transfer-tax",
+    title: "Transfer taxes",
+    body: "Charged by the county, plus the city inside Sacramento city limits, when the deed records.",
+    decidedBy: "Set by law; who pays is in the contract",
+  },
+  {
+    id: "escrow-title",
+    title: "Escrow and title",
+    body: "Escrow services, the owner's title insurance policy and recording. Customs and quotes vary by company.",
+    decidedBy: "Your contract and the companies' quotes",
+    exampleText: "Quoted for your sale",
+  },
+  {
+    id: "other",
+    title: "Repairs, credits and payoffs",
+    body: "Any repairs or credits you agree to with the buyer, your mortgage payoff, and prorated property taxes or HOA dues.",
+    decidedBy: "Your negotiation and your lender",
+    exampleText: "Depends on your sale",
+  },
+];
+
+export const buyerAgentExplainer = {
+  title: "Who pays the buyer's agent now?",
+  points: [
+    "Since August 17, 2024, offers to pay buyers' agents can no longer be posted on the MLS.",
+    "In California, buyers now sign a written agreement with their own agent that sets the agent's pay, no later than when they make an offer. Many agents ask for it before the first tour.",
+    "A buyer may ask you to cover some or all of that pay as part of their offer. You can accept, counter or say no. You can also decide ahead of time whether you're open to it.",
+  ],
+  handoff:
+    "Whether to offer it, and how much, is a pricing and strategy decision you'll make with your licensed professional. All compensation is negotiable and not set by law.",
+} as const;
+
+/** "Selling in Sacramento" section: local differences sellers should plan for. */
+export const localNotes = [
+  {
+    title: "City limits change your transfer tax",
+    body: "Sacramento County charges $1.10 per $1,000 of the sale price. Inside Sacramento city limits, the city adds $2.75 per $1,000. It's the only city in the county with its own transfer tax, and a Sacramento mailing address doesn't always mean city limits.",
+  },
+  {
+    title: "Rivers and levees mean hazard disclosures",
+    body: "Much of the region sits near the Sacramento and American rivers. California requires a Natural Hazard Disclosure when a home is in a mapped flood zone, dam inundation area, fire hazard zone or earthquake zone. Getting the report early puts the findings in front of buyers before they make offers.",
+  },
+  {
+    title: "Newer neighborhoods may carry special taxes",
+    body: "Many newer communities pay for roads, schools and parks through Mello-Roos (Community Facilities District) taxes or assessment bonds. Sellers must make a good-faith effort to get the official notice for each one and give it to the buyer.",
+  },
+] as const;
+
 export const buyerFeatures = [
   "Guided property research",
   "Digital transaction experience",
@@ -245,6 +321,13 @@ export const faqs: Faq[] = [
     a: [
       "Yes. Selling a home typically involves other expenses, such as any buyer-broker compensation you choose to offer or agree to, escrow and title fees, transfer taxes, repairs or credits, and loan payoff.",
       "Any additional Fairward charges or optional services would be clearly disclosed in writing before you commit.",
+    ],
+  },
+  {
+    q: "Do I have to pay the buyer's agent?",
+    a: [
+      "Not automatically. Buyers now sign a written agreement with their own agent that sets what that agent is paid. A buyer may ask you to cover some or all of it as part of their offer, and you can accept, counter or decline, just as with any other term.",
+      "Offering to pay can widen your pool of buyers, and declining keeps more of your proceeds. Your licensed professional will walk through that trade-off with you for your home and market. All compensation is negotiable and not set by law.",
     ],
   },
   {

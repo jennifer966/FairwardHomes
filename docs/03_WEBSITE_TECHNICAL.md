@@ -22,10 +22,13 @@
 src/
   config/
     site.ts          ← business constants: mode, pricing, inclusions, calculator defaults,
-                        compliance/DRE placeholders, broker bio, logo, imagery, nav
-    content.ts       ← page copy: steps, comparison table, assistant answers, FAQs, form options
+                        compliance/DRE placeholders, broker bio, logo, imagery, nav,
+                        localMarket (pilot area, transfer-tax rates, sources)
+    content.ts       ← page copy: steps, comparison table, assistant answers, cost rows,
+                        buyer-agent explainer, local notes, FAQs, form options
   lib/
     savings.ts       ← pure calculator logic (tested)
+    transfer-tax.ts  ← county + city transfer tax for the Costs example (tested)
     analytics.ts     ← client event dispatcher (none | first-party), consent hook
     analytics-events.ts
     attribution.ts   ← UTM + referrer host, sessionStorage only (no cookies)
@@ -45,7 +48,7 @@ src/
     robots.ts, sitemap.ts, icon.svg
   components/
     sections/        ← Header, Hero, HeroDashboard, SavingsCalculator, HowItWorks, Assistant,
-                        Comparison, Pricing, Expertise, GetStarted, Buyers, Faq, FinalCta, Footer
+                        Comparison, Pricing, Costs, Local, Expertise, GetStarted, Buyers, Faq, FinalCta, Footer
     forms/           ← SellerForm (2-step), BuyerForm, shared helpers
     ui/              ← Wordmark, Icons, Reveal, ArchImage (SVG placeholders), TrackOnView, PrelaunchBanner
   middleware.ts      ← Basic auth for /admin and optional site-wide preview password; X-Robots-Tag
@@ -55,19 +58,21 @@ amplify.yml          ← AWS Amplify build settings
 
 ## Page sections (in order)
 1. Prelaunch banner (prelaunch mode only).
-2. Sticky header: Sell, Buy, How It Works, Pricing, FAQ, Get Started. Accessible mobile menu with focus trap.
-3. **Hero:** "Sell smarter. Keep more." plus a seller dashboard mockup labeled *Sample data*.
+2. Sticky header: Sell, Buy, How It Works, Pricing, Costs, FAQ, Get Started. Accessible mobile menu with focus trap.
+3. **Hero:** "Sell smarter. Keep more." with three key facts (proposed $2,995 flat fee, licensed professionals, starting in Sacramento), a link to the cost breakdown, and a seller dashboard mockup labeled *Sample data*.
 4. **Savings calculator:** sale price (input + slider), hypothetical comparison % (0.5–6%, default 2.5%), the proposed $2,995 fee, live results, a bar comparison and the full disclaimer. Its CTA pre-fills the seller form with the estimated value.
 5. **How it works:** 4 steps with role tags (You / Platform / Licensed review).
 6. **Assistant demo:** 3 predefined questions with labeled general answers and a licensed hand-off.
 7. **Comparison:** FSBO vs. traditional brokerage vs. Fairward (table on desktop, cards on mobile) with an illustrative note.
 8. **Pricing:** Fairward Guided Selling, $2,995 flat listing fee, *Proposed Pilot Pricing*, 9 inclusions, notes on separate costs and negotiability.
-9. **Expertise** (navy): three pillars and a broker profile slot (placeholder until real details are supplied).
-10. **Get started:** 2-step seller form.
-11. **Buyers:** secondary section and buyer interest form.
-12. **FAQ:** 10 questions; unsettled policies show "Final service terms coming soon".
-13. **Final CTA** (navy).
-14. **Footer:** a compliance block with placeholders ("To be provided"), Equal Housing Opportunity, and legal links.
+9. **Costs** (`#costs`): every seller cost category as a closing-statement table with "who decides" and a worked $600,000 Sacramento-city example (only figures that come from published rates; no total). Navy card explaining buyer's-agent compensation after the Aug 2024 MLS change and California AB 2992. Collapsible sources list.
+10. **Local** (`#sacramento`): proposed pilot area chips and three Sacramento notes (city vs. county transfer tax, natural hazard disclosures, Mello-Roos).
+11. **Expertise** (navy): three pillars and a broker profile slot (placeholder until real details are supplied).
+12. **Get started:** 2-step seller form.
+13. **Buyers:** secondary section and buyer interest form.
+14. **FAQ:** 11 questions (including "Do I have to pay the buyer's agent?"); unsettled policies show "Final service terms coming soon".
+15. **Final CTA** (navy).
+16. **Footer:** a compliance block with placeholders ("To be provided"), Equal Housing Opportunity, and legal links.
 
 ## Modes and switches (`src/config/site.ts` + env)
 - `NEXT_PUBLIC_SITE_MODE`: `prelaunch` (default) or `live`. **Live is ignored** until `liveModeBlockers()` returns nothing: `approvedForLive`, brokerage name, responsible broker and DRE #, address, plus privacy, terms, service-terms and pricing approvals.

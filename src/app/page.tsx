@@ -2,6 +2,8 @@ import { AnalyticsBoot } from "@/components/AnalyticsBoot";
 import { Assistant } from "@/components/sections/Assistant";
 import { Buyers } from "@/components/sections/Buyers";
 import { Comparison } from "@/components/sections/Comparison";
+import { Costs } from "@/components/sections/Costs";
+import { Local } from "@/components/sections/Local";
 import { Expertise } from "@/components/sections/Expertise";
 import { Faq } from "@/components/sections/Faq";
 import { FinalCta } from "@/components/sections/FinalCta";
@@ -26,6 +28,8 @@ export default function Home() {
         <Assistant />
         <Comparison />
         <Pricing />
+        <Costs />
+        <Local />
         <Expertise />
         <GetStarted />
         <Buyers />

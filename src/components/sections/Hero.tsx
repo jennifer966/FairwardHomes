@@ -1,3 +1,4 @@
+import { formatUSD, isPrelaunch, localMarket, pricing } from "@/config/site";
 import { HeroDashboard } from "./HeroDashboard";
 import { ArrowRight, Shield } from "../ui/Icons";
 import { Reveal } from "../ui/Reveal";
@@ -25,9 +26,29 @@ export function Hero() {
               See How Fairward Works
             </a>
           </div>
+          <dl className="hero__facts">
+            <div>
+              <dt>{isPrelaunch ? "Proposed fee" : "Listing fee"}</dt>
+              <dd>{formatUSD(pricing.listingFee)} flat</dd>
+            </div>
+            <div>
+              <dt>Representation</dt>
+              <dd>Licensed professionals</dd>
+            </div>
+            <div>
+              <dt>Starting in</dt>
+              <dd>{localMarket.name}</dd>
+            </div>
+          </dl>
           <p className="hero__trust">
             <Shield />
-            <span>Designed for California homeowners. Built around real brokerage expertise.</span>
+            <span>
+              Fees are negotiable.{" "}
+              <a className="text-link" href="#costs">
+                See every selling cost
+              </a>
+              .
+            </span>
           </p>
         </Reveal>
         <Reveal delay={150}>

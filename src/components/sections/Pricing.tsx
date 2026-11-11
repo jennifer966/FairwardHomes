@@ -59,6 +59,11 @@ export function Pricing() {
             <div className="note-card">
               <h3>Separate costs</h3>
               <p>{pricing.separateCostsNote}</p>
+              <p>
+                <a className="text-link" href="#costs">
+                  See what each cost covers
+                </a>
+              </p>
             </div>
             <div className="note-card">
               <h3>Fees are negotiable</h3>

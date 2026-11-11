@@ -5,7 +5,8 @@
 2. **Legal workstream:** work through the counsel list in doc 09 (name approval, agreements, disclosures, privacy).
 3. **Brand assets:** final logo SVG, licensed photography, broker profile.
 4. **Supabase housekeeping:** delete the `claude-test` key; add the `converted` status and `transaction_id` to leads.
-5. **Codex vs. Claude comparison:** push Codex's site to its own branch; compare against the brief (design, compliance, security, mobile, editability); pick a base and port the best parts. See doc 13.
+5. **Confirm new site content:** pilot service area (`localMarket.pilotAreas`), and have the broker/counsel review the Costs section, buyer's-agent explainer and Sacramento notes. Re-check transfer-tax rates before launch.
+6. **Codex vs. Claude comparison:** push Codex's site to its own branch; compare against the brief (design, compliance, security, mobile, editability); pick a base and port the best parts. See doc 13.
 
 ## Next (design and validation)
 - **Seller app prototype v2:** six-stage header, "Today" action center, live net proceeds, Ready-for-MLS screen, exception flow, co-seller permissions.

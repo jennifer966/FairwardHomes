@@ -136,11 +136,61 @@ export const broker = {
   credentials: [] as string[],
 } as const;
 
+/**
+ * Local market facts for the Sacramento pilot. Rates are public figures from
+ * the sources listed; re-check them before launch and whenever the page is
+ * reviewed. Who pays a transfer tax is set by the purchase contract.
+ */
+export const localMarket = {
+  name: "Sacramento",
+  /**
+   * PLACEHOLDER: proposed pilot service area. Confirm before launch; shown on
+   * the page with a "proposed" label while in prelaunch mode.
+   */
+  pilotAreas: [
+    "Sacramento",
+    "Elk Grove",
+    "Rancho Cordova",
+    "Citrus Heights",
+    "Folsom",
+    "Carmichael",
+    "Fair Oaks",
+    "Orangevale",
+  ],
+  transferTax: {
+    /** Sacramento County documentary transfer tax: $0.55 per $500 or fraction thereof. */
+    countyPer500: 0.55,
+    /** City of Sacramento real property transfer tax: 0.275% of consideration. */
+    cityName: "City of Sacramento",
+    cityRate: 0.00275,
+    checked: "November 2026",
+  },
+  sources: [
+    {
+      label: "Sacramento County Clerk-Recorder: Documentary Transfer Tax",
+      url: "https://ccr.saccounty.gov/us/en/faq/faq-documentary-transfer-tax-dtt.html",
+    },
+    {
+      label: "Sacramento County Clerk-Recorder: City of Sacramento transfer tax",
+      url: "https://ccr.saccounty.gov/us/en/city-of-sacramento-additional-real-property-transfer-tax.html",
+    },
+    {
+      label: "California DRE: changes to real estate representation (Nov. 2024)",
+      url: "https://www.dre.ca.gov/Consumers/ConsumerAlert_20241114_Changes_to_Real_Estate_Representation.html",
+    },
+    {
+      label: "NAR: what the settlement means for buyers and sellers",
+      url: "https://www.nar.realtor/competition-in-real-estate/what-the-nar-settlement-means-for-home-buyers-and-sellers",
+    },
+  ],
+} as const;
+
 export const nav = [
   { label: "Sell", href: "#sell" },
   { label: "Buy", href: "#buy" },
   { label: "How It Works", href: "#how-it-works" },
   { label: "Pricing", href: "#pricing" },
+  { label: "Costs", href: "#costs" },
   { label: "FAQ", href: "#faq" },
 ] as const;
 
