@@ -2,6 +2,19 @@
 
 A differentiator that helps sellers capture their home, turn the materials into a compelling presentation, and understand buyer interest, with licensed review before anything goes public.
 
+## Prep & ROI Advisor (pre-listing updates)
+Added Nov 11. Helps sellers decide which updates are worth making before they list, so spending goes where it is most likely to pay off.
+
+| Step | Seller experience | Approach and guardrails |
+| --- | --- | --- |
+| Capture | Phone walkthrough of every room, plus a short questionnaire (age of roof, systems, known issues, budget, timeline) | Reuses Guided home capture and the privacy sweep |
+| Analysis | AI flags condition and dated finishes room by room | Observations only; never diagnoses structural, safety or code issues (those go to inspectors and licensed contractors) |
+| Ranked list | Each update gets an estimated cost range, a qualitative return potential (High / Medium / Low) and a call: Do first, Worth considering, Skip | Cost ranges from local cost data, labeled as estimates, never bids. **No dollar ROI or price prediction from AI** |
+| Licensed review | Broker checks the likely price effect against recent comparable sales before the seller spends | Pricing effect is a licensed judgment, logged on the file |
+| Hand-offs | Approved items become prep tasks; finished work feeds the verified upgrade ledger and listing facts | Receipts and permits become verified facts for marketing and disclosures |
+
+Website: shown as a concept mockup with sample data in the AI Prep & Marketing Studio section (`#ai-studio`). Copy rules: never promise a return, a sale price or "maximum" results.
+
 ## Core capabilities
 | Feature | Seller experience | Approach |
 | --- | --- | --- |
@@ -29,7 +42,7 @@ A differentiator that helps sellers capture their home, turn the materials into 
 - **Fair housing language check** on all drafts.
 - **Translated property pages**, reviewed before publishing (Spanish, Chinese, Vietnamese, Hmong, Russian/Ukrainian).
 - **Accessibility details:** step-free entry, door widths, alt text, audio-described tour.
-- **Original vs. virtually staged toggle:** clearly labeled, originals preserved (California AB 723; MLS rules).
+- **Original vs. virtually staged toggle:** clearly labeled, originals preserved and available to buyers (California AB 723, in effect Jan 1, 2026; MLS rules).
 - **Property potential overlays** (renovation/ADU): separately labeled, with feasibility status.
 - **Tour-to-question workflow:** answers become the property FAQ once seller-approved.
 - **"Will my furniture fit?":** buyers place furniture on the draft floor plan, labeled approximate.

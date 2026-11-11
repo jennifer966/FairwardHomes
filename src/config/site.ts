@@ -65,8 +65,9 @@ export const pricing = {
    */
   inclusions: [
     "Guided digital seller onboarding",
+    "AI pre-listing update and ROI review",
     "MLS listing coordination",
-    "Property marketing preparation",
+    "AI Marketing Studio: copy, photos, video and social",
     "Seller dashboard and transaction timeline",
     "Showing coordination",
     "Offer organization and comparison",
@@ -189,6 +190,7 @@ export const nav = [
   { label: "Sell", href: "#sell" },
   { label: "Buy", href: "#buy" },
   { label: "How It Works", href: "#how-it-works" },
+  { label: "AI Studio", href: "#ai-studio" },
   { label: "Pricing", href: "#pricing" },
   { label: "Costs", href: "#costs" },
   { label: "FAQ", href: "#faq" },

@@ -11,6 +11,7 @@
 ## Next (design and validation)
 - **Seller app prototype v2:** six-stage header, "Today" action center, live net proceeds, Ready-for-MLS screen, exception flow, co-seller permissions.
 - **Marketing Studio demo:** Capture Guide, Interactive Floor Plan, Guided Tour, Campaign Builder.
+- **Prep & ROI Advisor prototype:** walkthrough capture, ranked update list, broker price-effect review; choose a local cost-data source for estimates.
 - **Broker console:**
   - buyer files and buyer review items
   - exceptions list
@@ -28,6 +29,7 @@
 - **Buyer experience:** buyer representation workflow, tours and offers.
 
 ## Business decisions needed
+- Whether the Prep & ROI Advisor and Marketing Studio stay inside the $2,995 fee (now listed as proposed inclusions) or become add-ons.
 - Service limits and add-ons at $2,995 (included hours or showings; exception pricing; complex-sale packages).
 - Fee payment timing (lawful structure).
 - MLS membership and the rules that apply.

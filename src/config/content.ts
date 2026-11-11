@@ -19,7 +19,7 @@ export const steps = [
   {
     n: "02",
     title: "Prepare your listing",
-    body: "Organize your property information, review pricing research, and prepare marketing materials through the platform, with appropriate licensed review.",
+    body: "See which updates are most likely to pay off, organize your property information, and build your marketing with AI tools, with licensed review of pricing and anything that goes public.",
   },
   {
     n: "03",
@@ -55,6 +55,22 @@ export const assistantSamples: AssistantSample[] = [
       ],
       handoff:
         "Pricing strategy and which disclosures apply to your property are decisions to make with your licensed professional.",
+    },
+  },
+  {
+    id: "worth-updating",
+    question: "Which updates are worth doing before I sell?",
+    answer: {
+      intro: "In general, the updates that tend to pay off before a sale are the ones buyers notice in photos and inspections:",
+      points: [
+        "Fix what an inspector would flag first: leaks, broken fixtures, safety items and deferred maintenance.",
+        "Fresh, light neutral paint and updated lighting are usually low cost and visible in every photo.",
+        "Curb appeal sets the cover photo: trim landscaping, repair fences, refresh the front door.",
+        "Large remodels such as a full kitchen often cost more than they add, and many buyers prefer to choose their own finishes.",
+        "In your plan, the Prep & ROI Advisor turns this into a ranked list for your home, with estimated costs.",
+      ],
+      handoff:
+        "How an update could affect your list price is a pricing judgment your licensed professional confirms with recent comparable sales before you spend.",
     },
   },
   {
@@ -123,6 +139,14 @@ export const comparison: {
       ],
     },
     {
+      criterion: "AI prep and marketing tools",
+      cells: [
+        { text: "Seller finds and pays for their own tools", level: "limited" },
+        { text: "Varies by brokerage and agent", level: "partial" },
+        { text: "Update ROI advisor and Marketing Studio, with licensed review", level: "strong" },
+      ],
+    },
+    {
       criterion: "Licensed professional representation",
       cells: [
         { text: "None unless separately hired", level: "limited" },
@@ -182,6 +206,92 @@ export const techPillars = [
     body: "Clearly explained brokerage fees and responsibilities.",
   },
 ] as const;
+
+/**
+ * AI Prep & Marketing Studio section. Everything in the two mockups is
+ * sample data and is labeled as such on the page. Rules for this copy:
+ * - Never promise a return, a sale price or "maximum" results.
+ * - Pricing effects are confirmed by a licensed professional, never by AI.
+ * - Nothing goes public without seller and broker approval.
+ */
+export type PrepItem = {
+  item: string;
+  cost: string;
+  potential: "High" | "Medium" | "Low";
+  call: "Do first" | "Worth considering" | "Skip";
+  why: string;
+};
+
+export const aiStudio = {
+  prep: {
+    title: "Prep & ROI Advisor",
+    body: "Walk through your home with your phone. AI reviews every room, then ranks the updates most likely to pay off before you list, with estimated costs, and flags the ones that probably won't.",
+    source: "From 46 photos and a 5-minute questionnaire",
+    items: [
+      {
+        item: "Repaint main living areas in a light neutral",
+        cost: "$2,800–$4,200",
+        potential: "High",
+        call: "Do first",
+        why: "Bold colors show in 9 of 14 listing photos",
+      },
+      {
+        item: "Replace 5 dated light fixtures",
+        cost: "$600–$1,100",
+        potential: "High",
+        call: "Do first",
+        why: "Low cost, visible in most rooms",
+      },
+      {
+        item: "Repair side fence; refresh front planting",
+        cost: "$900–$1,800",
+        potential: "Medium",
+        call: "Worth considering",
+        why: "Sets the cover photo and first impression",
+      },
+      {
+        item: "Full kitchen remodel",
+        cost: "$45,000+",
+        potential: "Low",
+        call: "Skip",
+        why: "Likely to cost more than it adds; buyers may prefer their own choices",
+      },
+    ] as PrepItem[],
+    review: "Your licensed professional checks the likely price effect against recent comparable sales before you spend.",
+  },
+  marketing: {
+    title: "Marketing Studio",
+    body: "Turn your photos, facts and walkthrough into a complete campaign: listing copy, staged and original photos, a floor plan, video and social posts, all from one library.",
+    draftLabel: "Listing description · draft",
+    draft:
+      "Light pours through south-facing windows in this updated three-bedroom home, with a refreshed kitchen that opens to a shaded backyard patio.",
+    facts: ["3 bd · 2 ba · 1,840 sq ft (county record)", "South-facing living room", "Kitchen updated 2022 (receipts)"],
+    assets: [
+      { label: "Photo review", value: "32 photos checked" },
+      { label: "Virtual staging", value: "Labeled · originals linked" },
+      { label: "Floor plan", value: "Draft measurements" },
+      { label: "Video", value: "Wide and vertical cuts" },
+      { label: "Social and email", value: "6 posts ready to review" },
+      { label: "Property page", value: "With QR flyer" },
+    ],
+    stages: ["AI draft", "You approve", "Broker review", "Published"],
+    currentStage: 2,
+  },
+  roles: [
+    {
+      who: "AI does the heavy lifting",
+      body: "Reviews every room, estimates update costs, drafts listing copy from verified facts, stages photos, cuts video, builds social posts, and checks drafts for privacy issues and fair-housing language.",
+    },
+    {
+      who: "You stay in control",
+      body: "You choose which updates to make, approve every fact and image, and decide what goes into your campaign.",
+    },
+    {
+      who: "Licensed professionals sign off",
+      body: "They review anything that affects your price, and approve every public listing and ad with the required brokerage and altered-photo disclosures.",
+    },
+  ],
+} as const;
 
 /**
  * "What you'll pay" section. One row per cost category on a seller's closing
@@ -307,6 +417,14 @@ export const faqs: Faq[] = [
     a: [
       "Sellers are expected to help with tasks such as providing property information, preparing the home for photos and showings, coordinating access, and responding to updates through the dashboard.",
       "The precise division of responsibilities will be documented before you sign anything.",
+    ],
+    pending: true,
+  },
+  {
+    q: "How will Fairward use AI to prepare and market my home?",
+    a: [
+      "Two tools are in development. The Prep & ROI Advisor reviews photos of every room and your answers to a short questionnaire, then ranks the updates most likely to pay off before you list, with estimated costs, and flags the ones that probably won't. The Marketing Studio drafts your listing copy from verified facts, reviews and stages photos, and builds a floor plan, video, social posts and a property page.",
+      "AI does the analysis and drafting; you decide what to do and approve every draft. A licensed professional reviews anything that affects your price and approves every public listing and ad. Virtually staged or edited photos are labeled, with the originals available, as California law requires. Estimates are not appraisals, and no tool can promise a return on an update.",
     ],
     pending: true,
   },

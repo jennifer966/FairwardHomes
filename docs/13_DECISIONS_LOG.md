@@ -31,6 +31,7 @@
 | Nov 11 | Add a "What you'll pay" cost breakdown and buyer's-agent compensation explainer | Fees are the main differentiator and sellers are confused by the 2024 compensation changes; show who decides each cost, never a total |
 | Nov 11 | Add a "Selling in Sacramento" section; local rates and pilot area live in `localMarket` config | Local content converts better than general education; facts come from published county/city sources and are re-checked before launch |
 | Nov 11 | Show the proposed fee and market in the hero | The price was missing from the first screen |
+| Nov 11 | Add the Prep & ROI Advisor and present it with the Marketing Studio as one AI section; both added to proposed inclusions | Sellers should get the full benefit of AI for prep and marketing; AI estimates costs and return potential qualitatively, while pricing effects stay a licensed judgment and nothing is published without seller and broker approval |
 
 ## Open decision: Codex vs. Claude site
 Both tools built versions of the site. Plan:

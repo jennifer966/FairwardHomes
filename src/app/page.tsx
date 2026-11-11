@@ -1,4 +1,5 @@
 import { AnalyticsBoot } from "@/components/AnalyticsBoot";
+import { AiStudio } from "@/components/sections/AiStudio";
 import { Assistant } from "@/components/sections/Assistant";
 import { Buyers } from "@/components/sections/Buyers";
 import { Comparison } from "@/components/sections/Comparison";
@@ -25,6 +26,7 @@ export default function Home() {
         <Hero />
         <SavingsCalculator />
         <HowItWorks />
+        <AiStudio />
         <Assistant />
         <Comparison />
         <Pricing />
